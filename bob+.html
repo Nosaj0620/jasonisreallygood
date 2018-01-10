@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				background: black;
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="960" height="760"></canvas>
+	</body>
+	<script type="text/javascript">
+		var mc = document.querySelector('#canvas');
+		var ctx = mc.getContext('2d');
+		var minX = 5,
+			maxX = 955;
+		var minY = 5,
+			maxY = 755;
+		var minR = 2,
+			maxR = 3;
+
+		function Ball(x, y, r, bgColor, vx, vy, ap) {
+			this.x = x;
+			this.y = y;
+			this.r = r;
+			this.bgColor = bgColor;
+			this.vx = vx;
+			this.vy = vy;
+
+		};
+
+		function randomNum(x, y) {
+			return Math.round(Math.random() * (y - x) + x);
+		}
+		Ball.prototype.draw = function() {
+			//反弹
+			if(this.x < this.r || this.x > 960 - this.r) {
+				this.vx = -this.vx;
+			}
+			if(this.y < this.r || this.y > 760 - this.r) {
+				this.vy = -this.vy;
+			}
+			this.x += this.vx;
+			this.y += this.vy;
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+			ctx.fillStyle = this.bgColor;
+			ctx.fill();
+		}
+		var ballArr = [];
+
+		function createBall() {
+			var x = randomNum(minX, maxX);
+			var y = randomNum(minY, maxY);
+			var r = randomNum(minR, maxR);
+			var vx = randomNum(-5, 5);
+			var vy = randomNum(-3, 3);
+
+			if(vx == 0) {
+				vx++;
+			}
+			if(vy == 0) {
+				vy++;
+			}
+			var bg = 'rgb(' + randomNum(55, 230) + ',' + randomNum(55, 230) + ',' + randomNum(55, 230) + ')';
+			var newBall = new Ball(x, y, r, bg, vx, vy);
+			ballArr.push(newBall);
+		}
+		for(var i = 0; i < 100; i++) {
+			createBall();
+		}
+		var distance;
+		setInterval(function() {
+			for(var i = 0; i < ballArr.length - 1; i++) {
+				for(var j = i + 1; j < ballArr.length; j++) {
+					distance = Math.sqrt(Math.pow(ballArr[i].x - ballArr[j].x, 2) + Math.pow(ballArr[i].y - ballArr[j].y, 2), 2);
+					if(distance < 80) {
+						ctx.beginPath();
+						ctx.moveTo(ballArr[i].x, ballArr[i].y);
+						ctx.lineTo(ballArr[j].x, ballArr[j].y);
+						ctx.strokeStyle = 'rgb(' + randomNum(55, 230) + ',' + randomNum(55, 230) + ',' + randomNum(55, 230) +')';
+						ctx.strokeWidth = 5;
+						ctx.lineWidth = 1;
+						ctx.stroke();
+					}
+				}
+			}
+		}, 5)
+		setInterval(function() {
+			ctx.clearRect(0, 0, 960, 760);
+			for(var i = 0; i < ballArr.length; i++) {
+				ballArr[i].draw();
+			}
+		}, 10);
+		var mouseObj = {
+			mouseX: -1000,
+			mouseY: -1000,
+		};
+		mc.onmousemove = function() {
+			var e = event || window.event;
+			var mouseX = e.pageX - mc.offsetLeft;
+			var mouseY = e.pageY - mc.offsetTop;
+
+			function MouseObj(mouseX, mouseY) {
+				this.mouseX = mouseX;
+				this.mouseY = mouseY;
+			}
+			mouseObj = new MouseObj(mouseX, mouseY);
+		}
+		mc.onmouseout = function() {
+			mouseObj = {
+				mouseX: -1000,
+				mouseY: -1000,
+			};
+		}
+		setInterval(function() {
+			for(var i = 0; i < ballArr.length; i++) {
+				var distance2 = Math.sqrt(Math.pow(ballArr[i].x - mouseObj.mouseX, 2) + Math.pow(ballArr[i].y - mouseObj.mouseY, 2), 2)
+				if(distance2 < 200) {
+					ctx.beginPath();
+					ctx.moveTo(ballArr[i].x, ballArr[i].y);
+					ctx.lineTo(mouseObj.mouseX, mouseObj.mouseY);
+					ctx.strokeStyle = 'rgb(' + randomNum(55, 230) + ',' + randomNum(55, 230) + ',' + randomNum(55, 230) +')';
+					ctx.strokeWidth = 5;
+					ctx.lineWidth = 1;
+					ctx.stroke();
+				}
+			}
+		}, 1)
+	</script>
+
+</html>

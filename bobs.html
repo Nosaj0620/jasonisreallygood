@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				background: black;
+				margin: 0 auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="960" height="760"></canvas>
+	</body>
+	<script>
+		var mc = document.querySelector('#canvas');
+		var ctx = mc.getContext('2d');
+		var minX = 5,
+			maxX = 955;
+		var minY = 5,
+			maxY = 755;
+		var minR = 3,
+			maxR = 5;
+
+		function randomNum(x, y) {
+			return Math.round(Math.random() * (y - x) + x);
+		}
+		function rd(x, y) {
+			return Math.round(Math.random() * (y - x) + x)*100/1000;
+		}
+		//封装球类
+		/*Ball():小球类
+		 * x,y:小球圆心的坐标
+		 * r 小球半径
+		 * bgColor 小球颜色
+		 * vx vy水平方向和数值方向的速度
+		 * */
+		function Ball(x, y, r, bgColor, vx, vy) {
+			this.x = x;
+			this.y = y;
+			this.r = r;
+			this.bgColor = bgColor;
+			this.vx = vx;
+			this.vy = vy;
+		}
+		Ball.prototype.draw = function() {
+			//			碰壁速度智付
+			if(this.x < this.r || this.x > 960 - this.r) {
+				this.vx = -this.vx;
+			}
+			if(this.y < this.r || this.y > 760 - this.r) {
+				this.vy = -this.vy;
+			}
+			//改变圆心的位置实现球的运动
+			this.x += this.vx;
+			this.y += this.vy;
+
+			//绘制
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+			ctx.fillStyle = this.bgColor;
+			ctx.fill();
+
+		}
+		var ballArr = [];
+
+		function createBall() {
+			var x = randomNum(minX, maxX);
+			var y = randomNum(minY, maxY);
+			var r = randomNum(minR, maxR);
+			var bgColor = 'rgba(' + randomNum(30, 255) + ',' + randomNum(30, 255) + ',' + randomNum(30, 255) +',1)';
+			var vx = randomNum(-10, 15);
+			var vy = randomNum(-5, 10);
+			//规避速度为零
+			if(vx == 0) {
+				vx++;
+			};
+			if(vy == 0) {
+				vy++;
+			};
+			var newBall = new Ball(x, y, r, bgColor, vx, vy);
+			ballArr.push(newBall);
+		}
+
+		for(var i = 0; i < 500; i++) {
+			createBall();
+		}
+		setInterval(function() {
+			ctx.clearRect(0, 0, 960, 760);
+			for(var j = 0; j < ballArr.length; j++) {
+				ballArr[j].draw();
+			};
+		}, 10);
+	</script>
+
+</html>
