@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>加纳战机</title>
+		<style type="text/css">
+			@-webkit-keyframes enemyMove {
+				0% {
+					transform: rotate(0deg);
+					left: 30px;
+				}
+				3% {
+					transform: rotate(72deg);
+					left: 30px;
+				}
+				97% {
+					transform: rotate(720deg);
+					left: 750px;
+				}
+				100% {
+					transform: rotate(792deg);
+					left: 750px;
+				}
+			}
+			
+			@-webkit-keyframes disappear {
+				0% {
+					width: 340px;
+					display: block;
+					box-shadow: 0 0 100px 10px deepskyblue;
+				}
+				99% {
+					width: 0px;
+					display: block;
+					box-shadow: 0 0 1px 1px deepskyblue;
+				}
+				100% {
+					width: 0px;
+					display: none;
+					box-shadow: none;
+				}
+			}
+			
+			@-webkit-keyframes titleDisappear {
+				0% {
+					top: 150px;
+					display: block;
+				}
+				99% {
+					top: -200px;
+					display: block;
+				}
+				100% {
+					top: -200px;
+					display: none;
+				}
+			}
+			
+			@font-face {
+				font-family: Gunnac;
+				src: url(font/MamaLove.ttf);
+			}
+			
+			.maker {
+				text-shadow: 0 0 3px palegreen;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+			}
+			
+			#wrap {
+				background: black;
+				width: 800px;
+				height: 950px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#stars {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#stars>div {
+				width: 2px;
+				height: 2px;
+				box-shadow: 0 0 20px 3px deepskyblue;
+				position: absolute;
+				background: deepskyblue;
+				border-radius: 50%;
+				z-index: 999;
+			}
+			
+			#start {
+				width: 340px;
+				height: 150px;
+				margin: 0 auto;
+				position: absolute;
+				left: 230px;
+				top: 380px;
+				/*border: 2px outset burlywood;*/
+				box-shadow: 0 0 100px 10px deepskyblue;
+				line-height: 150px;
+				text-align: center;
+				border-radius: 50px;
+				background: -webkit-linear-gradient(bottom, #E9FFB2, #00B8C0, #0074E4, #1B3C68);
+				/*display: inline-block;*/
+				animation: disappear 1.5s forwards paused;
+				overflow: hidden;
+			}
+			
+			#logo {
+				animation: titleDisappear 1.5s 0.5s forwards paused;
+				text-shadow: -5px 5px 3px orange;
+				height: 150px;
+				margin: 0 auto;
+				position: absolute;
+				color: limegreen;
+				font-size: 90px;
+				left: 188px;
+				top: 150px;
+				line-height: 150px;
+				text-align: center;
+				font-family: Gunnac;
+				/*display: inline-block;*/
+			}
+			
+			#start div {
+				font-family: "comic sans ms";
+				font-size: 40px;
+				color: cadetblue;
+				text-shadow: 2px 2px 2px black;
+				cursor: pointer;
+			}
+			
+			#Gunnac {
+				width: 40px;
+				height: 50px;
+				z-index: 999;
+				background: url(img/1.png);
+				background-size:cover ;
+				display: inline-block;
+				position: absolute;
+				left: 370px;
+				bottom: 5px;
+				display: none;
+			}
+			
+			#enemys>div {
+				-webkit-user-select: none;
+				position: absolute;
+				animation: enemyMove 2s linear infinite alternate;
+				transition: 10s transform;
+			}
+			
+			#score {
+				font-size: 40px;
+				color: white;
+				font-family: Gunnac;
+				position: absolute;
+				left: 20px;
+				top: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!--logo-->
+			<div id="logo">
+				Gun ⭐ Nac
+			</div>
+			<!--开始模块-->
+			<div id="start">
+				<div>START</div>
+			</div>
+			<!--星星-->
+			<div id="stars">
+
+			</div>
+			<!--飞机-->
+			<div id="Gunnac">
+
+			</div>
+			<div id="enemys">
+
+			</div>
+			<div class="maker">
+				MADE BY Jason
+			</div>
+			<div id="score">
+				SCORE:0
+			</div>
+		</div>
+		<audio id="bgm1" src="audio/MISSION 1.mp3" loop>
+			该浏览器不支持播放视频
+			<source src="audio/MISSION 1.mp3" type="audio/mp3">
+		</audio>
+		<audio id="bgmStart" src="audio/bgmStart.mp3" autoplay="autoplay"  loop> 该浏览器不支持播放视频
+			<source src="audio/bgmStart.mp3" type="audio/mp3">
+		</audio>
+		<audio id="bgmStart2" src="audio/bgmStart2.mp3" loop>
+			该浏览器不支持播放视频
+			<source src="audio/bgmStart2.mp3" type="audio/mp3">
+		</audio>
+	</body>
+	<script type="text/javascript" src="../jQuery/jquery-3.2.1.min.js"></script>
+	<script>
+		var fallTimer; //星星坠落速度
+		var gunnacMove = 1; //战机移动速度
+		var stars = document.getElementById("stars");
+		var wrap = document.getElementById("wrap");
+		var start = document.getElementById("start");
+		var logo = document.getElementById("logo");
+		var Gunnac = document.getElementById("Gunnac");
+		var bgmStart = document.getElementById("bgmStart");
+		var bgmStart2 = document.getElementById("bgmStart2");
+		var bgm1 = document.getElementById("bgm1");
+		var enemys = document.getElementById('enemys');
+		var starNum = 500; //星星密度
+		var speed = 5; //开始菜单星星下落速度
+		var scoreNum=0;
+		var launchTimer;
+		var bulletsArr = [];
+		var enemyArr = []; //定义一个怪物数组	
+		start.onclick = function() {
+				start.style.animation = "disappear 1.5s forwards running";
+				logo.style.animation = "titleDisappear 1.5s 0.5s  forwards  running";
+				bgmStart.pause();
+				setTimeout(function() {
+					$('#Gunnac').css({
+						'left': '370px',
+						'bottom': '5px'
+					});
+					starNum = 150; //星星密度
+					bgmStart2.play();
+					createEnemy1();
+					bullets();
+					Gunnac.style.display = 'block';
+					creatingStars(); //星星开始降落
+				}, 2000);
+				start.onclick = null;
+			}
+			//随机数函数
+		function randomNum(x, y) {
+			return Math.round(Math.random() * (y - x) - x);
+		}
+		creatingStars();
+		//星星
+		function creatingStars() {
+			var createPipeTimer = setInterval(function() {
+				createStars();
+			}, starNum);
+		}
+		//创建星星背景
+		function createStars() {
+			var star = document.createElement('div'); //创建star
+			stars.appendChild(star);
+			//			star.className = 'star';
+			var starLeft = randomNum(0, 800); //星星的定位
+			star.style.left = starLeft + "px";
+			var speed = randomNum(0, 100) > 70 ? 30 : 10; //星星下落速度
+			star.fallTimer = setInterval(function() { //每个星星都有自己的top值累加的计时器
+				star.style.top = (star.offsetTop + speed) + "px";
+				//星星不见时，清除
+				if(star.offsetTop >= wrap.offsetHeight) {
+					star.remove(); //移除此节点
+					clearInterval(star.fallTimer);
+				}
+			}, 20);
+		}
+		var gunnacUpTimer;
+		var gunnacDownTimer;
+		var gunnacLeftTimer;
+		var gunnacRightTimer;
+		//飞机和怪物碰撞
+		for(var k = 0; k < enemyArr.length; k++) {
+						if(enemyArr[k].offsetLeft + enemyArr[k].offsetWidth >= Gunnac.offsetLeft && enemyArr[k].offsetLeft <= Gunnac.offsetLeft + Gunnac.offsetWidth && enemyArr[k].offsetTop + enemyArr[k].offsetHeight >= Gunnac.offsetTop && enemyArr[k].offsetTop <= Gunnac.offsetTop + Gunnac.offsetHeight) {
+							
+							Gunnac.remove();
+						}
+					}
+		function gunnacUp() {
+			gunnacMove = 100;
+			Gunnac.style.top = (Gunnac.offsetTop - gunnacMove) + "px";
+		}
+
+		function gunnacDown() {
+			gunnacMove = 100;
+			Gunnac.style.top = (Gunnac.offsetTop + gunnacMove) + "px";
+		}
+
+		function gunnacRight() {
+			gunnacMove = 80;
+			Gunnac.style.left = (Gunnac.offsetLeft + gunnacMove) + "px";
+		}
+
+		function gunnacLeft() {
+			gunnacMove = 80;
+			Gunnac.style.left = (Gunnac.offsetLeft - gunnacMove) + "px";
+			//			}, 1);
+		}
+		Gunnac.style.transition = " 0.2s  ";
+
+		window.onkeydown = function() { //按键控制加纳
+			var e = event || window.event;
+			switch(e.keyCode) {
+				case 87:
+					gunnacUp();
+					break;
+				case 83:
+					gunnacDown();
+					break;
+				case 65:
+					gunnacLeft();
+					break;
+				case 68:
+					gunnacRight();
+					break;
+			}
+			//限制加纳运动
+			if(Gunnac.offsetTop <= 0) {
+				Gunnac.style.top = 20 + "px";
+			}
+			if(Gunnac.offsetTop + Gunnac.offsetWidth == wrap.offsetHeight) {
+				Gunnac.style.top = 920 + "px";
+			}
+			if(Gunnac.offsetLeft <= 0) {
+				Gunnac.style.Left = 0 + "px";
+				//				gunnacRight();
+			}
+			if(Gunnac.offsetTop <= 0) {
+				Gunnac.style.top = 20 + "px";
+			}
+		}
+		var enemySpeed = 1;
+		function createEnemy1() {
+			var creatingEnemy1 = setInterval(function() {
+				var enemy1 = document.createElement('div');
+				enemy1.health = 2;
+				$(enemy1).css({
+					'width': '20px',
+					'height': '20px',
+					'border': '4px ridge rgb(252,165,76)',
+					'box-shadow': 'inset 0 0  5px 5px rgba(39,40,34,0.7)',
+					'background-color': 'rgba(252,165,76,0.7)'
+				});
+				enemyArr.push(enemy1); //将创建的敌机放入数组
+				enemys.appendChild(enemy1); //将创建好的敌机放入盒子
+				enemy1.fTimer = setInterval(function() {
+					enemy1.style.top = enemy1.offsetTop + enemySpeed + "px"; //初始化位置
+
+					if(enemy1.offsetTop >= 950) {
+						enemy1.remove();
+						enemyArr.shift();
+					} 
+				}, 10);
+				//创建8个敌机 结束创建敌机
+				if(enemyArr.length == 8) {
+					clearInterval(creatingEnemy1);
+				}
+			}, 200);
+		}
+		//创建子弹函数
+		function bullets() {
+			launchTimer = setInterval(function() {
+				var bullet = document.createElement("div");
+				$(bullet).css({
+					'width': '3px',
+					'height': '5px',
+					'background': 'white',
+					'position': 'absolute',
+					'left': Gunnac.offsetLeft + 18 + 'px',
+					'top': Gunnac.offsetTop + 'px'
+				});
+				bulletsArr.push(bullet); //创建的子弹push进数组
+				wrap.appendChild(bullet); //子弹可视化
+				bullet.className = 'bulletClass';
+				bullet.bulletsUpTimer = setInterval(function() {
+					bullet.style.top = bullet.offsetTop - 5 + "px";
+					//碰撞检测
+					for(var j = 0; j < enemyArr.length; j++) {
+						if(enemyArr[j].offsetLeft + enemyArr[j].offsetWidth >= bullet.offsetLeft && enemyArr[j].offsetLeft <= bullet.offsetLeft + bullet.offsetWidth && enemyArr[j].offsetTop + enemyArr[j].offsetHeight >= bullet.offsetTop && enemyArr[j].offsetTop <= bullet.offsetTop + bullet.offsetHeight) {
+							enemyArr[j].health--;
+							bullet.remove();
+							if(enemyArr[j].health==2){
+								enemyArr[j].style.background= 'red';
+								scoreNum+=100;
+								score.innerText="SCORE:"+scoreNum;
+							}else if(enemyArr[j].health==1){
+								enemyArr[j].style.background= 'pink';
+								scoreNum+=200;
+								score.innerText="SCORE:"+scoreNum;
+							}else if(enemyArr[j].health==0){
+								enemyArr[j].remove();
+								scoreNum+=500;
+								score.innerText="SCORE:"+scoreNum;
+							}
+							
+						}
+					}
+					if(bullet.offsetTop < 0) {
+						bullet.remove();//移除子弹
+						//bulletsArr.shift();
+					}
+					
+//					if(bulletsArr.length >=8){
+//						var bulletsClass = document.querySelectorAll('#wrap>.bulletClass');
+//						for(var i = 0 ; i<bulletsArr.length;i++){
+//							bulletsClass[i].remove();
+//						}
+//						 bullets();
+//					}else{
+//						return;
+//					}
+				}, 1);
+			}, 110);
+		}
+
+	
+	</script>
+
+</html>
