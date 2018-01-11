@@ -92,7 +92,8 @@
 		var speed = 10;
 		var timetext = document.querySelector('h1');
 		var beginTimer;
-
+		var sec = 0;
+		var speedTimer;
 		function Box(bx, by, bw, bh, xbv, ybv, num) {
 			this.bx = bx;
 			this.by = by;
@@ -102,9 +103,6 @@
 			this.xbv = xbv;
 			this.ybv = ybv;
 		}
-		var sec = 0;
-		var speedTimer;
-
 		function timer() {
 			var ms = 0;
 
@@ -115,24 +113,24 @@
 					sec++;
 				}
 				switch(sec) {
-					case 10:
+					case 9:
 						speed = 6;
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 20:
+					case 19:
 						speed = 4;
 						clearInterval(beginTimer);
 						start();
 						break;
 
-					case 30:
+					case 29:
 						speed = 3;
 						clearInterval(beginTimer);
 						start();
 						break;
 
-					case 60:
+					case 59:
 						speed = 2;
 						clearInterval(beginTimer);
 						start();
@@ -146,6 +144,7 @@
 			setTimeout(function() {
 				timer();
 				start();
+				mousew();
 			}, 1000);
 
 		}
@@ -164,6 +163,8 @@
 			my: 400,
 		};
 		var gameover = false;
+		function mousew(){
+			
 		mc.onmousedown = function() {
 			var e = event || window.event;
 			if(e.pageX - mc.offsetLeft > mid.mx && e.pageX - mc.offsetLeft < mid.mx + mid.mw && e.pageY - mc.offsetTop > mid.my && e.pageY - mc.offsetTop < mid.my + mid.mh) {
@@ -182,6 +183,7 @@
 			mc.onmouseup = function() {
 				mc.onmousemove = null;
 			}
+		}
 		}
 		Middle.prototype.draw = function() {
 			if(this.mx <= 0 || this.mx + this.mw > mc.width || this.my <= 0 || this.my + this.mh > mc.height) {
