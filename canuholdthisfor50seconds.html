@@ -113,23 +113,36 @@
 					sec++;
 				}
 				switch(sec) {
+					case 5:
+						speed = 8;
+						clearInterval(beginTimer);
+						start();
+						break;
 					case 9:
+						speed = 7;
+						clearInterval(beginTimer);
+						start();
+						break;
+					case 15:
 						speed = 6;
 						clearInterval(beginTimer);
 						start();
 						break;
 					case 19:
+						speed = 5;
+						clearInterval(beginTimer);
+						start();
+						break;
+					case 25:
 						speed = 4;
 						clearInterval(beginTimer);
 						start();
 						break;
-
 					case 29:
 						speed = 3;
 						clearInterval(beginTimer);
 						start();
 						break;
-
 					case 59:
 						speed = 2;
 						clearInterval(beginTimer);
