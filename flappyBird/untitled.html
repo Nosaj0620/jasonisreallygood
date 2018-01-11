@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 
+	function formatFloat(f, digit) { //封装函数规避精度问题
+		var m = Math.pow(10, digit); 
+		return parseInt(f * m, 10) / m; 
+	} 
+	var b = 0.1;
+	var x,y,z,i;
+	// for( x =0;x<=10;formatFloat((x+=0.1),1)){
+	// 	for( y =0;y<=10;formatFloat((y+=0.1),1)){
+	// 		for( z =0;z<=10;formatFloat((z+=0.1),1)){
+				for( i =0;i<=10;i+=parseFloat((b).toFixed(2))){
+					console.log(x,y,z,i);
+					// if(x+y==9 && x+z==10 && y+i==10 && z-i==6){
+						
+					// }else{
+					// 	break;
+					// }
+				}
+	// 		}
+	// 	}
+	// }
+	var a = 0.1;
+	
+	console.log(parseFloat((a + b).toFixed(2)) );
+
+</script>
+</html>
