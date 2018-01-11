@@ -14,8 +14,8 @@
 			
 			html,
 			body {
-				width: 800px;
-				height: 800px;
+				width: 100%;
+				height: 100%;
 			}
 			
 			#canvas {
@@ -104,6 +104,7 @@
 	<script type="text/javascript">
 		//		window.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "https://qq496565037.github.io/jasonisreallygood/canuholdthisfor50seconds.html" : "https://qq496565037.github.io/jasonisreallygood/canuholdthisfor50seconds2.html";
 		var mc = document.querySelector('#canvas');
+		var control = document.querySelector('.control');
 		var ctx = mc.getContext('2d');
 		var boxArr = []; //放四个盒子的arr
 		var mid;
@@ -114,7 +115,7 @@
 		var beginTimer;
 		var beginTimer;
 		//创建一个新的hammer对象并且在初始化时指定要处理的dom元素
-		var hammertime = new Hammer(window);
+		var hammertime = new Hammer(control);
 		//为该dom元素指定触屏移动事件
 
 		hammertime.on("pan", function(ev) {
@@ -253,11 +254,11 @@
 			boxArr.push(box1, box2, box3, box4);
 		}
 
-		mid = new Middle(mousep.mx - 44, mousep.my - 44-800, 88, 88);
+		mid = new Middle(mousep.mx - 22, mousep.my - 22-800, 44, 44);
 
 		function start() {
 			beginTimer = setInterval(function() {
-				mid = new Middle(mousep.mx - 44, mousep.my - 44-800, 88, 88);
+				mid = new Middle(mousep.mx - 22, mousep.my - 22-800, 44, 44);
 				ctx.clearRect(0, 0, 800, 800);
 				//				console.log(mid);
 				for(var i = 0; i < boxArr.length; i++) {
