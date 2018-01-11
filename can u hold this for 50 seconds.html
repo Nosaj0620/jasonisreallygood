@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>坚持50秒</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#canvas {
+				background: #A6E1EC;
+				display: block;
+				margin: 0 auto;
+				margin-top: 30px;
+			}
+			
+			h1 {
+				text-align: center;
+				width: 500px;
+				height: 30px;
+				position: fixed;
+				left: 50%;
+				font-size: 40px;
+				top: 0;
+				margin-left: -250px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				/*background: black;*/
+			}
+			
+			.begin {
+				width: 400px;
+				height: 150px;
+				font-size: 40px;
+				color: red;
+				position: absolute;
+				left: 50%;
+				top: 350px;
+				background: rgba(215, 222, 56, 0.6);
+				border-radius: 35px;
+				margin-left: -200px;
+				z-index: 222;
+				text-align: center;
+				line-height: 150px;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+			
+			.over {
+				width: 400px;
+				height: 150px;
+				font-size: 40px;
+				color: red;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				position: absolute;
+				left: 50%;
+				top: 350px;
+				background: rgba(215, 222, 56, 0.6);
+				border-radius: 35px;
+				margin-left: -200px;
+				z-index: 222;
+				text-align: center;
+				line-height: 150px;
+				cursor: pointer;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1></h1>
+		<div class="begin">开始游戏</div>
+		<div class="over">重新开始</div>
+		<canvas id="canvas" width="800" height="800"></canvas>
+
+	</body>
+	<script type="text/javascript">
+		var mc = document.querySelector('#canvas');
+		var ctx = mc.getContext('2d');
+		var boxArr = []; //放四个盒子的arr
+		var mid;
+		var begin = document.querySelector('.begin');
+		var over = document.querySelector('.over');
+		var speed = 10;
+		var timetext = document.querySelector('h1');
+		var beginTimer;
+
+		function Box(bx, by, bw, bh, xbv, ybv, num) {
+			this.bx = bx;
+			this.by = by;
+			this.bw = bw;
+			this.bh = bh;
+			this.num = num;
+			this.xbv = xbv;
+			this.ybv = ybv;
+		}
+		var sec = 0;
+		var speedTimer;
+
+		function timer() {
+			var ms = 0;
+
+			speedTimer = setInterval(function() {
+				ms++;
+				if(ms == 100) {
+					ms = 0;
+					sec++;
+				}
+				switch(sec) {
+					case 10:
+						speed = 6;
+						clearInterval(beginTimer);
+						start();
+						break;
+					case 20:
+						speed = 4;
+						clearInterval(beginTimer);
+						start();
+						break;
+
+					case 30:
+						speed = 3;
+						clearInterval(beginTimer);
+						start();
+						break;
+
+					case 60:
+						speed = 2;
+						clearInterval(beginTimer);
+						start();
+						break;
+				}
+				timetext.innerText = sec + ":" + ms;
+			}, 10);
+		}
+		begin.onclick = function() {
+			this.style.display = 'none';
+			setTimeout(function() {
+				timer();
+				start();
+			}, 1000);
+
+		}
+		over.onclick = function() {
+			history.go(0);
+		}
+
+		function Middle(mx, my, mw, mh) {
+			this.mx = mx;
+			this.my = my;
+			this.mw = mw;
+			this.mh = mh;
+		}
+		var mousep = {
+			mx: 400,
+			my: 400,
+		};
+		var gameover = false;
+		mc.onmousedown = function() {
+			var e = event || window.event;
+			if(e.pageX - mc.offsetLeft > mid.mx && e.pageX - mc.offsetLeft < mid.mx + mid.mw && e.pageY - mc.offsetTop > mid.my && e.pageY - mc.offsetTop < mid.my + mid.mh) {
+				mc.onmousemove = function() {
+					var e = event || window.event;
+					var mouseX = e.pageX - mc.offsetLeft;
+					var mouseY = e.pageY - mc.offsetTop;
+					mousep = {
+						mx: mouseX,
+						my: mouseY
+					}
+
+				}
+			}
+
+			mc.onmouseup = function() {
+				mc.onmousemove = null;
+			}
+		}
+		Middle.prototype.draw = function() {
+			if(this.mx <= 0 || this.mx + this.mw > mc.width || this.my <= 0 || this.my + this.mh > mc.height) {
+				gameover = true;
+			}
+			ctx.beginPath();
+			ctx.fillStyle = 'deeppink';
+			ctx.fillRect(this.mx, this.my, this.mw, this.mh);
+			ctx.fill();
+		}
+
+		Box.prototype.draw = function() {
+			if(this.bx <= 0 || this.bx + this.bw > mc.width) {
+				this.xbv = -this.xbv;
+			}
+			if(this.by <= 0 || this.by + this.bh > mc.height) {
+				this.ybv = -this.ybv;
+			}
+			switch(this.num) {
+				case 1:
+					this.bx += this.xbv;
+					this.by += this.ybv;
+					break;
+				case 2:
+					this.bx -= this.xbv;
+					this.by += this.ybv;
+					break;
+				case 4:
+					this.bx += this.xbv;
+					this.by -= this.ybv;
+					break;
+				case 3:
+					this.bx -= this.xbv;
+					this.by -= this.ybv;
+					break;
+			}
+
+			if(this.bx - (mid.mx + mid.mw) <= 0 && this.by - (mid.my + mid.mh) <= 0 && mid.mx - (this.bx + this.bw) <= 0 && mid.my - (this.by + this.bh) <= 0) {
+				gameover = true;
+			};
+			ctx.beginPath();
+			ctx.fillStyle = 'deepskyblue';
+			ctx.fillRect(this.bx, this.by, this.bw, this.bh);
+			ctx.fill();
+		}
+		createbox();
+
+		function createbox() {
+			var box1 = new Box(20, 20, 125, 125, 2, 1.5, 1);
+			var box2 = new Box(655, 20, 125, 100, 2, 2, 2);
+			var box3 = new Box(20, 730, 213, 50, 2, 2, 4);
+			var box4 = new Box(717, 655, 63, 125, 2, 2, 3);
+			boxArr.push(box1, box2, box3, box4);
+		}
+
+		mid = new Middle(mousep.mx - 44, mousep.my - 44, 88, 88);
+
+		function start() {
+			beginTimer = setInterval(function() {
+				mid = new Middle(mousep.mx - 44, mousep.my - 44, 88, 88);
+				ctx.clearRect(0, 0, 800, 800);
+				//				console.log(mid);
+				for(var i = 0; i < boxArr.length; i++) {
+					boxArr[i].draw();
+
+					mid.draw();
+				}
+
+				if(gameover) {
+					clearInterval(beginTimer);
+					clearInterval(speedTimer);
+					over.style.display = 'block';
+
+				}
+
+			}, speed);
+		}
+		//初始化游戏
+		for(var i = 0; i < boxArr.length; i++) {
+			boxArr[i].draw();
+		}
+		mid.draw();
+	</script>
+
+</html>
