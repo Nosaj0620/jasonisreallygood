@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 		<title>50</title>
 		<style type="text/css">
 			* {
@@ -86,6 +87,8 @@
 
 	</body>
 	<script type="text/javascript">
+		document.ontouchmove = function(e){ e.preventDefault(); }; //文档禁止 touchmove事件
+		document.documentElement.style.webkitTouchCallout = "none";
 		var mc = document.querySelector('#canvas');
 		var ctx = mc.getContext('2d');
 		var boxArr = []; //放四个盒子的arr
