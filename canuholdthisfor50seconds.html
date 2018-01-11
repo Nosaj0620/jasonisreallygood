@@ -83,6 +83,9 @@
 
 	</body>
 	<script type="text/javascript">
+		mc.ontouchstart = function(){
+			window.location.href = "www.baidu.com";
+		}
 		var mc = document.querySelector('#canvas');
 		var ctx = mc.getContext('2d');
 		var boxArr = []; //放四个盒子的arr
