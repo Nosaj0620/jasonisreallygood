@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>坚持50秒</title>
+		<title>50</title>
 		<style type="text/css">
 			* {
 				padding: 0;
@@ -92,8 +92,7 @@
 		var speed = 10;
 		var timetext = document.querySelector('h1');
 		var beginTimer;
-		var sec = 0;
-		var speedTimer;
+
 		function Box(bx, by, bw, bh, xbv, ybv, num) {
 			this.bx = bx;
 			this.by = by;
@@ -103,6 +102,9 @@
 			this.xbv = xbv;
 			this.ybv = ybv;
 		}
+		var sec = 0;
+		var speedTimer;
+
 		function timer() {
 			var ms = 0;
 
@@ -119,21 +121,16 @@
 						start();
 						break;
 					case 9:
-						speed = 7;
-						clearInterval(beginTimer);
-						start();
-						break;
-					case 15:
 						speed = 6;
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 19:
+					case 15:
 						speed = 5;
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 25:
+					case 19:
 						speed = 4;
 						clearInterval(beginTimer);
 						start();
@@ -143,7 +140,7 @@
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 59:
+					case 60:
 						speed = 2;
 						clearInterval(beginTimer);
 						start();
@@ -157,7 +154,6 @@
 			setTimeout(function() {
 				timer();
 				start();
-				mousew();
 			}, 1000);
 
 		}
@@ -176,8 +172,6 @@
 			my: 400,
 		};
 		var gameover = false;
-		function mousew(){
-			
 		mc.onmousedown = function() {
 			var e = event || window.event;
 			if(e.pageX - mc.offsetLeft > mid.mx && e.pageX - mc.offsetLeft < mid.mx + mid.mw && e.pageY - mc.offsetTop > mid.my && e.pageY - mc.offsetTop < mid.my + mid.mh) {
@@ -196,7 +190,6 @@
 			mc.onmouseup = function() {
 				mc.onmousemove = null;
 			}
-		}
 		}
 		Middle.prototype.draw = function() {
 			if(this.mx <= 0 || this.mx + this.mw > mc.width || this.my <= 0 || this.my + this.mh > mc.height) {
@@ -252,11 +245,11 @@
 			boxArr.push(box1, box2, box3, box4);
 		}
 
-		mid = new Middle(mousep.mx - 22, mousep.my - 22, 44, 44);
+		mid = new Middle(mousep.mx - 44, mousep.my - 44, 88, 88);
 
 		function start() {
 			beginTimer = setInterval(function() {
-				mid = new Middle(mousep.mx - 22, mousep.my - 22, 44, 44);
+				mid = new Middle(mousep.mx - 44, mousep.my - 44, 88, 88);
 				ctx.clearRect(0, 0, 800, 800);
 				//				console.log(mid);
 				for(var i = 0; i < boxArr.length; i++) {
