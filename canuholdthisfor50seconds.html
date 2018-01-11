@@ -15,7 +15,7 @@
 			body {
 				width: 800px;
 				height: 800px;
-				padding-left:200px;
+				padding-left:50px;
 			}
 			
 			#canvas {
@@ -127,14 +127,14 @@ e.stopPropagation();
 		//为该dom元素指定触屏移动事件
 		function gogogo(){
 			var hammertime = new Hammer(control);
-		hammertime.on("pan", function(ev) {
-			var e = event || window.event;
-			var mouseX = e.pageX - mc.offsetLeft;
-			var mouseY = e.pageY - mc.offsetTop;
-			mousep = {
-				mx: mouseX,
-				my: mouseY
-			}
+			hammertime.on("pan", function(ev) {
+				var e = event || window.event;
+				var mouseX = e.pageX - mc.offsetLeft;
+				var mouseY = e.pageY - mc.offsetTop;
+				mousep = {
+					mx: mouseX,
+					my: mouseY
+				}
 
 			mc.onmouseup = function() {
 				hammertime.pan = null;
