@@ -102,6 +102,13 @@
 	</body>
 	<script type="text/javascript" src="hammer.min.js"></script>
 	<script type="text/javascript">
+		var jinzhi=0;
+document.addEventListener("touchmove",function(e){
+if(jinzhi==0){
+e.preventDefault();
+e.stopPropagation();
+}
+},false);
 		//		window.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "https://qq496565037.github.io/jasonisreallygood/canuholdthisfor50seconds.html" : "https://qq496565037.github.io/jasonisreallygood/canuholdthisfor50seconds2.html";
 		var mc = document.querySelector('#canvas');
 		var control = document.querySelector('.control');
