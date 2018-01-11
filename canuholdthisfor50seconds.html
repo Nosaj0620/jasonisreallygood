@@ -10,6 +10,12 @@
 				margin: 0;
 			}
 			
+			html,
+			body {
+				width: 800px;
+				height: 800px;
+			}
+			
 			#canvas {
 				background: #A6E1EC;
 				display: block;
@@ -97,18 +103,18 @@
 		var hammertime = new Hammer(mc);
 		//为该dom元素指定触屏移动事件
 		hammertime.on("pan", function(ev) {
-			var e= event|| window.event;
+			var e = event || window.event;
 			if(e.pageX - mc.offsetLeft > mid.mx && e.pageX - mc.offsetLeft < mid.mx + mid.mw && e.pageY - mc.offsetTop > mid.my && e.pageY - mc.offsetTop < mid.my + mid.mh) {
 				hammertime.on("pan", function(ev) {
-						var e = event || window.event;
-						var mouseX = e.pageX - mc.offsetLeft;
-						var mouseY = e.pageY - mc.offsetTop;
-						mousep = {
-							mx: mouseX,
-							my: mouseY
-						}
-					});
-				}
+					var e = event || window.event;
+					var mouseX = e.pageX - mc.offsetLeft;
+					var mouseY = e.pageY - mc.offsetTop;
+					mousep = {
+						mx: mouseX,
+						my: mouseY
+					}
+				});
+			}
 			mc.onmouseup = function() {
 				hammertime.pan = null;
 			}
@@ -135,33 +141,24 @@
 					sec++;
 				}
 				switch(sec) {
-					case 5:
-						speed = 8;
+
+					case 10:
+						speed = 7;
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 9:
-						speed = 6;
-						clearInterval(beginTimer);
-						start();
-						break;
-					case 15:
+					case 20:
 						speed = 5;
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 19:
+					case 30:
 						speed = 4;
 						clearInterval(beginTimer);
 						start();
 						break;
-					case 29:
-						speed = 3;
-						clearInterval(beginTimer);
-						start();
-						break;
 					case 60:
-						speed = 2;
+						speed = 3;
 						clearInterval(beginTimer);
 						start();
 						break;
@@ -191,23 +188,21 @@
 			my: 400,
 		};
 		var gameover = false;
-//		mc.onmousedown = function() {
-//			var e = event || window.event;
-//			if(e.pageX - mc.offsetLeft > mid.mx && e.pageX - mc.offsetLeft < mid.mx + mid.mw && e.pageY - mc.offsetTop > mid.my && e.pageY - mc.offsetTop < mid.my + mid.mh) {
-//				mc.onmousemove = function() {
-//					var e = event || window.event;
-//					var mouseX = e.pageX - mc.offsetLeft;
-//					var mouseY = e.pageY - mc.offsetTop;
-//					mousep = {
-//						mx: mouseX,
-//						my: mouseY
-//					}
-//
-//				}
-//			}
+		//		mc.onmousedown = function() {
+		//			var e = event || window.event;
+		//			if(e.pageX - mc.offsetLeft > mid.mx && e.pageX - mc.offsetLeft < mid.mx + mid.mw && e.pageY - mc.offsetTop > mid.my && e.pageY - mc.offsetTop < mid.my + mid.mh) {
+		//				mc.onmousemove = function() {
+		//					var e = event || window.event;
+		//					var mouseX = e.pageX - mc.offsetLeft;
+		//					var mouseY = e.pageY - mc.offsetTop;
+		//					mousep = {
+		//						mx: mouseX,
+		//						my: mouseY
+		//					}
+		//
+		//				}
+		//			}
 
-			
-		
 		Middle.prototype.draw = function() {
 			if(this.mx <= 0 || this.mx + this.mw > mc.width || this.my <= 0 || this.my + this.mh > mc.height) {
 				gameover = true;
