@@ -122,13 +122,13 @@
 		<div id="restart">
 			<div>RESTART</div>
 		</div>
-		
+
 		<audio src="audio/2nd.mp3" id="second" loop>不支持</audio>
 		<audio src="audio/hit.mp3" id="hit">不支持</audio>
 		<audio src="audio/die.mp3" id="die">不支持</audio>
 		<audio id="first">
-        		<source  src="audio/1st.mp3" codecs="mp3" type="audio/mpeg">
-    		</audio>
+			<source src="audio/1st.mp3" codecs="mp3" type="audio/mpeg">
+		</audio>
 	</body>
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script src="hammer.min.js"></script>
@@ -159,7 +159,6 @@
 		var imgArr = [];
 		var img = new Image();
 		img.src = '2.png';
-
 		imgArr.push(img);
 		//绘制飞机
 		function plane(x) {
@@ -316,7 +315,6 @@
 						bulletsArr.splice(i, 1);
 						enemysArr.splice(j, 1);
 						judgeBoom();
-
 						i--;
 						break;
 					}
@@ -325,7 +323,6 @@
 			for(var j = 0; j < enemysArr.length; j++) {
 				var c = enemysArr[j];
 				if(mouseX + 40 > c.ex && c.ey < 1400 + 80 && mouseX < c.ex + c.wh && 1400 < c.ey + c.wh) {
-
 					imgArr.pop();
 					dead = true;
 					enemysArr.splice(j, 1);
@@ -342,38 +339,38 @@
 					}, 5)
 					first.pause();
 					second.pause();
-					setTimeout(function(){
+					setTimeout(function() {
 						restart.style.animation = 'disappear2 1.5s forwards running';
-					},500);
+					}, 500);
 					break;
 				}
 			}
 		}
-		restart.onclick = function(){
+		restart.onclick = function() {
 			history.go(0);
 		}
-		function audioplay() { //音乐播放
-			function autoPlayAudio1()
-{
-wx.config({
-// 配置信息, 即使不正确也能使用 wx.ready
-debug: false,
-appId: '',
-timestamp: 1,
-nonceStr: '',
-signature: '',
-jsApiList: []
-});
-wx.ready(function() {
-first.play();
-			first.onended = function() {
-				second.play();
-			}
-});
-}
-			
-		}
 
+		
+			
+			function autoPlayAudio1() {
+				wx.config({
+					// 配置信息, 即使不正确也能使用 wx.ready
+					debug: false,
+					appId: '',
+					timestamp: 1,
+					nonceStr: '',
+					signature: '',
+					jsApiList: []
+				});
+				wx.ready(function() {
+					first.play();
+					first.onended = function() {
+						second.play();
+					}
+				});
+			}
+
+		
 		document.querySelector('#start').onclick = function() {
 			this.style.animation = 'disappear 1.5s forwards running';
 			var startTimer = setTimeout(function() {
@@ -388,7 +385,7 @@ first.play();
 			this.style.animation = 'disappear 1.5s forwards running';
 			var startTimer = setTimeout(function() {
 				startGame();
-				audioplay();
+				autoPlayAudio1();
 				var dadada = setInterval(function() {
 					createBullet();
 				}, 100);
@@ -414,7 +411,6 @@ first.play();
 						plane(mouseX - 40);
 					}
 				}
-
 				for(var i = 0; i < bulletsArr.length; i++) {
 					bulletsArr[i].draw();
 				}
@@ -427,9 +423,6 @@ first.play();
 				for(var i = 0; i < hanabiArr.length; i++) {
 					for(var j = 0; j < hanabiArr[i].length; j++) {
 						hanabiArr[i][j].move();
-						//					setTimeout(function(){
-						//						hanabiArr.splice(i,1)
-						//					},2000);
 					}
 				}
 				judgeHit();
