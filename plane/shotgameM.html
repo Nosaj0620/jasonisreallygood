@@ -311,6 +311,7 @@
 						hit.currentTime = 0;
 						if(IsPC() == false) {
 							hitA();
+							hit.play();
 						}
 						hit.play();
 						bulletsArr.splice(i, 1);
@@ -329,6 +330,7 @@
 					enemysArr.splice(j, 1);
 					if(IsPC() == false) {
 						dieA();
+						die.play();
 					}
 					die.play();
 
@@ -361,7 +363,8 @@
 				second.play();
 			}
 		}
-		function dieA(){
+
+		function dieA() {
 			wx.config({
 				// 配置信息, 即使不正确也能使用 wx.ready
 				debug: false,
@@ -375,7 +378,8 @@
 				die.play();
 			});
 		}
-		function hitA(){
+
+		function hitA() {
 			wx.config({
 				// 配置信息, 即使不正确也能使用 wx.ready
 				debug: false,
@@ -389,6 +393,7 @@
 				hit.play();
 			});
 		}
+
 		function autoPlayAudio1() {
 			wx.config({
 				// 配置信息, 即使不正确也能使用 wx.ready
@@ -401,9 +406,9 @@
 			});
 			wx.ready(function() {
 				second.play();
-//				first.onended = function() {
-//					second.play();
-//				}
+				//				first.onended = function() {
+				//					second.play();
+				//				}
 			});
 		}
 
