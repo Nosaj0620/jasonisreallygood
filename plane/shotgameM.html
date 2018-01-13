@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="user-scalable=no" />
 		<title>飞机游戏</title>
 		<style type="text/css">
 			* {
@@ -66,7 +67,7 @@
 	</head>
 
 	<body>
-		<canvas id="canvas" width="1000" height="1500"></canvas>
+		<canvas id="canvas" width="1000" height="1600"></canvas>
 		<div id="start">
 			<div>START</div>
 		</div>
@@ -104,13 +105,13 @@
 		//绘制飞机
 		function plane(x) {
 			ctx.beginPath();
-			ctx.drawImage(img, x, 1300, 40, 40);
+			ctx.drawImage(img, x, 1400, 80, 80);
 
 		}
 
 		function Bullets(bx, bv) {
 			this.bx = bx;
-			this.by = 1300;
+			this.by = 1400;
 			this.bv = bv;
 		}
 		Bullets.prototype.draw = function() {
@@ -187,11 +188,11 @@
 		//			var e = event || window.event;
 		//			mouseX = e.pageX - mc.offsetLeft;
 		//			//飞机不能超出边界(只能用if不能用三目)
-		//			if(mouseX > mc.width - 20) {
-		//				mouseX = mc.width - 20;
+		//			if(mouseX > mc.width - 40) {
+		//				mouseX = mc.width - 40;
 		//			}
-		//			if(mouseX < 20) {
-		//				mouseX = 20;
+		//			if(mouseX < 40) {
+		//				mouseX = 40;
 		//			}
 		//		}
 
@@ -285,16 +286,33 @@
 				second.play();
 			}
 		}
-		document.querySelector('#start').onclick = function() {
-			this.style.animation = 'disappear 1.5s forwards running';
-			var startTimer = setTimeout(function() {
-				startGame();
-				audioplay();
-				var dadada = setInterval(function() {
-					createBullet();
-				}, 100);
-			}, 1500);
-		}
+		document.addEventListener('DOMContentLoaded', function() {
+			function audioAutoPlay() {
+				document.querySelector('#start').onclick = function() {
+					this.style.animation = 'disappear 1.5s forwards running';
+					var startTimer = setTimeout(function() {
+						startGame();
+						audioplay();
+						var dadada = setInterval(function() {
+							createBullet();
+						}, 100);
+					}, 1500);
+				}
+				document.addEventListener("WeixinJSBridgeReady", function() {
+					document.querySelector('#start').onclick = function() {
+						this.style.animation = 'disappear 1.5s forwards running';
+						var startTimer = setTimeout(function() {
+							startGame();
+							audioplay();
+							var dadada = setInterval(function() {
+								createBullet();
+							}, 100);
+						}, 1500);
+					}
+				}, false);
+			}
+			audioAutoPlay();
+		});
 		var flag = 1;
 
 		function startGame() {
@@ -313,7 +331,7 @@
 				if(flag == 1) {
 					plane(mc.width / 2 + 20);
 				} else {
-					plane(mouseX - 20);
+					plane(mouseX - 40);
 				}
 
 				for(var i = 0; i < bulletsArr.length; i++) {
