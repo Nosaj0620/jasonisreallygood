@@ -122,13 +122,11 @@
 		<div id="restart">
 			<div>RESTART</div>
 		</div>
+		<audio src="audio/1st.mp3" id="first" preload>不支持</audio>
+		<audio src="audio/2nd.mp3" id="second" loop preload>不支持</audio>
+		<audio src="audio/hit.mp3" id="hit" preload>不支持</audio>
+		<audio src="audio/die.mp3" id="die" preload>不支持</audio>
 
-		<audio src="audio/2nd.mp3" id="second" loop>不支持</audio>
-		<audio src="audio/hit.mp3" id="hit">不支持</audio>
-		<audio src="audio/die.mp3" id="die">不支持</audio>
-		<audio id="first">
-			<source src="audio/1st.mp3" codecs="mp3" type="audio/mpeg">
-		</audio>
 	</body>
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script src="hammer.min.js"></script>
@@ -311,6 +309,9 @@
 						//根据碰撞检测创建相应样式的爆炸效果
 						HanabiBoom(b.ex, b.ey, b.wh, b.ebg);
 						hit.currentTime = 0;
+						if(IsPC() == false) {
+							hitA();
+						}
 						hit.play();
 						bulletsArr.splice(i, 1);
 						enemysArr.splice(j, 1);
@@ -326,7 +327,11 @@
 					imgArr.pop();
 					dead = true;
 					enemysArr.splice(j, 1);
+					if(IsPC() == false) {
+						dieA();
+					}
 					die.play();
+
 					HanabiBoom(mouseX, 1440, 150, 'white');
 					clearInterval(bulletTimer);
 					setInterval(function() {
@@ -350,25 +355,57 @@
 			history.go(0);
 		}
 
-		
-			
-			function autoPlayAudio1() {
-				wx.config({
-					// 配置信息, 即使不正确也能使用 wx.ready
-					debug: false,
-					appId: '',
-					timestamp: 1,
-					nonceStr: '',
-					signature: '',
-					jsApiList: []
-				});
-				wx.ready(function() {
-					first.play();
-					first.onended = function() {
-						second.play();
-					}
-				});
+		function audioPlay() {
+			first.play();
+			first.onended = function() {
+				second.play();
 			}
+		}
+		function dieA(){
+			wx.config({
+				// 配置信息, 即使不正确也能使用 wx.ready
+				debug: false,
+				appId: '',
+				timestamp: 1,
+				nonceStr: '',
+				signature: '',
+				jsApiList: []
+			});
+			wx.ready(function() {
+				die.play();
+			});
+		}
+		function hitA(){
+			wx.config({
+				// 配置信息, 即使不正确也能使用 wx.ready
+				debug: false,
+				appId: '',
+				timestamp: 1,
+				nonceStr: '',
+				signature: '',
+				jsApiList: []
+			});
+			wx.ready(function() {
+				hit.play();
+			});
+		}
+		function autoPlayAudio1() {
+			wx.config({
+				// 配置信息, 即使不正确也能使用 wx.ready
+				debug: false,
+				appId: '',
+				timestamp: 1,
+				nonceStr: '',
+				signature: '',
+				jsApiList: []
+			});
+			wx.ready(function() {
+				second.play();
+//				first.onended = function() {
+//					second.play();
+//				}
+			});
+		}
 
 		function IsPC() {
 			var userAgentInfo = navigator.userAgent;
@@ -385,30 +422,31 @@
 			}
 			return flag1;
 		}
-		if(IsPC()==true){
-			
-		document.querySelector('#start').onclick = function() {
-			this.style.animation = 'disappear 1.5s forwards running';
-			var startTimer = setTimeout(function() {
-				startGame();
-				audioplay();
-				var dadada = setInterval(function() {
-					createBullet();
-				}, 100);
-			}, 1500);
-		}
-		}else{
-			
-		document.querySelector('#start').onclick = function() {
-			this.style.animation = 'disappear 1.5s forwards running';
-			var startTimer = setTimeout(function() {
-				startGame();
-				autoPlayAudio1();
-				var dadada = setInterval(function() {
-					createBullet();
-				}, 100);
-			}, 1500);
-		}
+
+		if(IsPC() == true) {
+			console.log(1);
+			document.querySelector('#start').onclick = function() {
+				this.style.animation = 'disappear 1.5s forwards running';
+				var startTimer = setTimeout(function() {
+					startGame();
+					audioPlay();
+					var dadada = setInterval(function() {
+						createBullet();
+					}, 100);
+				}, 1500);
+			}
+		} else {
+			console.log(2);
+			document.querySelector('#start').onclick = function() {
+				this.style.animation = 'disappear 1.5s forwards running';
+				var startTimer = setTimeout(function() {
+					startGame();
+					autoPlayAudio1();
+					var dadada = setInterval(function() {
+						createBullet();
+					}, 100);
+				}, 1500);
+			}
 		}
 		var flag = 1;
 
