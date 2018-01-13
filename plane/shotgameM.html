@@ -268,7 +268,7 @@
 						//根据碰撞检测创建相应样式的爆炸效果
 
 						HanabiBoom(b.ex, b.ey, b.wh, b.ebg);
-
+						hit.pause();
 						hit.currentTime = 0;
 						hit.play();
 						bulletsArr.splice(i, 1);
@@ -286,29 +286,31 @@
 			
 		}
 		
-				document.querySelector('#start').onclick = function() {
-					this.style.animation = 'disappear 1.5s forwards running';
-					var startTimer = setTimeout(function() {
-						startGame();
-						first.play();
-			first.onended = function() {
-				second.play();
-			}
-						var dadada = setInterval(function() {
-							createBullet();
-						}, 100);
-					}, 1500);
+		document.querySelector('#start').onclick = function() {
+			this.style.animation = 'disappear 1.5s forwards running';
+			var startTimer = setTimeout(function() {
+				startGame();
+				first.pause();
+				first.play();
+				first.onended = function() {
+					second.pause();
+					second.play();
 				}
-				document.querySelector('#start').onclick = function() {
-						this.style.animation = 'disappear 1.5s forwards running';
-						var startTimer = setTimeout(function() {
-							startGame();
-							audioplay();
-							var dadada = setInterval(function() {
-								createBullet();
-							}, 100);
-						}, 1500);
-					}
+				var dadada = setInterval(function() {
+					createBullet();
+				}, 100);
+			}, 1500);
+		}
+		document.querySelector('#start').onclick = function() {
+			this.style.animation = 'disappear 1.5s forwards running';
+			var startTimer = setTimeout(function() {
+				startGame();
+				audioplay();
+				var dadada = setInterval(function() {
+					createBullet();
+				}, 100);
+			}, 1500);
+		}
 		var flag = 1;
 
 		function startGame() {
