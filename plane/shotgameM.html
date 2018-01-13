@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>飞机游戏</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			@-webkit-keyframes disappear {
+				0% {
+					width: 340px;
+					display: block;
+					box-shadow: 0 0 100px 10px deepskyblue;
+				}
+				99% {
+					width: 0px;
+					display: block;
+					box-shadow: 0 0 1px 1px deepskyblue;
+				}
+				100% {
+					width: 0px;
+					display: none;
+					box-shadow: none;
+				}
+			}
+			
+			#canvas {
+				background: black;
+				display: block;
+				margin: 0 auto;
+			}
+			
+			#start div {
+				font-family: "comic sans ms";
+				font-size: 40px;
+				color: cadetblue;
+				text-shadow: 2px 2px 2px black;
+				cursor: pointer;
+				-webkit-user-select: none;
+			}
+			
+			#start {
+				width: 340px;
+				height: 150px;
+				/*margin: 0*/
+				position: absolute;
+				left: 50%;
+				top: 650px;
+				margin-left: -170px;
+				/*border: 2px outset burlywood;*/
+				box-shadow: 0 0 100px 10px deepskyblue;
+				line-height: 150px;
+				text-align: center;
+				border-radius: 50px;
+				background: -webkit-linear-gradient(bottom, #E9FFB2, #00B8C0, #0074E4, #1B3C68);
+				/*display: inline-block;*/
+				animation: disappear 1.5s forwards paused;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="1000" height="1500"></canvas>
+		<div id="start">
+			<div>START</div>
+		</div>
+		<audio src="audio/1st.mp3" id="first">不支持</audio>
+		<audio src="audio/2nd.mp3" id="second" loop>不支持</audio>
+		<audio src="audio/hit.mp3" id="hit">不支持</audio>
+		<audio src="audio/die.mp3" id="die">不支持</audio>
+	</body>
+	<script src="hammer.min.js"></script>
+	<script type="text/javascript">
+		var first = document.querySelector('#first');
+		var second = document.querySelector('#second');
+		var hit = document.querySelector('#hit');
+		var die = document.querySelector('#die');
+		var mc = document.querySelector('#canvas');
+		var ctx = mc.getContext('2d');
+		var mouseX;
+		var mouseY
+		var bulletsX, bulletsY;
+		var bulletsArr = []; //放置当前所有子弹的数组
+		var enemysArr = []; //放置当前所有敌机的数组
+		var hanabiArr = [];
+		var createEnemyTimer;
+		//创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+		var hammertime = new Hammer(mc);
+		//为该dom元素指定触屏移动事件
+
+		//封装随机函数
+		function randomNum(x, y) {
+			return Math.round(Math.random() * (y - x) + x);
+		};
+
+		var img = new Image();
+		img.src = '1.png';
+		//绘制飞机
+		function plane(x) {
+			ctx.beginPath();
+			ctx.drawImage(img, x, 1300, 40, 40);
+
+		}
+
+		function Bullets(bx, bv) {
+			this.bx = bx;
+			this.by = 1300;
+			this.bv = bv;
+		}
+		Bullets.prototype.draw = function() {
+			this.by -= this.bv;
+			ctx.beginPath();
+			ctx.fillStyle = 'white';
+			ctx.fillRect(this.bx, this.by, 8, 8);
+			ctx.fill();
+			if(this.by + 8 < 0) {
+				bulletsArr.shift();
+			}
+		}
+
+		function Enemy(ex, wh, evx, evy, ebg, dis) {
+			this.ex = ex;
+			this.ey = -wh;
+			this.wh = wh;
+			this.evx = evx;
+			this.evy = evy;
+			this.ebg = ebg;
+			this.left = this.ex - dis;
+			this.right = this.ex + dis;
+		}
+		Enemy.prototype.move = function() {
+				//敌机定向摆动一定程度反弹
+				if(this.ex < this.left || this.ex > this.right) {
+					this.evx *= -1;
+				}
+
+				if(this.ex < 0 || this.ex > mc.width - this.wh) {
+					this.evx *= -1;
+				}
+				this.ex += this.evx;
+				this.ey += this.evy;
+				ctx.beginPath();
+				ctx.fillStyle = this.ebg;
+				ctx.fillRect(this.ex, this.ey, this.wh, this.wh);
+
+			}
+			//实例化敌机函数
+		var minWh = 40,
+			maxWh = 70; //敌机宽高范围
+		var minX = 3,
+			maxX = mc.width - maxWh; // x坐标范围
+		var minVx = -2,
+			maxVx = 2; //X方向速度范围
+		var minVy = 1,
+			maxVy = 1; //Y方向速度范围
+		var minDis = 80,
+			maxDis = 180;
+
+		function createEmeny() {
+			var x = randomNum(minX, maxX);
+			var wh = randomNum(minWh, maxWh);
+			var vx = randomNum(minVx, maxVx);
+			var vy = randomNum(minVy, maxVy);
+			var dis = randomNum(minDis, maxDis);
+			var bg = 'rgb(' + randomNum(30, 255) + ',' + randomNum(30, 255) + ',' + randomNum(30, 255) + ')';
+
+			var enemy = new Enemy(x, wh, vx, vy, bg, dis);
+			enemysArr.push(enemy);
+
+			//			window.requestAnimationFrame(createEmeny);
+		}
+
+		function createBullet() { //实例化子弹函数
+			var newBullet = new Bullets(mouseX - 4, 5);
+			bulletsArr.push(newBullet);
+		}
+
+		//为画布添加鼠标移动事件
+		//		mc.onmousemove = function() {
+		//			//计算出鼠标基于canvas的x坐标
+		//			var e = event || window.event;
+		//			mouseX = e.pageX - mc.offsetLeft;
+		//			//飞机不能超出边界(只能用if不能用三目)
+		//			if(mouseX > mc.width - 20) {
+		//				mouseX = mc.width - 20;
+		//			}
+		//			if(mouseX < 20) {
+		//				mouseX = 20;
+		//			}
+		//		}
+
+		function Hanabi(hx, hy, hvx, hvy, hbg) {
+			this.hx = hx; //x坐标
+			this.hy = hy; //y坐标
+			this.hw = 3; //宽
+			this.hh = 3; //高
+			this.hvx = hvx; //x方向速度
+			this.hvy = hvy; //y方向速度
+			this.hbg = hbg; //背景色
+			this.time = 0;
+		}
+		Hanabi.prototype.move = function() { // 爆炸物的原型方法
+				this.hx += this.hvx;
+				this.hy += this.hvy;
+				this.time++;
+				ctx.beginPath();
+				ctx.fillStyle = this.hbg;
+				ctx.fillRect(this.hx, this.hy, this.hw, this.hh);
+				ctx.fill();
+			}
+			//判断爆炸物
+
+		function judgeBoom() {
+			for(var i = 0; i < hanabiArr.length; i++) {
+				for(var j = 0; j < hanabiArr[i].length; j++) {
+
+					//判断一批hanabi是否从画布移除
+					var maxTimes = Math.ceil(Math.sqrt(Math.pow(mc.width, 2) + Math.pow(mc.height, 2)));
+
+					if(hanabiArr[i][j].time > maxTimes) {
+						hanabiArr.splice(i, 1);
+					}
+
+				}
+			}
+		}
+
+		function HanabiBoom(hx, hy, bnum, hbg) {
+			var nowArr = [];
+			//实例化
+			var num = Math.ceil(bnum / 8);
+			for(var i = 0; i < num; i++) {
+				var thisY = hy + 8 * i; //计算每行y坐标
+				for(var j = 0; j < num; j++) {
+					var thisX = hx + 8 * j; //计算每行y坐标
+					var vx = randomNum(-10, 10);
+					var vy = randomNum(-10, 10);
+					if(vx == 0) {
+						vx++
+					};
+					if(vy == 0) {
+						vy++
+					};
+					var hanabi = new Hanabi(thisX, thisY, vx, vy, hbg);
+					nowArr.push(hanabi);
+
+				}
+			}
+			hanabiArr.push(nowArr);
+			console.log(hanabiArr);
+		}
+
+		function judgeHit() {
+			for(var i = 0; i < bulletsArr.length; i++) {
+				for(var j = 0; j < enemysArr.length; j++) {
+					var a = bulletsArr[i];
+					var b = enemysArr[j];
+					if(a.bx + 8 > b.ex && a.by + 8 > b.ey && a.bx < b.ex + b.wh && a.by < b.ey + b.wh) {
+						//根据碰撞检测创建相应样式的爆炸效果
+
+						HanabiBoom(b.ex, b.ey, b.wh, b.ebg);
+
+						hit.currentTime = 0;
+						hit.play();
+						bulletsArr.splice(i, 1);
+						enemysArr.splice(j, 1);
+						judgeBoom();
+						i--;
+						break;
+
+					}
+				}
+			}
+		}
+
+		function audioplay() { //音乐播放
+			first.play();
+			first.onended = function() {
+				second.play();
+			}
+		}
+		document.querySelector('#start').onclick = function() {
+			this.style.animation = 'disappear 1.5s forwards running';
+			var startTimer = setTimeout(function() {
+				startGame();
+				audioplay();
+				var dadada = setInterval(function() {
+					createBullet();
+				}, 100);
+			}, 1500);
+		}
+		var flag = 1;
+
+		function startGame() {
+
+			hammertime.on("pan", function(ev) {
+				var e = event || window.event;
+				mouseX = e.pageX - mc.offsetLeft;
+				flag=2;
+			});
+			createEnemyTimer = setInterval(function() {
+				createEmeny();
+			}, 400);
+
+			var bulletTimer = setInterval(function() {
+				ctx.clearRect(0, 0, mc.width, mc.height);
+				if(flag == 1) {
+					plane(mc.width / 2 + 20);
+				} else {
+					plane(mouseX - 20);
+				}
+
+				for(var i = 0; i < bulletsArr.length; i++) {
+					bulletsArr[i].draw();
+				}
+				for(var j = 0; j < enemysArr.length; j++) {
+					enemysArr[j].move();
+					if(enemysArr[j].ey > mc.height) {
+						enemysArr.splice(j, 1);
+					}
+				}
+
+				for(var i = 0; i < hanabiArr.length; i++) {
+
+					for(var j = 0; j < hanabiArr[i].length; j++) {
+						hanabiArr[i][j].move();
+						//					setTimeout(function(){
+						//						hanabiArr.splice(i,1)
+						//					},2000);
+					}
+				}
+
+				judgeHit();
+			}, 5);
+
+		}
+	</script>
+
+</html>
