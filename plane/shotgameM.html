@@ -283,17 +283,17 @@
 		}
 
 		function audioplay() { //音乐播放
-			first.play();
-			first.onended = function() {
-				second.play();
-			}
+			
 		}
 		
 				document.querySelector('#start').onclick = function() {
 					this.style.animation = 'disappear 1.5s forwards running';
 					var startTimer = setTimeout(function() {
 						startGame();
-						audioplay();
+						first.play();
+			first.onended = function() {
+				second.play();
+			}
 						var dadada = setInterval(function() {
 							createBullet();
 						}, 100);
