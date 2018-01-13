@@ -286,16 +286,33 @@
 				second.play();
 			}
 		}
-		document.querySelector('#start').onclick = function() {
-			this.style.animation = 'disappear 1.5s forwards running';
-			var startTimer = setTimeout(function() {
-				startGame();
-				audioplay();
-				var dadada = setInterval(function() {
-					createBullet();
-				}, 100);
-			}, 1500);
-		}
+		document.addEventListener('DOMContentLoaded', function() {
+			function audioAutoPlay() {
+				document.querySelector('#start').onclick = function() {
+					this.style.animation = 'disappear 1.5s forwards running';
+					var startTimer = setTimeout(function() {
+						startGame();
+						audioplay();
+						var dadada = setInterval(function() {
+							createBullet();
+						}, 100);
+					}, 1500);
+				}
+				document.addEventListener("WeixinJSBridgeReady", function() {
+					document.querySelector('#start').onclick = function() {
+						this.style.animation = 'disappear 1.5s forwards running';
+						var startTimer = setTimeout(function() {
+							startGame();
+							audioplay();
+							var dadada = setInterval(function() {
+								createBullet();
+							}, 100);
+						}, 1500);
+					}
+				}, false);
+			}
+			audioAutoPlay();
+		});
 		var flag = 1;
 
 		function startGame() {
