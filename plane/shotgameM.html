@@ -30,10 +30,28 @@
 				}
 			}
 			
+			@-webkit-keyframes disappear2 {
+				0% {
+					width: 0px;
+					display: none;
+					box-shadow: none;
+				}
+				1% {
+					width: 0px;
+					display: block;
+					box-shadow: 0 0 1px 1px deepskyblue;
+				}
+				100% {
+					width: 340px;
+					display: block;
+					box-shadow: 0 0 100px 10px deepskyblue;
+				}
+			}
+			
 			#canvas {
-				background: -webkit-linear-gradient(top,#141E30,#243B55);
-				background: -moz-linear-gradient(top,#141E30,#243B55);
-				background: -ms-linear-gradient(top,#141E30,#243B55);
+				background: -webkit-linear-gradient(top, #141E30, #243B55);
+				background: -moz-linear-gradient(top, #141E30, #243B55);
+				background: -ms-linear-gradient(top, #141E30, #243B55);
 				display: block;
 				margin: 0 auto;
 			}
@@ -65,6 +83,34 @@
 				animation: disappear 1.5s forwards paused;
 				overflow: hidden;
 			}
+			
+			#restart div {
+				font-family: "comic sans ms";
+				font-size: 40px;
+				color: cadetblue;
+				text-shadow: 2px 2px 2px black;
+				cursor: pointer;
+				-webkit-user-select: none;
+			}
+			
+			#restart {
+				width: 340px;
+				height: 150px;
+				/*margin: 0*/
+				position: absolute;
+				left: 50%;
+				top: 650px;
+				margin-left: -170px;
+				/*border: 2px outset burlywood;*/
+				box-shadow: 0 0 100px 10px deepskyblue;
+				line-height: 150px;
+				text-align: center;
+				border-radius: 50px;
+				background: -webkit-linear-gradient(bottom, #E9FFB2, #00B8C0, #0074E4, #1B3C68);
+				/*display: inline-block;*/
+				animation: disappear2 1.5s forwards paused;
+				overflow: hidden;
+			}
 		</style>
 	</head>
 
@@ -72,6 +118,9 @@
 		<canvas id="canvas" width="1000" height="1600"></canvas>
 		<div id="start">
 			<div>START</div>
+		</div>
+		<div id="restart">
+			<div>RESTART</div>
 		</div>
 		<audio src="audio/1st.mp3" id="first">不支持</audio>
 		<audio src="audio/2nd.mp3" id="second" loop>不支持</audio>
@@ -93,22 +142,25 @@
 		var enemysArr = []; //放置当前所有敌机的数组
 		var hanabiArr = [];
 		var createEnemyTimer;
+		var bulletTimer;
+		var dead = false;
+		var restart = document.getElementById('restart');
 		//创建一个新的hammer对象并且在初始化时指定要处理的dom元素
 		var hammertime = new Hammer(mc);
 		//为该dom元素指定触屏移动事件
-
 		//封装随机函数
 		function randomNum(x, y) {
 			return Math.round(Math.random() * (y - x) + x);
 		};
-
+		var imgArr = [];
 		var img = new Image();
 		img.src = '2.png';
+
+		imgArr.push(img);
 		//绘制飞机
 		function plane(x) {
 			ctx.beginPath();
-			ctx.drawImage(img, x, 1400, 80, 80);
-
+			ctx.drawImage(imgArr[0], x, 1400, 80, 80);
 		}
 
 		function Bullets(bx, bv) {
@@ -142,7 +194,6 @@
 				if(this.ex < this.left || this.ex > this.right) {
 					this.evx *= -1;
 				}
-
 				if(this.ex < 0 || this.ex > mc.width - this.wh) {
 					this.evx *= -1;
 				}
@@ -151,7 +202,6 @@
 				ctx.beginPath();
 				ctx.fillStyle = this.ebg;
 				ctx.fillRect(this.ex, this.ey, this.wh, this.wh);
-
 			}
 			//实例化敌机函数
 		var minWh = 40,
@@ -172,10 +222,8 @@
 			var vy = randomNum(minVy, maxVy);
 			var dis = randomNum(minDis, maxDis);
 			var bg = 'rgb(' + randomNum(30, 255) + ',' + randomNum(30, 255) + ',' + randomNum(30, 255) + ')';
-
 			var enemy = new Enemy(x, wh, vx, vy, bg, dis);
 			enemysArr.push(enemy);
-
 			//			window.requestAnimationFrame(createEmeny);
 		}
 
@@ -183,7 +231,6 @@
 			var newBullet = new Bullets(mouseX - 4, 5);
 			bulletsArr.push(newBullet);
 		}
-
 		//为画布添加鼠标移动事件
 		//		mc.onmousemove = function() {
 		//			//计算出鼠标基于canvas的x坐标
@@ -197,12 +244,11 @@
 		//				mouseX = 40;
 		//			}
 		//		}
-
 		function Hanabi(hx, hy, hvx, hvy, hbg) {
 			this.hx = hx; //x坐标
 			this.hy = hy; //y坐标
-			this.hw = 3; //宽
-			this.hh = 3; //高
+			this.hw = 5; //宽
+			this.hh = 5; //高
 			this.hvx = hvx; //x方向速度
 			this.hvy = hvy; //y方向速度
 			this.hbg = hbg; //背景色
@@ -218,18 +264,14 @@
 				ctx.fill();
 			}
 			//判断爆炸物
-
 		function judgeBoom() {
 			for(var i = 0; i < hanabiArr.length; i++) {
 				for(var j = 0; j < hanabiArr[i].length; j++) {
-
 					//判断一批hanabi是否从画布移除
 					var maxTimes = Math.ceil(Math.sqrt(Math.pow(mc.width, 2) + Math.pow(mc.height, 2)));
-
 					if(hanabiArr[i][j].time > maxTimes) {
 						hanabiArr.splice(i, 1);
 					}
-
 				}
 			}
 		}
@@ -252,11 +294,9 @@
 					};
 					var hanabi = new Hanabi(thisX, thisY, vx, vy, hbg);
 					nowArr.push(hanabi);
-
 				}
 			}
 			hanabiArr.push(nowArr);
-			console.log(hanabiArr);
 		}
 
 		function judgeHit() {
@@ -266,36 +306,60 @@
 					var b = enemysArr[j];
 					if(a.bx + 8 > b.ex && a.by + 8 > b.ey && a.bx < b.ex + b.wh && a.by < b.ey + b.wh) {
 						//根据碰撞检测创建相应样式的爆炸效果
-
 						HanabiBoom(b.ex, b.ey, b.wh, b.ebg);
-						hit.pause();
 						hit.currentTime = 0;
 						hit.play();
 						bulletsArr.splice(i, 1);
 						enemysArr.splice(j, 1);
 						judgeBoom();
+
 						i--;
 						break;
-
 					}
 				}
 			}
+			for(var j = 0; j < enemysArr.length; j++) {
+				var c = enemysArr[j];
+				if(mouseX + 40 > c.ex && c.ey < 1400 + 80 && mouseX < c.ex + c.wh && 1400 < c.ey + c.wh) {
+
+					imgArr.pop();
+					dead = true;
+					enemysArr.splice(j, 1);
+					die.play();
+					HanabiBoom(mouseX, 1440, 150, 'white');
+					clearInterval(bulletTimer);
+					setInterval(function() {
+						ctx.clearRect(0, 0, mc.width, mc.height);
+						for(var i = 0; i < hanabiArr.length; i++) {
+							for(var j = 0; j < hanabiArr[i].length; j++) {
+								hanabiArr[i][j].move();
+							}
+						}
+					}, 5)
+					first.pause();
+					second.pause();
+					setTimeout(function(){
+						restart.style.animation = 'disappear2 1.5s forwards running';
+					},500);
+					break;
+				}
+			}
+		}
+		restart.onclick = function(){
+			history.go(0);
+		}
+		function audioplay() { //音乐播放
+			first.play();
+			first.onended = function() {
+				second.play();
+			}
 		}
 
-		function audioplay() { //音乐播放
-			
-		}
-		
 		document.querySelector('#start').onclick = function() {
 			this.style.animation = 'disappear 1.5s forwards running';
 			var startTimer = setTimeout(function() {
 				startGame();
-				first.pause();
-				first.play();
-				first.onended = function() {
-					second.pause();
-					second.play();
-				}
+				audioplay();
 				var dadada = setInterval(function() {
 					createBullet();
 				}, 100);
@@ -314,22 +378,22 @@
 		var flag = 1;
 
 		function startGame() {
-
 			hammertime.on("pan", function(ev) {
 				var e = event || window.event;
 				mouseX = e.pageX - mc.offsetLeft;
-				flag=2;
+				flag = 2;
 			});
 			createEnemyTimer = setInterval(function() {
 				createEmeny();
 			}, 400);
-
-			var bulletTimer = setInterval(function() {
+			bulletTimer = setInterval(function() {
 				ctx.clearRect(0, 0, mc.width, mc.height);
-				if(flag == 1) {
-					plane(mc.width / 2 + 20);
-				} else {
-					plane(mouseX - 40);
+				if(dead == false) {
+					if(flag == 1) {
+						plane(mc.width / 2 + 20);
+					} else {
+						plane(mouseX - 40);
+					}
 				}
 
 				for(var i = 0; i < bulletsArr.length; i++) {
@@ -341,9 +405,7 @@
 						enemysArr.splice(j, 1);
 					}
 				}
-
 				for(var i = 0; i < hanabiArr.length; i++) {
-
 					for(var j = 0; j < hanabiArr[i].length; j++) {
 						hanabiArr[i][j].move();
 						//					setTimeout(function(){
@@ -351,10 +413,8 @@
 						//					},2000);
 					}
 				}
-
 				judgeHit();
 			}, 5);
-
 		}
 	</script>
 
