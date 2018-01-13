@@ -370,7 +370,23 @@
 				});
 			}
 
-		
+		function IsPC() {
+			var userAgentInfo = navigator.userAgent;
+			var Agents = ["Android", "iPhone",
+				"SymbianOS", "Windows Phone",
+				"iPad", "iPod"
+			];
+			var flag1 = true;
+			for(var v = 0; v < Agents.length; v++) {
+				if(userAgentInfo.indexOf(Agents[v]) > 0) {
+					flag1 = false;
+					break;
+				}
+			}
+			return flag1;
+		}
+		if(IsPC()==true){
+			
 		document.querySelector('#start').onclick = function() {
 			this.style.animation = 'disappear 1.5s forwards running';
 			var startTimer = setTimeout(function() {
@@ -381,6 +397,8 @@
 				}, 100);
 			}, 1500);
 		}
+		}else{
+			
 		document.querySelector('#start').onclick = function() {
 			this.style.animation = 'disappear 1.5s forwards running';
 			var startTimer = setTimeout(function() {
@@ -390,6 +408,7 @@
 					createBullet();
 				}, 100);
 			}, 1500);
+		}
 		}
 		var flag = 1;
 
