@@ -130,6 +130,7 @@
         		<source  src="audio/1st.mp3" codecs="mp3" type="audio/mpeg">
     		</audio>
 	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script src="hammer.min.js"></script>
 	<script type="text/javascript">
 		var first = document.querySelector('#first');
@@ -352,10 +353,25 @@
 			history.go(0);
 		}
 		function audioplay() { //音乐播放
-			first.play();
+			function autoPlayAudio1()
+{
+wx.config({
+// 配置信息, 即使不正确也能使用 wx.ready
+debug: false,
+appId: '',
+timestamp: 1,
+nonceStr: '',
+signature: '',
+jsApiList: []
+});
+wx.ready(function() {
+first.play();
 			first.onended = function() {
 				second.play();
 			}
+});
+}
+			
 		}
 
 		document.querySelector('#start').onclick = function() {
