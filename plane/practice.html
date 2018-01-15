@@ -174,16 +174,11 @@
 						enemyArr.splice(i, 1);
 					}
 				}
-				for(var i = 0; i < enemyBulletsArr.length; i++) {
-					enemyBulletsArr[i].shot();
-				}
+				
 				if(!mouseX) {
 					plane(mc.width / 2 - 40);
 				}
 				plane(mouseX);
-				for(var i = 0; i < planeBulletsArr.length; i++) {
-					planeBulletsArr[i].shot();
-				};
 			}, 7);
 		}
 		start();
