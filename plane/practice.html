@@ -131,18 +131,13 @@
 			var enemy = new Enemy(ex, wh, wh, evx, evy);
 			enemyArr.push(enemy);
 		}
-
-		function crteateEnemyBullets() {
-
-		}
-
-		function enemyShot() {
+		/*function enemyShot() {
 			var snum = 0;
 			var three = setInterval(function() {
 				var enemy = new EnemyBullet(enemyNowX, enemyNowY);
 				enemyBulletsArr.push(enemy);
 			}, 80);
-		}
+		}*/
 
 		function createPlaneBullets() {
 			var bulletTimer = setInterval(function() {
@@ -157,8 +152,8 @@
 				mouseX = e.pageX - mc.offsetLeft - 40;
 			}
 			//游戏开始要执行的命令
-		var enemyNowX;
-		var enemyNowY;
+		//var enemyNowX;
+		//var enemyNowY;
 
 		function start() {
 			createPlaneBullets();
@@ -172,8 +167,8 @@
 				ctx.clearRect(0, 0, mc.width, mc.height);
 				//				createPlaneBullets();
 				for(var i = 0; i < enemyArr.length; i++) {
-					enemyNowX = enemyArr[i].ex;
-					enemyNowY = enemyArr[i].ey;
+					//enemyNowX = enemyArr[i].ex;
+					//enemyNowY = enemyArr[i].ey;
 					enemyArr[i].draw();
 					if(enemyArr[i].ey > mc.height) {
 						enemyArr.splice(i, 1);
