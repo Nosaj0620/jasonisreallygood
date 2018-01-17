@@ -1,0 +1,80 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#canvas {
+	background: -webkit-linear-gradient(left, #3CA55C, #B5AC49);
+	background: -moz-linear-gradient(left, #3CA55C, #B5AC49);
+	background: -ms-linear-gradient(left, #3CA55C, #B5AC49);
+	box-shadow: 0 0 5px #B5AC49;
+	display: block;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border: 15px outset white;
+}
+
+#start {
+	position: absolute;
+	top: -200px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: -webkit-linear-gradient(left,#96c93d,#00b09b);
+	width: 500px;
+	height: 200px;
+	border-radius: 40px;
+	text-align: center;
+}
+#over {
+	position: absolute;
+	top: -200px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: -webkit-linear-gradient(left,#96c93d,#00b09b);
+	width: 500px;
+	height: 200px;
+	border-radius: 40px;
+	text-align: center;
+	display: none;
+}
+#start>p{
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 40px;
+	font-size: 35px;
+	margin-left: -87.5px;
+	color: #00B09B;
+	text-shadow: 0 0 2px black;
+}
+#over>p{
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 40px;
+	font-size: 35px;
+	margin-left: -55.5px;
+	color: #00B09B;
+	text-shadow: 0 0 2px black;
+}
+#start button {
+	margin-top: 120px;
+	width: 140px;
+	height: 50px;
+}
+#over button {
+	margin-top: 120px;
+	width: 140px;
+	height: 50px;
+}
+.level{
+	position: absolute;
+	font-size: 24px;
+	left: 50%;
+	top: 20px;
+	margin-left:-80px ;
+}

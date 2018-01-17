@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>练习</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#canvas {
+				background: -webkit-linear-gradient(top, #141E30, #243B55);
+				margin: 0 auto;
+				display: block;
+				cursor: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="960" height="890"></canvas>
+	</body>
+	<script>
+		var mc = document.getElementById("canvas"); //获取画布
+		var enemynum = 1200; //创建敌机的频率(800毫秒/个)
+		var ctx = canvas.getContext('2d');
+		var mouseX; //声明鼠标位置
+		var enemyArr = []; //存放敌机的数组
+		var planeBulletsArr = []; //存放战机子弹的数组
+		var enemyBulletsArr = []; //存放敌机子弹的数组
+		var minWH = 50,
+			maxWH = 80; //敌机的宽高范围
+		var minEX = 2,
+			maxEX = mc.width - maxWH - 2; //刷新敌机位置的横向范围
+		var minEVX = -3,
+			maxEVX = 5; //敌机的横向移动速度范围
+		var minEVY = 1,
+			maxEVY = 1; //敌机的纵向移动速度范围
+		//捏造一个随机数函数
+		function randomNum(x, y) {
+			return Math.round(Math.random() * (y - x) + x);
+		}
+		/*创建类 含有以下字母的参数代表的意思分别是:
+		 *  x:代表该类对象的横向坐标
+		 *  y: 代表该类对象的纵向坐标
+		 *  w:代表该类对象的宽度
+		 *  h:代表该类对象的高度
+		 * vx:代表该类对象横向坐标的增加量(即移动速度)
+		 * vy:代表该类对象纵向坐标的增加量(即移动速度)
+		 * */
+		//创建主机类
+		var img = new Image();
+		img.src = '2.png';
+		//创建主机
+		function plane(x) {
+			ctx.beginPath();
+			ctx.drawImage(img, x, 790, 80, 80);
+		}
+
+		//创建敌机类
+		function Enemy(ex, ey, ewh, evx, evy) {
+			this.ex = ex;
+			this.ey = -ewh;
+			this.ewh = ewh;
+			this.evx = evx;
+			this.evy = evy;
+			this.ebg = "rgb(" + randomNum(10, 220) + "," + randomNum(50, 220) + "," + randomNum(10, 180) + ")";
+			this.left = this.ex - 230;
+			this.right = this.ex + 230;
+			this.bullet = {
+				this.ebx = ebx;
+				this.eby = eby;
+				this.ebvx = Math.abs((mouseX - this.ebx) / this.ebx);
+				this.ebvy = Math.abs((790 - this.eby) / this.eby);
+			};
+		};
+		//创建飞机子弹类
+		function PlaneBullet(pbx, pbv) {
+			this.pbx = pbx;
+			this.pby = 788;
+			this.pbv = pbv;
+		}
+		//创建敌机子弹类
+		//		function EnemyBullet(ebx, eby) {
+		//			this.ebx = ebx;
+		//			this.eby = eby;
+		//			this.ebvx = Math.abs((mouseX - this.ebx) / this.ebx);
+		//			this.ebvy = Math.abs((790 - this.eby) / this.eby);
+		//		}
+		//		EnemyBullet.prototype.shot = function() {
+		//				this.ebx += this.ebvx;
+		//				this.eby += this.ebvy;
+		//				ctx.beginPath();
+		//				ctx.fillStyle = 'red';
+		//				ctx.fill();
+		//				
+		//			}
+		//敌机的运行函数
+		Enemy.prototype.draw = function() {
+			if(this.ex > this.right || this.ex < this.left) {
+				this.evx = -this.evx;
+			}
+			if(this.ex + this.ewh > mc.width || this.ex < 0) {
+				this.evx = -this.evx;
+			}
+
+			this.ex += this.evx;
+			this.ey += this.evy;
+			ctx.beginPath();
+			ctx.fillStyle = this.ebg;
+			ctx.fillRect(this.ex, this.ey, this.ewh, this.ewh);
+		}
+		PlaneBullet.prototype.shot = function() {
+			this.pby -= this.pbv;
+			ctx.beginPath();
+			ctx.fillStyle = 'ghostwhite';
+			ctx.fillRect(this.pbx, this.pby, 8, 8);
+			ctx.fill();
+			if(this.pby + 8 < 0) {
+				planeBulletsArr.shift();
+			};
+		}
+		//创建敌机并放入数组中
+		function createEnemy() {
+			var wh = randomNum(minWH, maxWH);
+			var ex = randomNum(minEX, maxEX);
+			var evx = randomNum(minEVX, maxEVX);
+			var evy = randomNum(minEVY, maxEVY);
+			var enemy = new Enemy(ex, wh, wh, evx, evy);
+			enemyArr.push(enemy);
+		}
+
+		function crteateEnemyBullets() {
+
+		}
+
+		function enemyShot() {
+			var snum = 0;
+			var three = setInterval(function() {
+				var enemy = new EnemyBullet(enemyNowX, enemyNowY);
+				enemyBulletsArr.push(enemy);
+			}, 80);
+		}
+
+		function createPlaneBullets() {
+			var bulletTimer = setInterval(function() {
+				var bullet = new PlaneBullet(mouseX + 35, 5);
+				planeBulletsArr.push(bullet);
+			}, 100);
+
+		}
+		//鼠标移动更新鼠标的X位置
+		mc.onmousemove = function() {
+				var e = event || window.event;
+				mouseX = e.pageX - mc.offsetLeft - 40;
+			}
+			//游戏开始要执行的命令
+		var enemyNowX;
+		var enemyNowY;
+
+		function start() {
+			createPlaneBullets();
+			//产生敌机的计时器
+			var createEnemyTimer = setInterval(function() {
+				createEnemy();
+			}, enemynum);
+			//以下均为游戏运作的计时器
+
+			var gamespeedTimer = setInterval(function() {
+				ctx.clearRect(0, 0, mc.width, mc.height);
+				//				createPlaneBullets();
+				for(var i = 0; i < enemyArr.length; i++) {
+					enemyNowX = enemyArr[i].ex;
+					enemyNowY = enemyArr[i].ey;
+					enemyArr[i].draw();
+					if(enemyArr[i].ey > mc.height) {
+						enemyArr.splice(i, 1);
+					}
+				}
+				for(var i = 0; i < enemyBulletsArr.length; i++) {
+					enemyBulletsArr[i].shot();
+				}
+				if(!mouseX) {
+					plane(mc.width / 2 - 40);
+				}
+				plane(mouseX);
+				for(var i = 0; i < planeBulletsArr.length; i++) {
+					planeBulletsArr[i].shot();
+				};
+			}, 7);
+		}
+		start();
+	</script>
+
+</html>

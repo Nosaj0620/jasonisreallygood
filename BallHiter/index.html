@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>桌上曲棍球</title>
+		<link rel="stylesheet" type="text/css" href="css/canvas.css"/>
+	</head>
+	<body>
+		<p class="level">当前电脑难度:1</p>
+		<canvas id="canvas" width="1200" height="800"></canvas>
+		
+		<div id="start">
+			<p>桌上曲棍球</p>
+			<button id="btn1">单人开始</button>
+			<button id="btn2">双人开始</button>
+		</div>
+		<div id="over">
+			<p id="overText"></p>
+			<button id="btn3">重新开始</button>
+			<button id="btn4">增加电脑难度</button>
+		</div>
+		<audio src="audio/bgm1.mp3" id="first">不支持</audio>
+		<audio src="audio/bgm2.mp3" id="second" loop>不支持</audio>
+		<audio src="audio/hit.mp3" id="hit">不支持</audio>
+		<audio src="audio/hitwall.mp3" id="hitwall">不支持</audio>
+		<audio src="audio/die.mp3" id="die">不支持</audio>
+		<audio src="audio/win.mp3" id ="win">不支持</audio>
+	</body>
+	<!--游戏开始-->
+	<script src="js/gamestart.js"></script>
+	<!--获取画布和画笔-->
+	<script src="js/canvasGet.js"></script>
+	<!--游戏界面布局-->
+	<script src="js/layout.js"></script>
+	<!--人类和电脑玩家类的创建-->
+	<script src="js/player.js"></script>
+	<!--球类的创建-->
+	<script src="js/ball.js"></script>
+	<!--输赢的判断-->
+	<script src="js/wintext.js"></script>
+	<!--游戏的逻辑主体-->
+	<script src="js/running.js"></script>
+</html>

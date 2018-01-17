@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>凤梨罐头 - 后台管理系统</title>
+		<link rel="shortcut icon" href="../public/source/img/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css" />
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			background: url(../public/source/img/manager.jpg);
+			background-size: 120%;
+		}
+		
+		.navbar {
+			background: rgb(253, 216, 123);
+		}
+		
+		.navbar-brand>b {
+			color: white;
+		}
+		
+		#managerContent table {
+			background: rgba(210, 210, 210, .5);
+		}
+		
+		#managerContent .table td {
+			vertical-align: middle;
+		}
+		
+		#managerContent .table td img {
+			height: 110px;
+		}
+		
+		#managerContent .table th {
+			text-align: center;
+		}
+		
+		#managerContent .table td {
+			text-align: center;
+		}
+		
+		.btn-diy {
+			background: rgb(245, 245, 245)!important;
+			color: rgb(25, 25, 25)!important;
+			transition: 0.5s;
+		}
+	</style>
+
+	<body>
+		<section class="container">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="../web/index.html"><b>凤梨罐头 - 后台管理系统</b></a>
+					</div>
+				</div>
+			</nav>
+			<div class="row">
+				<div id="managerBtn" class="col-xs-12 col-sm-3">
+					<button class="btn btn-success btn-block" data-class="animeManager">动漫管理</button>
+					<button class="btn btn-success btn-block" data-class="userManager">用户管理</button>
+				</div>
+				<div id="managerContent" class="col-xs-12 col-sm-9">
+
+					<div class="animeManager on table-responsive" <!--style="display: none;-->">
+						<!-- 添加番剧 -->
+						<button style="margin-bottom: 30px;" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">添加番剧</button>
+						<table class="table table-hover table-bordered">
+							<tr>
+								<!--<th>ID</th>-->
+								<th>名称</th>
+								<th>封面</th>
+								<th>操作</th>
+							</tr>
+
+						</table>
+						<!-- 模态框1（添加） -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">番剧展柜添加操作</h4>
+									</div>
+									<div class="modal-body" style="padding: 20px 50px;">
+										<form action="">
+											<div class="form-group">
+												<label>名称:</label>
+												<input type="text" class="form-control" id="aname" />
+											</div>
+											<div class="form-group">
+												<label>封面:</label>
+												<input type="text" class="form-control" id="aimg" />
+											</div>
+										</form>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+										<button id="subAnime" type="button" class="btn btn-primary">确定添加</button>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal -->
+						</div>
+						<!-- 模态框2（修改） -->
+						<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">番剧展柜修改操作</h4>
+									</div>
+									<div class="modal-body" style="padding: 20px 50px;">
+										<form action="">
+											<div class="form-group">
+												<label>名称:</label>
+												<input type="text" class="form-control" id="changeAnimeName" />
+											</div>
+											<div class="form-group">
+												<label>封面:</label>
+												<input type="text" class="form-control" id="changeAnimeImg" />
+											</div>
+										</form>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+										<button id="changeAnimeInfo" type="button" class="btn btn-primary">提交更改</button>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal -->
+						</div>
+						<!-- 模态框5（删除） -->
+						<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">番剧删除</h4>
+									</div>
+									<div class="modal-body" style="padding: 20px 50px;">
+										确定要删除吗?
+									</div>
+
+									<div class="modal-footer">
+										<button id="delIt" type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal -->
+						</div>
+
+					</div>
+					<div class="userManager on table-responsive" style="display: none;">
+						<!-- 模态框3（封禁） -->
+						<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">用户封禁</h4>
+									</div>
+									<div class="modal-body" style="padding: 20px 50px;">
+										确定要把他关小黑屋吗?
+									</div>
+
+									<div class="modal-footer">
+										<button id="banhim" type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+
+									</div>
+								</div>
+							<!-- /.modal-content -->
+							</div>
+							<!-- /.modal -->
+						</div>
+						<!-- 模态框4（解封） -->
+						<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">用户解封</h4>
+									</div>
+									<div class="modal-body" style="padding: 20px 50px;">
+										确定要把他放出来吗?
+									</div>
+
+									<div class="modal-footer">
+										<button id="unbanhim" type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+							<!-- /.modal -->
+						</div>
+						<table class="table table-hover table-bordered">
+							<tr>
+								<!--<th>ID</th>-->
+								<th>用户名</th>
+								<th>密码</th>
+								<th>操作</th>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+	<script>
+		$('#managerBtn>.btn').click(function() {
+				$('#managerBtn>.btn').removeClass('btn-diy');
+				$(this).addClass('btn-diy');
+				var divClass = $(this).attr('data-class');
+				$('#managerContent>div:nth-child(1)').removeClass('on');
+				$('#managerContent>div').hide();
+				$('.' + divClass).show();
+			})
+			//动漫列表
+		var animeList = localStorage.getItem('animeList');
+		console.log(animeList);
+		var animeArr = eval('(' + animeList + ')');
+		$.each(animeArr, function(i, item) {
+			var newObjForAnime = $('<tr><td>' + item.name + '</td><td style="text-align: center;"><img src="' + item.imgurl + '" alt=" ' + item.name + ' " /></td><td><button onclick="changeAnime(this)" data-id="' + i + '" class="btn btn-warning">修改</button><br><button class="btn btn-danger" onclick="delAnime(this)" data-id= " ' + i + '  ">删除</button></td></tr>');
+			$('.animeManager>table').append(newObjForAnime);
+		});
+		var userList = localStorage.getItem('userList');
+		var userArr = eval('(' + userList + ')');
+		$.each(userArr, function(i, item) {
+			var newObjForUser = $('<tr><td>' + item.userName + '</td><td>' + item.passWord + '</td><td><button class="btn btn-danger" onclick="ban(this)" data-id= " ' + i + '  ">禁止访问</button><br><button class="btn btn-success" onclick="unBan(this)" data-id= " ' + i + '  ">解除封禁</button></td></tr>');
+			$('.userManager>table').append(newObjForUser);
+		});
+		console.log(animeArr[0]);
+
+		function delAnime(x) {
+			$(x).attr('data-toggle', 'modal');
+			$(x).attr('data-target', '#myModal5');
+			$('#delIt').click(function() {
+				console.log(x);
+				var animeIndex = $(x).attr('data-id');
+				console.log(animeIndex);
+				animeArr.splice(animeIndex, 1);
+				console.log(animeArr);
+				var newString = JSON.stringify(animeArr);
+				localStorage.setItem('animeList', newString);
+				history.go(0);
+			});
+		}
+		var banList = [];
+
+		function ban(x) {
+			$(x).attr('data-toggle', 'modal');
+			$(x).attr('data-target', '#myModal3');
+			var banListNow = localStorage.getItem('banList');
+			var banArrNow = eval('(' + banListNow + ')');
+			console.log(banArrNow);
+			var userIndex = $(x).attr('data-id');
+			var thisName = userArr[Number(userIndex)].userName;
+			$('#banhim').click(function() {
+				if(banListNow != null) {
+					if(banArrNow.indexOf(thisName) < 0) { //去重
+						banArrNow.push(userArr[Number(userIndex)].userName);
+					} else {
+						console.log('已被ban');
+					}
+					var banString = JSON.stringify(banArrNow);
+					localStorage.setItem('banList', banString);
+				} else {
+					if(banList.indexOf(thisName) < 0) { //去重
+						banList.push(userArr[Number(userIndex)].userName);
+					} else {
+						console.log('已被ban');
+					}
+					var banString = JSON.stringify(banList);
+					localStorage.setItem('banList', banString);
+				}
+			});
+
+		}
+
+		function changeAnime(x) {
+			$(x).attr('data-toggle', 'modal');
+			$(x).attr('data-target', '#myModal2');
+			                                                                                                                                                                                                                                                                                           
+			$('#changeAnimeInfo').click(function() {
+				animeArr[$(x).attr('data-id')].name = $('#changeAnimeName').val();
+				animeArr[$(x).attr('data-id')].imgurl = $('#changeAnimeImg').val();
+				var animeString = JSON.stringify(animeArr);
+				localStorage.setItem('animeList', animeString);
+				history.go(0);
+			});
+
+		}
+
+		function unBan(a) {
+			var userIndex = $(a).attr('data-id');
+			var thisName = userArr[Number(userIndex)].userName;
+			var banListNow = localStorage.getItem('banList');
+			var banArrNow = eval('(' + banListNow + ')');
+			
+			if(banListNow == null || banListNow == '[]') {
+				alert('人家没被关小黑屋好吗');
+			} else {
+				var thisIndex = banArrNow.indexOf(thisName);
+				$(a).attr('data-toggle', 'modal');
+				$(a).attr('data-target', '#myModal4');
+				$('#unbanhim').click(function() {
+					console.log(thisName);
+					banArrNow.splice(thisIndex, 1);
+					var banString = JSON.stringify(banArrNow);
+					localStorage.setItem('banList', banString);
+				});
+			}
+		}
+		$('#subAnime').click(function() {
+			var aname = $('#aname').val(); //番剧名字
+			var aimg = $('#aimg').val(); //番剧封面地址
+			var newAnimeObj = {
+				imgurl: aimg,
+				name: aname
+			}
+			animeArr.push(newAnimeObj);
+			var newAnimeString = JSON.stringify(animeArr);
+			localStorage.setItem('animeList', newAnimeString);
+			history.go(0);
+		});
+	</script>
+
+</html>

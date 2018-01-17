@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>番剧推荐 - 凤梨罐头 - 最新最好看的动漫推送</title>
+		<link rel="stylesheet" type="text/css" href="../public/css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../public/css/animate.css" />
+		<link rel="shortcut icon" href="../public/source/img/favicon.ico" />
+	</head>
+	<style type="text/css">
+		@-webkit-keyframes loop {
+			0% {
+				transform: translateX(0);
+			}
+			100% {
+				transform: translateX(-900px);
+			}
+		}
+		
+		.topSection {
+			position: relative;
+		}
+		
+		.topSection img {
+			width: 100%;
+		}
+		
+		.topSection h2 {
+			display: block;
+			transition: 0.4s;
+			position: absolute;
+			left: 50%;
+			white-space: nowrap;
+			margin-left: -60px;
+			top: 40%;
+			text-shadow: 0 0 5px black;
+			font-size: 40px;
+			z-index: 99;
+			color: white;
+		}
+		
+		.container-fluid {
+			display: flex;
+			overflow: hidden;
+			justify-content: space-between;
+			align-items: stretch;
+			width: 100%;
+			/*height: 500px;*/
+		}
+		
+		.container-fluid>div {
+			margin: 40px;
+			position: relative;
+			/*overflow: hidden;*/
+			border: inset 4px orangered;
+			animation: loop 5s linear alternate infinite;
+			transition: 0.5s;
+		}
+		.container-fluid>div>img{
+			width: 225px;
+			height: 300px;
+		}
+		
+		.mask1 {
+			width: 100%;
+			height: 40px;
+			font-size: 19px;
+			font-weight: bolder;
+			color: white;
+			background: rgba(41, 41, 41, 0.6);
+			text-align: center;
+			line-height: 40px;
+			position: absolute;
+			bottom: 0;
+		}
+		
+		.container-fluid>div:hover {
+			cursor: pointer;
+			filter: brightness(120%);
+			box-shadow: 0 0px 10px rgba(1, 1, 1, 0.5);
+			border: inset 4px darkorange;
+		}
+	</style>
+
+	<body>
+		<div class="headr">
+			<div class="loginMain">
+				<a style="text-decoration: none; color: white;
+					font-weight: bolder;font-size: 18px;margin-top: -5px;display: block;" href="../system/manager.html">管<br /> 理
+				</a>
+
+				<div class="glyphicon glyphicon-chevron-left">
+
+				</div>
+			</div>
+			<div class="auto">
+				<img src="../public/source/img/hd.jpg">
+				<div class="logoText">
+					<span>FlGt</span>
+				</div>
+				<ul id="nav">
+					<li id="nav1">
+						<a href="index.html">首页</a>
+					</li>
+					<li id="nav2">
+						<a href="#" class="borderOn" target="view_window">动漫推荐</a>
+						<div class="navdl">
+							<span>连载动画</span>
+							<span>完结动画</span>
+							<span>资讯</span>
+							<span>官方延伸</span>
+							<span>新番时间表</span>
+							<span>番剧索引</span>
+						</div>
+					</li>
+					<li id="nav3">
+						<a href="#">动漫排行</a>
+						<div class="navdl">
+							<span>留言板</span>
+							<span>漫漫评</span>
+
+						</div>
+					</li>
+
+					<li id="nav4">
+						<a id="indexLogin" href="login.html" style="color: #9ACFEA;">登录</a>
+						<a id="quit" href="index.html" style="  cursor:pointer;color: rgb(240,240,240);font-size: 14px;text-decoration: none;display:block;margin-left: 10px;margin-bottom: 2px;">退出</a>
+						<div class="navdl">
+						</div>
+					</li>
+				</ul>
+				<div class="navMenu">
+					Ⅲ
+					<dd id="login">
+						<a href="login.html">登录</a>
+						<a href="login.html">注册</a>
+						<a href="dmtj.html">动漫推荐</a>
+						<a href="aboutUs.html">动漫排行</a>
+					</dd>
+				</div>
+			</div>
+		</div>
+		<div class="topSection">
+			<img src="../public/source/img/loop3.jpg" />
+			<h2>新番推荐<br />
+			&nbsp;&nbsp;NEW!
+			</h2>
+		</div>
+		<div class="container-fluid container1 " style="background: rgb(220,200,220); border-top: 5px solid #C0A16B;">
+
+		</div>
+		<div class="container-fluid container2" style="background: rgb(220,200,220); border-top: 5px solid #C0A16B;">
+
+		</div>
+		<img src="../public/source/img/a1.jpg" id="img2" />
+		<div class="footer">
+			<div class="container clearfix">
+				<div class="footerSection1">
+					<h2>合作伙伴</h2>
+					<div>
+						<img class="imgsss" src="../public/source/img/bb.png" />
+					</div>
+				</div>
+				<div class="lineHR"></div>
+				<div class="footerSection2 clearfix">
+					<div class="section2Left clearfix">
+						<dl>
+							<dt><a href="#">快速导航</a></dt>
+							<dd>
+								<span>首页</span>
+								<span>安卓客户端</span>
+								<span>苹果客户端</span>
+								<span>资源补档</span>
+								<span>原创协助</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href="#">热门标签</a></dt>
+							<dd>
+								<span>壁纸下载</span>
+								<span>图片精选</span>
+								<span>番剧推荐</span>
+								<span>手机主题</span>
+								<span>苹果专区</span>
+								<span>动漫图集</span>
+								<span>成人专区</span>
+								<span>P C 游 戏</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href="#">技术支持</a></dt>
+							<dd>
+								<span>App下载</span>
+								<span>常见问题</span>
+								<span>服务支持</span>
+								<span>合作须知</span>
+								<span>相关资料</span>
+								<span>客服中心</span>
+
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href="#">关于我们</a></dt>
+							<dd>
+								<span>联系我们</span>
+								<span>加入我们</span>
+							</dd>
+						</dl>
+					</div>
+					<div class="section2Right" id="ewm">
+						<p style="font-size: 2rem;">产品咨询热线</p>
+						<h2>400-900-9966</h2>
+						<img src="../public/source/img/ewm.jpg" alt="" />
+					</div>
+
+				</div>
+				<!--<div class="lineHR"></div>-->
+				<div class="footerSection3"></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../public/js/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../public/js/swiper.min.js"></script>
+	<script src="../public/js/jquery.easie.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script>
+	window.onload = function(){
+		judgeLogin();
+	};
+	
+
+		function judgeLogin() {
+			var who = localStorage.getItem('who');
+			console.log(who);
+			if(localStorage.getItem('who') != null) {
+				$('#indexLogin').html('欢迎您 &nbsp;&nbsp;<a id="indexLogin" href="#" style="text-decoration: none; color: lightgreen;">' + who + '</a>');
+				$('#quit').click(function() {
+					localStorage.removeItem('who');
+
+				});
+				$('#indexLogin').attr('href','#');
+			} else {
+				$('#quit').css('display', 'none');
+			}
+			if(who=='admin'){
+				$('.loginMain').css('display','block');
+			}else{
+				$('.loginMain').css('display','none');
+			}
+		}
+
+		var animeString = localStorage.getItem('animeList');
+		console.log(animeString);
+		var animeList = eval('(' + animeString + ')');
+		console.log(animeList);
+		$.each(animeList, function(i, item) {
+			var newObj = $('<div class="fj1"><img src="' + item.imgurl + '" /><div class="mask1">' + item.name + '</div></div>');
+			if(i < 8) {
+				$('.container1').append(newObj);
+			}
+			if(i >= 8 && i < 16) {
+				$('.container2').append(newObj);
+			}
+
+		});
+		var windowWidth = $(window).width();
+		fjloop();
+
+		function ddd() {
+			$('.topSection>h2').css('margin-left', -$('.topSection>h2').width() / 2 + "px");
+			var windowWidth = $(window).width();
+			if(windowWidth <= 1208) {
+				$('.topSection>h2').css('top', '50%');
+				$('.topSection>h2').css('font-size', '60px');
+
+			} else if(windowWidth > 1208) {
+				$('.topSection>h2').css('top', '50%');
+				$('.topSection>h2').css('font-size', '70px');
+			}
+			if(windowWidth <= 900) {
+				$('.logoText').css('margin-left', '44%');
+				$('.navMenu').css('display', 'block');
+				$('#nav').css('display', 'none');
+				$('#ewm').css({
+					'display': 'none'
+				});
+				$('.section2Left').css({
+					'margin-left': '20%',
+				});
+			} else if(windowWidth > 900) {
+				$('.navMenu').css('display', 'none');
+				$('.logoText').css('margin-left', '15%');
+				$('#nav').css('display', 'block');
+				$('#ewm').css({
+					'display': 'block'
+				});
+				$('.section2Left').css({
+					'margin-left': '0',
+				});
+
+			}
+			if(windowWidth < 877) {
+				$('.topSection>h2').css('top', '40%');
+				$('.topSection>h2').css('font-size', '50px');
+
+			}
+			if(windowWidth <= 500) {
+				$('.topSection>h2').css('top', '30%');
+				$('.topSection>h2').css('font-size', '40px');
+			}
+		}
+		ddd();
+		window.onresize = function() {
+			ddd();
+		}
+		
+		function fjloop() {
+			
+			$('.container-fluid').on('mouseover', function() {
+				$('.container-fluid>div').css('animation', 'loop 5s linear alternate infinite paused');
+
+			});
+			$('.container-fluid').on('mouseout', function() {
+				$('.container-fluid>div').css('animation', 'loop 5s linear alternate infinite running');
+			});
+
+		}
+		
+	</script>
+
+</html>
