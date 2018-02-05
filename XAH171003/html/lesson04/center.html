@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>center</title>
+	<style>
+	.box{
+		width: 100%;
+		height: 500px;
+		border: 1px solid red;
+		position: relative;
+	}
+	.box1{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		position: absolute;
+		border-radius: 100px;
+		/*left:0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin: auto;*/
+		/*calc()函数在加减乘除运算符前后必须有空格,否则无效*/
+		left: calc((100% - 200px)/2);
+		top: calc((500px - 200px)/2);
+	}
+	.p1{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		opacity: 0.5;
+	}
+	.p2{
+		width: 200px;
+		height: 200px;
+		background-color: rgba(255,0,0,0.5);
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1"></div>
+	</div>
+	<p class="p1">opacity</p>
+	<p class="p2">我是α</p>
+</body>
+</html>

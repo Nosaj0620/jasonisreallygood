@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>waterFlow</title>
+	<style>
+	
+	#list img{
+		position: absolute;
+		width: 200px;
+		transition: 0.8s;
+
+	}
+
+	#list{
+		position: relative;
+		margin: 0 auto;
+		
+	}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="list">
+			
+		</div>
+	</div>
+</body>
+<script>
+	var wrap = document.getElementById('wrap');
+	for(var i =0 ;i<=96;i++){
+		var newImg = new Image();//创建img对象
+		newImg.src = 'images/'+i+'.jpg';
+		list.appendChild(newImg);
+	}
+	heightArr=[];
+	function getColNum(){
+		var windowWidth = document.body.offsetWidth;
+		var colNum = Math.floor(windowWidth/220);
+		for(var k = 0; k< colNum;k++){
+			heightArr.push(0);
+		}
+		s=document.getElementById('list').style.width = colNum * 220 +"px";
+		console.log(s);
+	}
+	getColNum();
+	function getMinIndex(){
+		var min;
+		for(var i = 0;i<heightArr.length;i++){
+			min =heightArr[i] > min ? min : heightArr[i];
+		}
+		var minIndex = heightArr.indexOf(min);
+		
+		return minIndex;
+	}
+	getMinIndex();
+	function setCss(){
+		//获取所有的img标签
+		var imgs = document.querySelectorAll('#list>img');
+		for(var i = 0 ; i < imgs.length; i++){
+			var index = getMinIndex();
+			// 设置img标签的left
+			imgs[i].style.left = index*220+'px';
+			//设置img标签top值
+			imgs[i].style.top = heightArr[index]+10+'px';
+			//获取本次图片的高度,将其更新到heightArr数组
+			heightArr[index] +=imgs[i].offsetHeight+20;
+		}
+	}
+	//图片未加载完成时,无法获取其高度,需要使用window.onload方法
+	window.onload = function(){
+		setCss();
+	}
+	//当浏览器窗口发生改变时
+	window.onresize =function(){
+		heightArr=[];//清除高度
+		getColNum();//重新计算列
+		setCss();//重新计算定位
+		
+	}
+</script>
+</html>

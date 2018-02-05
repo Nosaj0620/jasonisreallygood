@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>date</title>
+	<style>
+	div{
+		width: 1000px;
+		height: 400px;
+		margin: 100px;
+		background-color: skyblue;
+		font-size: 25px;
+		line-height: 400px;
+		text-align: center;
+		cursor: pointer;
+
+	}
+</style>
+</head>
+<body><h2>请输入年月日,我能帮你算出来它是那一年的第几天,牛逼不老铁</h2>
+	<input type="text" id="y" placeholder="请输入一个年份" onkeydown="controlLen();" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">年
+	<input type="text" id="m" placeholder="请输入一个月份" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">月
+	<input type="text" id="d" placeholder="请输入一个日期" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">日
+	<br>
+	<br>
+	<hr>
+	<br>
+	<br>
+	
+	<div  id="screen">点击我查看</div> 
+</body>
+<script>
+	
+	//获取元素
+			var yInput = document.getElementsByTagName("input")[0];
+			var mInput = document.getElementsByTagName("input")[1];
+			var dInput = document.getElementsByTagName("input")[2];
+			var totalInput = document.getElementsByTagName("div")[0];
+			var btn = document.getElementById("screen");
+			btn.onclick = function() {
+				var year = yInput.value-0;
+				var month = mInput.value-0;
+				var day = dInput.value-0;
+				
+				var ms = 0;//存储当前月之前的总天数
+				var total = 0;//存储总天数
+			
+				//匹配当前输入的月份 做天数的累加
+				//将当前月之前所有的月份天数累加 存储到ms
+				switch (month-1){
+					case 11:
+						ms+=30;
+					case 10:
+						ms+=31;
+					case 9:
+						ms+=30;
+					case 8:
+						ms+=31;
+					case 7:
+						ms+=31;
+					case 6:
+						ms+=30;
+					case 5:
+						ms+=31;
+					case 4:
+						ms+=30;
+					case 3:
+						ms+=31;
+					case 2:
+						ms+=28;	
+					case 1:
+						ms+=31;
+					case 0:
+					    ms+=0;
+					    break;
+					default:
+					alert("输入有误");
+						break;
+				}
+				//前几月总天数+当前月天数 得到总天数
+				total = ms + day;
+				//处理闰年多的1天
+				if(year%400==0 || (year%4==0&&year%100!=0)) {
+					//若该年是闰年，且输入的月份包含2月份 则多加1天
+					if(month>2) {
+						total += 1;
+					}
+				}
+				//显示
+				totalInput.value = total;
+				btn.innerText  =  totalInput.value+"天";
+			};
+
+       </script>
+       </html>

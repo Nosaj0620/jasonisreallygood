@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>game_TEST1</title>
+	<style>	
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.wrap{
+		margin: 50px auto;
+		height: 600px;
+		font-size: 0;
+		width: 600px;
+		background-image: url(4.jpg);
+	}
+	button{
+		display: block;
+		margin: 0 auto;
+		width: 200px;
+		height: 40px;
+	}
+</style>
+</head>
+<body>
+	<div id="wrap" class="wrap">
+		
+	</div>
+	<!-- 6.创建三个button,完成美女游戏的拓展模块 -->
+	<button id="btn1">初级</button>
+	<button id="btn2">终极</button>
+	<button id="btn3">高级</button>
+</body>
+<script>
+	//1.声明创建一个数组 用来放wrap里的div小方块
+	var arr= [];
+	//7.在最后要声明的函数里声明创建 方块的宽高  行和列 编写控制wrap宽高的的代码(消除游戏单调的缺点)
+	var colNum = 10;//行数量
+	var rowNum = 10;//列数量
+	var divWidth= 60;//单元格宽度
+	var divHeight = 60;//单元格高度
+	creatDiv();
+	//8.游戏开始之前 初始化 wrap宽高,单元格宽高 ,确定行和列的数量 
+	wrap.style.width = divWidth*rowNum+"px";
+	wrap.style.height = divHeight*colNum+"px";
+	wrap.style.backgroundSize = divWidth * rowNum+"px"+" "+divHeight*colNum+"px";
+	
+
+	//-----7.1:添加按钮---------------------------------------------------------------------------------------
+	//初级按钮
+	document.getElementById('btn1').onclick =function(){
+		colNum = 5;
+		rowNum = 5;
+		divWidth= 120;
+		divHeight = 120;
+		creatDiv();
+	}
+	//中级按钮
+	document.getElementById('btn2').onclick =function(){
+		colNum = 12;
+		rowNum = 12;
+		divWidth= 50;
+		divHeight = 50;
+		creatDiv();
+	}
+	//高级按钮
+	document.getElementById('btn3').onclick =function(){
+		colNum = 20;
+		rowNum = 20;
+		divWidth= 30;
+		divHeight = 30;
+		creatDiv();
+	}
+	
+	function creatDiv(){
+		//9.清空上局游戏
+		arr=[];
+		wrap.innerHTML= " ";
+		//9.清空上局游戏
+		//8.1 用单元格控制
+		wrap.style.width = divWidth*rowNum+"px";
+		wrap.style.height = divHeight*colNum+"px";
+		wrap.style.backgroundSize=divHeight *  rowNum+"px"+" "+divWidth *colNum+"px";
+		//2.写一个循环 用来完成游戏样式构造
+		for(i=0;i<colNum*rowNum;i++){
+			var newDiv=document.createElement("div")
+			arr.push(wrap.appendChild(newDiv));//将newDiv插入到wrap当中去
+			newDiv.style.width = divWidth+"px";
+			newDiv.style.height =divHeight+"px";
+			newDiv.style.background = "orange";
+			newDiv.style.display = "inline-block";
+			newDiv.style.border = "1px solid rgba(222,222,255,0.5)";
+			newDiv.style.boxSizing =  "border-box";
+			newDiv.onclick=function (){
+				divClick(this);
+			}
+		}
+	}
+	//3.构造两个函数 用来完成游戏的整体逻辑
+	//4.第一个函数1,用来达到切换单个方块背景的效果
+	function judgeBg(a){
+		if(a.style.background == "orange"){//调用
+			a.style.background="transparent";
+		}else{
+			a.style.background="orange";
+		}
+	}
+	//5.第二个函数2,用来达到点击方块即切换一组方块颜色的效果(调用函数1)
+	function divClick(x){
+		judgeBg(x);
+		console.log(arr.indexOf(x));
+		//获取当前点击div在arr数组里的下标位置
+		var indexDiv = arr.indexOf(x);
+		//完成一组方块的点击效果(写4个if来消除点击最上,下,左,右方块会出现的bug)
+		
+		// if (indexDiv<90) {//最下排bug消除√
+		// 	judgeBg(arr[indexDiv+10]);
+		// }
+		// if (indexDiv>10) {//最上排bug消除√
+		// 	judgeBg(arr[indexDiv-10]);
+		// }
+		// if(indexDiv % 10 !=0){//最左列bug消除√
+		// 	judgeBg(arr[indexDiv-1]);
+		// }
+		// if(indexDiv % 10 !=9){//最右列bug消除√
+		// 	judgeBg(arr[indexDiv+1]);
+		// }
+		if(indexDiv > colNum-1){//最上排bug消除√
+			judgeBg(arr[indexDiv-colNum]); 
+		}
+		if(indexDiv < rowNum * colNum - colNum){//最下排bug消除√
+			judgeBg(arr[indexDiv+colNum]); 
+		}
+		if(indexDiv  % colNum != 0){//最右列bug消除√
+			judgeBg(arr[indexDiv-1]); 
+		}
+		if((indexDiv+1)% colNum != 0){//最左列bug消除√
+			judgeBg(arr[indexDiv+1]); 
+		}
+	}
+</script>
+</html>

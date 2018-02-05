@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>点击盒子小鸟跳动</title>
+		<link rel="stylesheet" href="flappybird.css" />
+		<style>
+			#wrap {
+				width: 400px;
+				height: 500px;
+				background-color: lightskyblue;
+				position: relative;
+			}
+			#box {
+				width: 30px;
+				height: 30px;
+				background-color: darkolivegreen;
+				position: absolute;
+				left: 80px;
+				top: 230px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="box">
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var wrap = document.querySelector('#wrap');
+		var box = document.getElementById('box');
+		var downTimer;
+		var upTimer;
+
+		function birdDown() {
+			downTimer = setInterval(function() {
+				box.style.top = box.offsetTop + 1 + 'px'; //小鸟高度累加
+				if(box.offsetTop >= wrap.offsetHeight - box.offsetHeight) {
+					clearInterval(downTimer);
+				}
+			}, 10);
+		}
+		birdDown();
+		wrap.onclick = function() {
+			clearInterval(downTimer); //清除掉落计时器
+			clearInterval(upTimer);
+			var onceUp = 30;
+			var nowTop = box.offsetTop; //获取当前top值
+			var endTop = nowTop - onceUp; //计算出依次点击应该到达的位置
+			upTimer = setInterval(function() {
+				box.style.top = box.offsetTop - 2 + 'px'; //小鸟高度累减
+				if(box.offsetTop < 0) {
+					clearInterval(upTimer);
+					box.style.top = '0px';
+					birdDown();
+				}
+				if(box.offsetTop == endTop) {
+					clearInterval(upTimer);
+					birdDown();
+				}
+			}, 10);
+
+		}
+	</script>
+
+</html>

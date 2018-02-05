@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>变量的作用域</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	js的变量:
+		全局变量:作用于该html文件中声明这个变量之后所有的js代码
+		局部变量:只作用于该变量所存在的函数中
+		js中的变量和杉树的没有文件作用域
+	*/
+	// var a = 10;//全局变量
+	// function fn(){
+	// 	console.log(a);
+	// 	var b = 10;//局部变量
+	// }
+	// fn();
+	// console.log(b);
+	function fn1(){
+		var a = 10;
+		function fn2(){
+			var b = a+ 10;
+			return b;
+		}
+		// var b = 30;
+		var b = 30;
+		num = fn2()
+	}
+	fn1();
+	console.log(num);
+
+	//变量作用域的提升,将变量的声明放在变量作用域最开始的位置
+	function fn3(){
+		var a,b;
+		console.log(1);
+		document.write('asdf');
+		a=10;
+		b=20;
+		return c = a + b;
+	}
+
+</script>
+</html>

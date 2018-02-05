@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>计时器</title>
+</head>
+<body>
+	<progress  value="10" max="100" id="progress"></progress>
+</body>
+<script>
+	/*
+	计时器:
+	(1)setInterval(function(){
+		//代码块
+	},time);
+	每隔一段时间间隔,执行一次代码块.该方法有一个返回值,返回的是计时器在内存中的编号,我们可以根据这个编号去清除计时器.
+	(2) setTimeout(function(){
+		//代码块
+	}time);
+	在一段时间间隔后执行一次代码块.返回该计时器在内存中的编号,可以根据俄对应编号清除该计时器.
+	*/
+	timer=setInterval(function(){
+		progress.value+=1;
+		console.log(progress.value);
+		if(progress.value==98){
+			clearInterval(timer);
+		}
+	},200)
+	timer2=setInterval(function(){},1000);
+	console.log(timer2);
+	timer3=setInterval(function(){},1000);
+	console.log(timer3);
+	setTimeout(function(){
+		alert('下载失败');
+	},17600);
+
+</script>
+</html>

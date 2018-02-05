@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>tank</title>
+	<style>
+	img{
+		width: 50px;
+		/*height: 50px;*/
+		position: absolute;
+		bottom: 50px;
+		left: 50px;
+		transition: 0.1s linear;
+	}
+	body{
+		background: black;
+	}
+	.map{
+		width: 900px;
+		height: 700px;
+		margin: 20px auto;
+		border: 40px outset brown;
+		position: relative;
+	}
+</style>
+</head>
+<body>
+	<div class="map" id="map">
+		<img id="tanks" src="img/p1tankU.gif" alt="">
+	</div>
+	
+</body>
+<script>
+	// var tankStyle = getComputedStyle("tanks") ;
+
+	var tank = document.getElementById('tanks')
+	document.onkeydown = function(){
+		var e = window.event || event;
+		switch(e.keyCode){
+			case 37://左
+			tank.src = "img/p1tankL.gif";
+			tank.style.left = tank.offsetLeft-8 + "px";
+			if (tank.style.left<=1) {
+				tank.style.left=0;
+			}
+			break;
+			case 38://上
+			tank.src = "img/p1tankU.gif";
+			tank.style.top = tank.offsetTop-8 + "px";
+			break;
+			case 39://右
+			tank.src = "img/p1tankR.gif";
+			tank.style.left = tank.offsetLeft+8 + "px";
+			break;
+			case 40://下
+			tank.src = "img/p1tankD.gif";
+			tank.style.top = tank.offsetTop+8 + "px";
+			break;
+		}
+		
+	}
+		// if(e.keyCode ==38){//上
+		// 	tank.src ="img/p1tankU.gif";
+		// 	s+=5;
+		// 	tank.style.bottom =s+"px";
+		// }
+		// if(e.keyCode ==37){//左
+		// 	tank.src ="img/p1tankL.gif";
+		// 	s+=5;
+		// 	tank.style.right =s+"px";
+		// }
+		// if(e.keyCode ==39){//右
+		// 	tank.src ="img/p1tankR.gif";
+		// 	s+=5;
+		// 	tank.style.left =s+"px";
+		// }
+		// if(e.keyCode ==40){//下
+		// 	tank.src ="img/p1tankD.gif";
+		// 	s+=5;
+		// 	tank.style.top =s+"px";
+		// }
+
+
+
+	</script>
+	</html>

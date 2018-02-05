@@ -1,0 +1,217 @@
+/*   ”*“选择器是通配符，能够选择所有标签，代表所有标签  */
+*{
+	/*内边距，默认8px*/
+	padding: 0;
+	/*外边距*/
+	margin: 0;
+}
+/*设置wrap标签*/
+.wrap{
+width:100%;
+
+}
+
+body{
+
+	background-image: url(../imgs/bg_main_preindex.jpg);
+    background-size:63px 100px;
+    background-repeat:no-repeat;
+}
+/*页面头部添加样式head*/
+.head{
+	width:90%;
+	height: 49px;
+	/*下边框  border-bottom  宽度  线型  颜色值*/
+	border-bottom: 1px solid  rgb(211,211,211);
+	/*padding :内边距: 上下  左右*/
+	padding: 0 5%;
+}
+/*要使图片和文字对齐 图片和文字在同一文本流中可同时使用vertical-align*/
+.head img{
+	/* 垂直居中  vertical-align*/
+	/*vertical-align: middle;*/
+}
+/* 组合选择器：父级选择器  子级选择器（样式）*/
+.head a{
+	/*去掉文字下面的下划线  none*/
+	text-decoration: none;
+	/*color 设置字体颜色*/
+	color:rgb(67,67,67);
+	/*设置字体大小*/
+	font-size:15px;
+	/*设置浮动样式 float*/
+     float:right;
+     /*设置外间距 margin:上下  左右*/
+     margin:0 5px;
+    /*vertical-align: middle;*/
+    line-height: 49px;
+    
+}
+/*给内容部分content添加样式*/
+/*选择器里面不能套用选择器*/
+.content{
+width:100%;
+background: url(../imgs/bg_main_preindex.jpg) center center;
+background-repeat: no-repeat;
+/*图片等比例缩放*/
+background-size: cover; 
+/*设置内容居中*/
+text-align: center;
+/*上内边距800px*/
+padding-top: 1100px;
+}
+/*设置第一组的样式*/
+.section1{
+
+	/*margin-top:700px; 错误的*/
+	font-size:0;
+
+}
+.middleImg{
+	/*padding-left: 5px;*/
+	/*padding-right: 5px;*/
+	margin: 0 5px;
+}
+/*设置第二组的样式*/
+.section2{
+	width:838px;
+	/*对于div标签可用margin:0 auto 居中*/
+	/*设置div在父级水平方向上居中*/
+	margin: 20px auto;
+	background-color: rgb(34,69,108);
+	/*消除图片之间的距离*/
+	font-size: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+}
+.section2 img{
+	width:272px;
+	
+	margin-left: 5px;
+}
+/*nth-child(n+3):n是从0开始递增，每次加1*/
+.section2 img:nth-child(n+3){
+	margin-top: 5px;
+}
+/*视频设置样式*/
+video{
+	width:838px;
+}
+/*第二部分添加样式*/
+.second{
+	width:100%;
+	background: url(../imgs/tips_1.jpg) 0 0 no-repeat;
+	background-size: cover;
+	padding-top: 5px;
+	text-align: left;
+}
+.tips{
+	width:838px;
+	/*设置文字排列方式*/
+	text-align: left;
+	margin:0px auto;
+font-size: 0;
+
+}
+.tips a{
+	/*去掉下划线*/
+    text-decoration: none;
+    /*设置文字颜色*/
+    color:rgb(76,76,76);
+    border-bottom: 1px solid rgb(209,209,209);
+    font-size: 15px;
+    padding:5px;
+}
+/*给霸刀图片添加样式*/
+.badao{
+width:838px;
+margin: 20px auto;
+}
+/*p1,p2设置样式*/
+/*逗号选择器:逗号前和逗号后的选择器同时拥有大括号里的样式*/
+.p1,.p2{
+	width:838px;
+	margin: 0 auto;
+}
+.p1{
+	color:balck;
+	/*font-weight:字体加粗*/
+	font-weight: bold;
+	font-size:17px;
+	margin: 20px auto;
+}
+.p2{
+    color:rgb(83,83,83);
+    font-size:13px;
+    margin-top: 20px;
+
+}
+.v_badao{
+	width:838px;
+	/*margin ：上  左右  下*/
+	margin: 100px auto  50px;
+}
+.tabs{
+	width:838px;
+	margin: 0 auto;
+	/*清空图片之间的间隙*/
+	font-size:0;
+}
+.tabs img{
+	width:276px;
+}
+/*设置第三部分的样式*/
+.third{
+	height: 174px;
+	width:100%;
+	background: url(../imgs/bottom.jpeg) 0 0 no-repeat;
+	background-size: cover;
+}
+/*设置网页脚部样式*/
+.foot{
+background-color: black;
+width:100%;
+text-align: center;
+padding: 20px 0;
+
+}
+/*设置文字颜色*/
+.foot p{
+color: rgb(191,192,191);
+font-size:12px;
+line-height: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

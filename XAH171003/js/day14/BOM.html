@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>bom</title>
+	<style>
+		div{
+			width: 120px;
+			height: 120px;
+			display: inline-block;
+
+			background-color: lightgreen;
+			overflow: hidden;
+			white-space: wrap;
+			font-size: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script>
+		/*
+			BOM:Browser Object Model (浏览器对象模型)
+
+			事件对象event:
+				事件触发时创建的对象,含有事件触发时的各种可供使用的信息.只在事件触发的一瞬间创建,事件触发结束的时候销毁,第二次触发事件时,产生一个新的event对象.   
+			鼠标事件:
+			onlick:单击事件
+			ondblclick:双击事件
+			oncontextmenu:鼠标右击
+			onmouseover:鼠标移入事件
+			onmouseout:鼠标移出事件
+			onmouseleave:enter相对应的鼠标移出?
+			onmousemove:鼠标移动事件
+
+			event对象提供的鼠标常用位置
+			screenX,screenY:基于电脑屏幕左上角的位置
+		*/
+		s=parseInt(Math.random()*254+1);
+		var box = document.getElementById('box');//获取box
+		document.onmousemove = function(){//绑定双击事件
+			var e = window.event || event;//event兼容
+			// console.log(e.screenX,e.screenY);
+			console.log(e.pageX,e.pageY);
+		}
+		// box.oncontextmenu = function(){//绑定鼠标右击事件
+		// 	console.log('右击');
+		// 	return false;
+		// }
+		// box.onmouseover = function(){//绑定鼠标移入事件
+		// 	box.style.backgroundColor = 'rgb('+parseInt(Math.random()*254+1)+','+parseInt(Math.random()*254+1)+','+parseInt(Math.random()*254+1)+')';
+		// }
+		// box.onmouseout = function(){//绑定鼠标移出事件
+		// 	box.style.backgroundColor = 'rgb('+parseInt(Math.random()*254+1)+','+parseInt(Math.random()*254+1)+','+parseInt(Math.random()*254+1)+')';
+		// }
+		// box.onmouseleave = function(){
+		// 	console.log('enter相对应的鼠标移出');
+		// }
+		// box.onmousemove = function(){
+		// 	f=document.createElement('span');
+		// 	f.innerText = '6';
+
+		// 	box.appendChild(f);
+		// }
+	</script>
+</body>
+</html>

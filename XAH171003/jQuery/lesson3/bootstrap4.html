@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum - scale= 1,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<title>third</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h4>提示工具（Tooltip）插件 - 锚</h4> 这是一个
+			<a href="#" class="tooltip-test" data-toggle="tooltip" title="默认的 Tooltip">
+				默认的 Tooltip
+			</a>
+
+			. 这是一个
+			<a href="#" class="tooltip-test" data-toggle="tooltip" data-placement="left" title="左侧的 Tooltip">
+				左侧的 Tooltip
+			</a>. 这是一个
+			<a href="#" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip">
+				顶部的 Tooltip
+			</a>. 这是一个
+			<a href="#" data-toggle="tooltip" data-placement="bottom" title="底部的 Tooltip">
+				底部的 Tooltip
+			</a>. 这是一个
+			<a href="#" data-toggle="tooltip" data-placement="right" title="右侧的 Tooltip">
+				右侧的 Tooltip
+			</a>
+			<br>
+			<h4>提示工具（Tooltip）插件 - 按钮</h4>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" title="默认的 Tooltip">默认的 Tooltip</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="左侧的 Tooltip"> 左侧的 Tooltip</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="顶部的 Tooltip">顶部的 Tooltip</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="底部的 Tooltip">底部的 Tooltip</button>
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="右侧的 Tooltip"> 右侧的 Tooltip</button><br>
+			<input type="text" class="tooltip-test" data-toggle="tooltip" data-placement="right" title="请输入" />
+			<div class="alert alert-warning">
+				<span href="#" class="close active" data-dismiss="alert">
+					&clubs;
+				</span>
+				<strong>警告！</strong>您的网络连接有问题。
+			</div>
+			<h2>创建模态框（Modal）</h2>
+			<!-- 按钮触发模态框 -->
+			<span data-toggle="modal" class="btn btn-success btn-lg" data-target="#myModal">开始演示模态框</span>
+			<!-- 模态框（Modal） -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+						</div>
+						<div class="modal-body">在这里添加一些文本</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">提交更改</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal -->
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	</script>
+	<script>
+		$(function() {
+			$("[data-toggle='tooltip']").tooltip();
+		});
+		$('.alert').alert();
+	</script>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>常见样式</title>
+	<style>
+	.box{
+		/*width  宽*/
+		width: 200px;
+		/*height 高*/
+		height: 200px;
+		/*背景色 backgroundcolor*/
+		background-color: red;
+		/*边框 border*/
+		border: 2.5px solid purple;
+		/*上边框 border-top*/
+		border-top: 3px solid pink;
+		/*右边框 border-right*/
+		border-right: 3px solid pink;
+		/*底边框 border-bottom*/
+		border-bottom: 25px solid purple;
+		/*左边框 boder-left*/
+		border-left: 25px solid black;
+	}
+	.box1{
+		border-top: 50px solid red;
+		border-bottom:50px solid blue;
+		border-right: 50px solid green;
+		border-left: 50px solid grey;
+		width: 0;
+		height: 0;
+	}
+	.box2{
+		width: 0;
+		height: 0;
+		border-top: 50px solid red;
+		border-bottom:50px solid blue;
+		border-right: 50px solid green;
+		border-left: 50px solid transparent;
+		border-radius: 50px;
+	}
+	.box3{
+		width: 0;
+		height: 0;
+		border-top: 50px solid transparent;
+		border-bottom:50px solid transparent;
+		border-right: 50px solid green;
+		border-left: 50px solid transparent;
+		border-radius: 50px;
+	}
+	.box4{
+		width: 100px;
+		height: 100px;
+		border:3px dashed red;
+	}
+	.pad1{
+		width: 200px;
+		height: 200px;
+		background-color: yellow;
+		padding: 50px;
+		padding-top: 120px;
+		padding-right: 150px;
+		padding-bottom: 130px;
+		padding-left: 145px;
+		/*margin: 0 auto;*/
+	}
+	.pad2{
+		/*配合a标签的样式*/
+		border:1px solid red;
+		width: 580px;
+		height: 280px;
+		margin: 50px 0;
+		text-align: center;
+		line-height: 280px;
+	}
+	.pad2 a{
+		background-color: pink;
+		text-decoration-line: none;
+		color:white;
+		font-size: 15px;
+		padding: 20px 30px;
+		border-radius: 5px;
+	}
+	/*逗号选择器:逗号前后选择器与标签层级没有关系,表示同时选中多个标签*/
+	.ma1,.ma2{
+		width: 100px;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+		border: 1px solid black;
+	}
+	.ma1{
+		background-color: orange;
+		/*只有一个值:上下左右均为xx像素
+		有两个值的时候: 上下  左右;
+		有三个值的时候: 上  左右  下;
+		有四个值的时候: 上  右  下 左;
+		*/
+		margin: 20px 40px;
+	}
+	.ma2{
+		background-color: grey;
+	}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	<div class="box4"></div>
+	<div class="pad1"></div>
+	<div class="pad2">
+		<a href="">hello</a>
+		<a href="">world</a>
+		<a href="">!</a>
+		<a href="">hahaha</a>
+	</div>
+	<div class="ma1">ma1</div>
+	<div class="ma2">ma2</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>函数</title>
+	<style>
+	#div1,#div2{
+		width: 100px;
+		height: 100px;
+		background: red;
+		margin: 40px;
+	}
+	#div3{
+		width: 200px;
+		height: 200px;
+		background: seagreen;
+		margin:40px;
+	}
+
+</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="wrap">
+		<button id="btn1">改变背景色</button>
+		<button id="btn2">改变shadow</button>
+		<button id="btn3">都改变</button>
+		<div id="div3"></div>
+	</div>
+</body>
+<script>
+	div1.onclick = clickFn;
+	div2.onclick = clickFn;
+	document.getElementById('div1').onclick = function(){
+		if(div1.style.background="red"){
+			setInterval(function(){
+				var r = parseInt(Math.random()*255);
+				var g = parseInt(Math.random()*255);
+				var b = parseInt(Math.random()*255);
+				var a = Math.random()*1;
+				div1.style.background ="rgba("+r+","+g+","+b+","+a+")";
+				div1.style.boxShadow = " 0 0 "+r+"px "+"rgb("+r+","+g+","+b+")";},200);
+		}
+	}
+	function clickFn(){
+		setInterval(function(){
+			var r = parseInt(Math.random()*255);
+			var g = parseInt(Math.random()*255);
+			var b = parseInt(Math.random()*255);
+			var a = Math.random()*1;
+			div2.style.background="rgba("+r+","+g+","+b+","+a+")";
+			div2.style.boxShadow = " 0 0 "+r+"px "+"rgb("+r+","+g+","+b+")";},200);
+	}
+	//为三个按钮绑定点击事件
+	document.getElementById('btn1').onclick = btnClick1;
+	document.getElementById('btn2').onclick = btnClick2;
+	document.getElementById('btn3').onclick = btnClick3;
+	//按钮1点击事件:改变背景色
+	function btnClick1(){
+		var r = parseInt(Math.random()*255);
+		var g = parseInt(Math.random()*255);
+		var b = parseInt(Math.random()*255);
+		var a = Math.random()*1;
+		div3.style.background="rgba("+r+","+g+","+b+","+a+")";
+	}
+	//按钮2点击事件:改变阴影
+	function btnClick2(){
+		var r = parseInt(Math.random()*255);
+		var g = parseInt(Math.random()*255);
+		var b = parseInt(Math.random()*255);
+		var a = Math.random()*1;
+		div3.style.boxShadow = " 0 0 "+r+"px "+"rgb("+r+","+g+","+b+")";
+	}
+	//按钮3点击事件:改变背景色和阴影
+	function btnClick3(){
+		var r = parseInt(Math.random()*255);
+		var g = parseInt(Math.random()*255);
+		var b = parseInt(Math.random()*255);
+		var a = Math.random()*0.5;
+		div3.style.boxShadow = " 0 0 "+r+"px "+"rgb("+r+","+g+","+b+")";
+		div3.style.background="rgba("+r+","+g+","+b+","+a+")";
+	}
+	
+</script>
+</html>

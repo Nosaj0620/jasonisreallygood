@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jq动画2</title>
+		<style type="text/css">
+			#box {
+				height: 400px;
+				/*width: 400px;*/
+				background: deepskyblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn1">显示</button>
+		<button id="btn2">隐藏</button>
+		<button id="btn3">停止</button>
+		<div id="box">
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		/*jQuery显示/隐藏函数
+		 * show(),hide()//显示隐藏
+		 * fadeIn(),fadeOut();//淡入淡出
+		 * slideDown(),slideUp();//展开收起
+		 * 参数均为一个:时间 单位ms 过渡时长
+		 * 
+		 * 暂停动画:stop();
+		 * 
+		 * animate里样式书写:paddingLeft,marginRight...
+		 * 
+		 * 
+		 * */
+		$('#btn2').on('click', function() {
+//			$('#box').fadeOut();
+			$('#box').hide(500);
+//			$('#box').slideUp();
+		});
+		$('#btn1').on('click', function() {
+//			$('#box').fadeOut();
+			$('#box').show(500);
+//			$('#box').slideDown();
+		});
+		$('#btn3').on('click', function() {
+			$('#box').stop();
+		});
+	</script>
+
+</html>

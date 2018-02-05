@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>date</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var dateStart = new Date();
+	var dateEnd = new Date(2018,1,1);
+	var sec = parseInt((dateEnd-dateStart)/(24*60*60*1000));
+	console.log(sec);
+	var s = document.createElement('div');
+	document.body.appendChild(s);
+	s.innerText ="还剩" +sec+"天到元旦";
+</script>
+</html>

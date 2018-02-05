@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>position</title>
+	<style>
+	.box1{
+		background-color: yellow;
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		/*方向:top,bottom,left,right*/
+		right:0;
+		bottom:0;
+	}
+	.box2{
+		background-color: blue;
+		width: 100px;
+		height: 100px;
+	}
+	.box{
+		border: 1px solid red;
+		height: 50%;
+	}
+	.fa1{
+		height: 500px;
+		border: 1px solid blue;
+		position: relative;
+	}
+	.fix{
+		width: 300px;
+		height: 300px;
+		background-color: green;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+</style>
+</head>
+<body>
+	<div class="fa1">
+		<div class="box">
+			<div class="box1"></div>
+			<div class="box2"></div>
+		</div>
+	</div>
+	<div class="fix">
+		
+	</div>
+</body>
+</html>
+ <!-- position:static;默认值:所有盒子的position值在不进行更改的情况下都是这个值.
+		relative;相对定位:盒子将按照自己原来在文本流中的位置进行定位操作,盒子在原来文本流的位置不能被其他盒子占据,因此相对定位对原来文本刘的影响最小.
+		absolute;绝对定位:设置了绝对定位的盒子将具有以下特点:
+		 					1:脱离原来的文本流,进入到新的一层;
+		 					2:可以按照指定的一个父级进行定位操作;
+		 					3:定位父级必须是在html文档结构中距离该合资最近的并且position值不是static的父级作为定位父级;
+		 					4:当定位的盒子没有找到定位父级时会根据当前浏览器窗口的可视化区域进行定位.
+		fixed;固定定位:定位的盒子时根据浏览器的四条边进行定位的,定位的盒子也是脱离原来的文本流,进入到新的一层. -->
+
+
+
+		

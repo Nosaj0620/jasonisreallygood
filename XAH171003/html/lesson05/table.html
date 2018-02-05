@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+	<style>
+		/*写在样式表里的border是给table添加边框*/
+		table{
+			border: 1px solid green;
+			text-align: left;
+			/*border-collapse:是用来设置表格之间的边框是否坍塌的;
+			seprate:默认值,表格之间的边框会被分开
+			collapse:表格之间的边框会被合并成一个边框*/
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+	<!-- 写在table标签里的border属性是设置单元格的边框,没有单位 -->
+	<table border="1" cellpadding="20">
+		<!-- caption:表格标题 -->
+		<caption>
+			学生信息采集表
+		</caption>
+		<!-- 表格头部 -->
+		<thead>
+			<!-- tr:表格行 -->
+			<tr>
+				<!-- th:表示每行的单元格数 表头单元 -->
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年龄</th>
+				<th>备注</th>
+			</tr>
+		</thead>
+		<!-- 表格体 -->
+		<tbody>
+			<tr>
+				<!-- td:表示每行的单元格数 表格数据单元-tableData-->
+				<td>Jason</td>
+				<td>男</td>
+				<td>21</td>
+				<td rowspan="3"></td>
+			</tr>
+			<tr>
+				<td>朱玉龙</td>
+				<td>男</td>
+				<td>28</td>
+			</tr>
+			<tr>
+				<td>崔文旭</td>
+				<td>男</td>
+				<td>19</td>
+			</tr>
+		</tbody>
+		<!-- 表格尾部 -->
+		<tfoot>
+			<tr>
+				<td colspan="3">统计:3人</td>
+				<td rowspan="3"></td>
+			</tr>
+			<tr>
+				<td>321</td>
+				<td>321</td>
+				<td>321</td>
+
+			</tr>
+			<tr></tr>
+		</tfoot>
+	</table>
+</body>
+</html>

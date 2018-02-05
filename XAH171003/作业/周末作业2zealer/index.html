@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<title>小明,我知道你有话要说</title>
+	<link rel="Shortcut Icon" href="img/favicon.ico" type="image/x-icon">
+	<style>
+	body{
+		background-color: #82FFAE;
+	}
+	header{
+		width: 100%;
+		background-color: black;
+		height: 100px;
+	}	
+	.top{
+		width: 1220px;
+		background-color: black;
+		height: 100px;
+		text-align: center;
+		margin: 0 auto;
+		overflow: hidden;
+		color: white;
+	}
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.content{
+		width: 100%;
+		background-color: rgb(247,247,247);
+	}
+	.content>div{
+		width: 1220px;
+		margin: 0 auto;
+		padding: 40px 0;
+	}
+	.topL{
+		color: white;
+		float: left;
+		text-decoration: none;
+		margin: 11px 0;
+		margin-right: 120px;
+	}
+	.topL p:nth-child(1){
+		font-size: 35px;
+		font-weight: bolder;
+
+	}
+	.topL p:nth-child(2){
+		font-size: 8px;
+		font-weight: bolder;
+	}
+	.topM>div{
+		width: 100px;
+		height: 100px;
+		float: left;
+		padding: 27px 0;
+
+	}
+	.topM p:nth-child(1){
+		font-size: 14px;
+		padding-bottom: 6px;
+	}
+	.topM p:nth-child(2){
+		font-size: 12px;
+		color: rgb(187,187,187);
+	}
+	.topButton1:hover{
+		color: rgb(0,0,0);
+		background-color: white;
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	.topButton2:hover{
+		color: rgb(0,0,0);
+		background-color: rgb(60,69,109);
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	.topButton3:hover{
+		color: rgb(0,0,0);
+		background-color: rgb(33,174,113);
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	.topButton4:hover{
+		color: rgb(0,0,0);
+		background-color: rgb(33,116,253);
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	.topButton1:hover p{
+		color: rgb(0,0,0);
+	}
+	.topButton2:hover p{
+		color: white;
+	}
+	.topButton3:hover p{
+		color: white;
+	}
+	.topButton4:hover p{
+		color: white;
+	}
+	.search{
+		
+		padding: 6px 25px;
+		border-radius: 25px;
+		border: none;
+		outline: none;
+		background-color: rgb(43,43,43);
+		color: white;
+	}
+	.topR{
+		padding: 36px 0;
+		position: relative;
+		float: right;
+	}
+	.topR span{
+		font-size: 13px;
+		position: absolute;
+		right: 223px;
+		top: 39px;
+		z-index: 99;
+		cursor: pointer;
+	}
+	.topR a{
+		font-size: 11px;
+		color: white;
+		text-decoration: none;
+		-webkit-font-smoothing: antialiased;
+	}
+	.section:after{
+		content:"";
+		clear: both;
+		display: block;
+	}
+	.content3:after{
+		content:"";
+		clear: both;
+		display: block;
+	}
+	.pic1{
+		width: 660px;
+		height: 465px;
+		float: left;
+		background-image: url(img/1.jpg);
+		background-size: cover;
+		box-shadow: 0 0 320px rgba(0,0,0,0.3) inset;
+	}
+	.pic3{
+		width: 275px;
+		height: 240px;
+		float: right;
+
+	}
+	.pic2{
+		width: 275px;
+		height: 240px;
+		float: right;
+		margin-right: 5px;
+	}
+	.pic4{
+		width: 555px;
+		height: 220px;
+		float: right;
+		margin-top: 5px;
+		background-image: url(img/4.jpg);
+		background-size: cover;
+		box-shadow: 0 0 160px rgba(0,0,0,0.3) inset;
+	}
+	.pic4:hover{
+		box-shadow: none;
+		transition: 0.5s;
+		cursor: pointer;
+	}
+	.pic1:hover{
+		box-shadow: none;
+		transition: 0.5s;
+		cursor: pointer;
+	}
+	.box{
+		position: relative;
+	}
+	.box2{
+		position: relative;
+	}
+	.mask{
+		width: 275px;
+		height: 240px;
+		background-color: rgba(0,0,0,0.6);
+		position: absolute;
+		top: 0;
+		right: 0;
+		opacity: 0;
+	}
+	.mask2{
+		width: 275px;
+		height: 240px;
+		background-color: rgba(0,0,0,0.6);
+		position: absolute;
+		top: 0;
+		right: 280px;
+		opacity: 0;
+	}
+	.box:hover .mask{
+		opacity: 1;
+		transition: 0.5s;
+		cursor: pointer;
+	}
+	.box2:hover .mask2{
+		opacity: 1;
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	.shortLine{
+		width: 8px;
+		height: 2px;
+		background-color: #fff;
+		position: absolute;
+		top: 120px;
+		right: 0;
+		opacity: 0;
+	}
+	.shortLine2{
+		width: 8px;
+		height: 2px;
+		background-color: #fff;
+		position: absolute;
+		top: 120px;
+		right: 267px;
+		opacity: 0;
+	}
+	.shortLine3{
+		width: 8px;
+		height: 2px;
+		background-color: #fff;
+		position: absolute;
+		top: 120px;
+		right: 548px;
+		opacity: 0;
+	}
+	.shortLine4{
+		width: 8px;
+		height: 2px;
+		background-color: #fff;
+		position: absolute;
+		top: 120px;
+		right: 279px;
+		opacity: 0;
+	}
+	.ft{
+		width: 192.5px;
+		position: absolute;
+		right: 41.25px;
+		top: 190px;
+		text-align: center;
+		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		color: white;
+		opacity: 0;
+		z-index: -5;
+	}
+	.ft2{
+		width: 192.5px;
+		position: absolute;
+		right: 316.25px;
+		top: 190px;
+		text-align: center;
+		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		color: white;
+		opacity: 0;
+		z-index: -5;
+	}
+	.box:hover .shortLine{
+		opacity: 1;
+		transition: 0.8s;
+		right: 21.25px;
+	}
+	.box:hover .shortLine2{
+		opacity: 1;
+		transition: 0.8s;
+		right: 243.75px;
+	}
+	.box:hover .ft{
+		opacity: 1;
+		transition: 0.8s;
+		right: 41.25px;
+		top: 100px;z-index: 1;
+	}
+	.box2:hover .shortLine3{
+		opacity: 1;
+		transition: 0.8s;
+		right: 518px;
+	}
+	.box2:hover .shortLine4{
+		opacity: 1;
+		transition: 0.8s;
+		right: 300px;
+	}
+	.box2:hover .ft2{
+		opacity: 1;
+		transition: 0.8s;
+		right: 316.25px;
+		top: 100px;z-index: 1;
+	}
+	.content2{
+		background-color: rgb(236,239,241);
+	}
+	.line1{
+		width: 100%;
+		height: 1px;
+		background-color: rgb(219,222,223);
+		
+	}
+	.line2{
+		width: 100%;
+		height: 1px;
+		background-color: rgb(82,84,85);
+		
+	}
+	.title2{
+		width: 360px;
+		height: 30px;
+		background-color: rgb(34,34,34);
+		position: absolute;
+		top: 28px;
+		left: 430px;
+		-webkit-font-smoothing: antialiased;
+		color: white;
+		font-size: 24px;
+
+	}
+	.title3{
+		width: 360px;
+		height: 30px;
+		background-color: rgb(58,59,60);
+		position: absolute;
+		top: 28px;
+		left: 430px;
+		-webkit-font-smoothing: antialiased;
+		color: white;
+		font-size: 24px;
+	}
+	.title4{
+		width: 360px;
+		height: 30px;
+		background-color: rgb(34,34,34);
+		position: absolute;
+		top: 28px;
+		left: 430px;
+		-webkit-font-smoothing: antialiased;
+		color: white;
+		font-size: 24px;
+	}
+	.title{
+
+		width: 360px;
+		height: 30px;
+		background-color: rgb(236,239,241);
+		position: absolute;
+		top: 28px;
+		left: 430px;
+
+	}
+	.title .square:nth-of-type(1){
+		width: 8px;
+		height: 8px;
+		transform: rotate(45deg);
+		background-color: black;
+		float: left;
+		vertical-align: middle;
+		margin:8px 25px;
+	}
+	.title .square:nth-of-type(2){
+		float: right;
+		width: 8px;
+		transform: rotate(45deg);
+		background-color: black;
+		height: 8px;
+		margin: 8px 25px;
+	}
+	.title2 .square:nth-of-type(1){
+		width: 8px;
+		height: 8px;
+		transform: rotate(45deg);
+		background-color: white;
+		float: left;
+		vertical-align: middle;
+		margin:8px 25px;
+	}
+	.title2 .square:nth-of-type(2){
+		float: right;
+		width: 8px;
+		transform: rotate(45deg);
+		background-color: white;
+		height: 8px;
+		margin: 8px 25px;
+	}
+	.title span{
+		position: absolute;
+		font-size: 22px;
+		top: -2px;
+		right: 70px;
+	}
+	.title2 span{
+		position: absolute;
+		font-size: 22px;
+		top: -2px;
+		right: 70px;
+	}
+
+	.title3 span{
+		position: absolute;
+		font-size: 22px;
+		top: -2px;
+		right: 88px;
+	}
+	.title3 .square:nth-of-type(1){
+		width: 8px;
+		height: 8px;
+		transform: rotate(45deg);
+		background-color: white;
+		float: left;
+		vertical-align: middle;
+		margin:8px 25px;
+	}
+	.title3 .square:nth-of-type(2){
+		float: right;
+		width: 8px;
+		transform: rotate(45deg);
+		background-color: white;
+		height: 8px;
+		margin: 8px 25px;
+	}
+	.title4 span{
+		position: absolute;
+		font-size: 22px;
+		top: -2px;
+		right: 70px;
+	}
+	.title4 .square:nth-of-type(1){
+		width: 8px;
+		height: 8px;
+		transform: rotate(45deg);
+		background-color: white;
+		float: left;
+		vertical-align: middle;
+		margin:8px 25px;
+	}
+	.title4 .square:nth-of-type(2){
+		float: right;
+		width: 8px;
+		transform: rotate(45deg);
+		background-color: white;
+		height: 8px;
+		margin: 8px 25px;
+	}
+	.st2{
+		position: relative;
+	}
+	.picbox1{
+		margin-top: 40px;
+	}
+	.textBox{
+		width: 220px;
+		height: 465px;
+		margin-right: 18px;
+		float: left;
+
+	}
+	.textBoxT{
+		width: 220px;
+		height: 318px;
+		background-color: black;
+		color: white;
+		text-align: center;
+		transition: 0.3s;
+
+	}
+	.textBoxT2{
+		width: 220px;
+		height: 318px;
+		background-color: rgb(60,69,109);
+		color: white;
+		text-align: center;
+		transition: 0.3s;
+	}
+	.textBoxT3{
+		width: 220px;
+		height: 318px;
+		background-color: rgb(33,174,113);
+		color: white;
+		float: left;
+		text-align: center;
+		transition: 0.3s;
+	}
+	.textBoxT h2{
+		font-size: 40px;
+		padding-top: 34px;
+	}
+	.textBoxT p:nth-child(2){
+		-webkit-font-smoothing: antialiased;
+		padding-top: 20px;
+		font-size:28px;
+	}
+	.textBoxT p:nth-child(3){
+		-webkit-font-smoothing: antialiased;
+		font-size:14px;
+		width: 80px;
+		line-height: 16px;
+		border: 2px solid white;
+		border-radius: 10px;
+		margin: 20px auto;
+	}
+	.textBoxT p:nth-child(4){
+		-webkit-font-smoothing: antialiased;
+		font-size:14px;
+		width: 80%;
+		padding-top: 40px;
+		border-top: 1px solid rgb(153,153,153);
+		margin: 0 auto;
+
+	}
+	.boxShadow{
+		width: 198px;
+		height: 8px;
+		background-color: black;
+		border-radius: 198px/8px;
+		-webkit-filter:blur(8px);
+		margin: 0 auto;
+		transition-duration: 0.5s;
+		opacity: 0;
+		transition: 0.3s;
+		
+
+
+
+	}
+	.textBoxT:hover{
+		transform: translateY(-5px);
+		transition: 0.3s ;
+		transition-property: transform;
+
+		
+
+	}
+	.textBoxT:hover+.boxShadow{
+		opacity: 1;
+		transition: 0.3s;
+	}
+	.offvideo{
+		overflow: hidden;
+		/*border: 1px solid red;*/
+		width: 220px;
+		height: 128px;
+		margin-top: 11px;
+	}
+	.offvideo img{
+		width: 220px;
+		height: 128px;
+		transition: .3s;
+	}
+	.offvideo img:hover{
+		transform: scale(1.08);
+		cursor: pointer;
+		transition: .3s;
+	}
+	.items1{
+		float: left;
+		font-size: 0;
+		width: 690px;
+		height: 465px;
+	}
+	.items1>div{
+		display: inline-block;
+		
+	}
+
+	.pics{
+		position: relative;
+	}
+	.pics img{
+		width: 336px;
+		height: 224px;
+	}
+	.pics p:nth-child(2){
+		width: 336px;
+		height: 45px;
+		background-color: rgba(200,200,200,0.9);
+		position: absolute;
+		bottom: 0px;
+		font-size: 15px;
+		text-align:center;
+		line-height: 45px;
+		-webkit-font-smoothing: antialiased;
+	}
+	.pic5 p:nth-child(3){
+		width: 336px;
+		height: 224px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		box-shadow: 0 0 160px rgba(0,0,0,0.3) inset;
+		transition: 0.4s;
+	}
+	.pic5:hover p:nth-of-type(2){
+		opacity: 0;
+		cursor: pointer;
+
+	}
+	.items2{
+		width: 277px;
+		height: 465px;
+		float: left;
+		
+		overflow: hidden;
+
+	}
+
+	.items2 img{
+		width: 277px;
+		height: 465px;
+	}
+	.items2 img:hover{
+		transform: scale(1.02);
+		cursor: pointer;
+		transition: 0.3s;
+	}
+	.content3{
+		background-color: rgb(34,34,34);
+		font-size: 0px;
+	}
+	.items3{
+		margin-top: 40px;
+		width: 1220px;
+	}
+	.content4 .items3{
+		height: 318px;
+	}
+	.content4 .items3 .textBox{
+		height: 318px;
+		width: 1220px;
+		position: relative;
+	}
+	.content4 .items3 .textBox .boxShadow{
+		position: absolute;
+		bottom: -20px;
+		left: 11px;
+	}
+
+	.items4:after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.items3:after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.pic6{
+		box-shadow: 0 0 8px black;
+		transition-duration: 0.3s;
+		
+	}
+	.pic6:hover{
+		box-shadow: none;
+		cursor: pointer;
+		
+	}
+	.items4{
+		width: 1220px;
+		margin: 0 auto;
+		height: 276px;
+	}
+	.items4Box {
+		width: 290px;
+		height: 276px;
+		float: left;
+		margin-right: 20px;
+		
+	}
+	.items4BoxPic{
+		width: 290px;
+		height: 194px;
+		float: left;
+		overflow: hidden;
+	}
+	.items4BoxPic img{
+		width: 290px;
+		height: 194px;
+		transition-duration: 0.5s;
+		filter: blur(0.6px);
+
+	}
+	.items4BoxPic img:hover{
+		transform: scale(1.03);
+		filter: none;
+		cursor: pointer;
+		
+	}
+	.items4BoxText{
+		width: 290px;
+		height: 83px;
+		background-color: white;
+		float: left;
+		text-align: center;
+	}
+
+	.items4BoxText h3{
+		font-size: 16px;
+		margin-top: 18px;
+		-webkit-font-smoothing: antialiased;
+	}
+	.items4BoxText span{
+		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+	}
+	.content4{
+		background-color: rgb(58,59,60);
+	}
+	.textBoxT p:nth-child(3):hover{
+		background-color: white;
+		color: black;
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	.textBoxT2 p:nth-child(3):hover{
+		background-color: white;
+		color: rgb(62,69,108);
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	.textBoxT3 p:nth-child(3):hover{
+		background-color: white;
+		color: rgb(44,174,115);
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	.textBoxT4 p:nth-child(3):hover{
+		background-color: white;
+		color: #0075ff;
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	.items4{
+		margin-top: 40px;
+
+	}
+	.items4BoxText2{
+		background-color: black;
+		color: white;
+	}
+	.items4BoxText2 span{
+		line-height: 40px;
+	}
+	.pic7{
+		width: 612px;
+		height: 318px;
+		float: left;
+		margin-left: 20px;
+		
+		overflow: hidden;
+	}
+	.pic7 img{
+		transition-duration: 0.3s;
+	}
+	.pic7 img:hover{
+		transform: scale(1.04);
+		cursor: pointer;
+		
+	}
+	.pic8{
+		width: 352px;
+		height: 318px;
+		float: left;
+		font-size: 0;
+		margin-left: 14px;
+	}
+	.pic8>div{
+		overflow: hidden;
+	}
+	.pic8>div img{
+		width: 352px;
+		height: 159px;
+	}
+	.pic8>div img:hover{
+		transform: scale(1.03);
+		cursor: pointer;
+	}
+	.content4 .items4Box{
+		margin-right: 17px;
+		border: 1px solid rgba(564,64,54,0)
+	}
+	.content4 .items4Box:hover{
+		border: 1px solid rgb(33,174,113);
+		
+		
+	}
+	.content4 .items4Box img{
+		transform: none;
+		filter: none;
+	}
+	.content4 .items4Box img:hover{
+		transform: none;
+		filter: none;
+	}
+	.content5{
+		background-color: rgb(34,34,34);
+	}
+	.textBoxT4{
+		background-color: #0075ff;
+	}
+	.pic11{
+		width: 404px;
+		height: 318px;
+		float: left;
+		font-size: 0;
+		margin-right: 18px;
+	}
+	.pic11>div{
+		display: inline-block;
+		overflow: hidden;
+	}
+	.pic11>div img{
+		transition-duration: 0.3s;
+	}
+	.pic11>div img:hover{
+		transform: scale(1.04);
+		cursor: pointer;
+
+	}
+	.pic12 img{
+		width: 404px;
+		height: 158px;
+	}
+	.pic13 img,.pic14 img{
+		width: 202px;
+		height: 160px;
+	}
+	.pic15{
+		overflow: hidden;
+		float: left;
+		transition-duration: 0.3s;
+	}
+	.pic15 img{
+		width: 560px;
+		height: 318px;
+		overflow: hidden;
+		float: left;
+		transition-duration: 0.3s;
+
+	}
+	.pic15 img:hover{
+		transform: scale(1.04);
+		cursor: pointer;
+	}
+	.pic16{
+		width: 1220px;
+		height: 225px;
+		
+	}
+	.content5 .items3{
+		height: 358px;
+	}
+	.content5 .textBox{
+		height: 318px;
+	}
+	.pic16>div{
+		float: left;
+		color: rgba(225,225,225,0.9);
+		-webkit-font-smoothing: antialiased;
+		position: relative;
+		overflow: hidden;
+		width: 290px;
+		height: 225px;
+		font-size: 14px;
+	}
+	.pic16>div img{
+		transition-duration: 0.3s;
+		width: 290px;
+		height: 225px;
+
+	}
+	.pic16>div img:hover{
+		transform: scale(1.04);
+		cursor: pointer;
+	}
+	.pic16>div span{
+		position: absolute;
+		bottom: 20px;
+		display: inline-block;
+		width: 290px;
+		text-align: center;
+		left: 0;
+		text-shadow: 0 0 0.5px black;
+	}
+	.pic17{
+		margin-right: 20px;
+	}
+	footer{
+		width: 100%;
+		padding-bottom: 60px;
+		background-color: black;
+	}
+	footer:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.bottom1:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.bottom2:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	footer span{
+		margin-bottom: 20px;
+		color:white;
+		display: inline-block;
+		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		margin-bottom: 25px;
+	}
+	.bottom1{
+		width: 1220px;
+		margin:0 auto;
+		padding: 40px 0;
+	}
+	.bottom1 ul:nth-child(1){
+		margin: 20px 40px;
+	}
+	.bottom1 ul{
+		margin-right: 120px;
+
+		float: left;
+		list-style: none;
+	}
+	.bottom1 li{
+		color:rgba(255,255,255,0.5);
+		font-size: 14px;
+		cursor: pointer;
+		margin-bottom: 10px;
+		-webkit-font-smoothing: antialiased;
+	}
+	.bottom2{
+		width: 1220px;
+		height: 141px;
+		margin: 0 auto;
+		border-top: 1px solid rgba(188,188,188,0.5);
+		border-bottom: 1px solid rgba(188,188,188,0.5);
+	}
+	.friend{
+		width: 145px;
+		height: 141px;
+		color: white;
+		float: left;
+	}
+	.friend span{
+		border-top: 2px solid white;
+		padding-top: 20px;
+		height: 101px;
+	}
+	.friendName{
+		height: 141px;
+		width: 1075px;
+		float: left;
+		padding: 10px 0;
+	}
+	.zi{
+		width: 317px;
+		height: 12px;
+		margin: 10px 20px;
+	}
+	.guohui{
+		width: 80px;
+		height: 33px;
+		margin-left: 20px;
+
+	}
+	.bottom3{
+		width: 1220px;
+		margin: 0 auto;
+		line-height: 33px;
+
+	}
+	.bottom3>img{
+		float: right;
+		
+	}
+	.bottom3 span{
+		float: right;
+		color: rgba(240,240,240,0.4);
+		font-size: 13px;
+		
+
+
+	}
+	.friendName a{
+		margin-right: 60px;
+		margin-bottom: 30px;
+		text-decoration: none;
+		float: left;
+		font-size: 15px;
+		color:rgba(222,222,222,0.8);
+		-webkit-font-smoothing: antialiased;
+	}
+	.gotop{
+		width: 40px;
+		height: 40px;
+		background-color: rgb(26,26,26);
+		text-align: center;
+		position: fixed;
+		right: 15px;
+		bottom: 50px;
+	}
+	.gotop a{
+		font-size: 35px;
+		position: relative;
+		bottom: 15px;
+		color: white;
+		text-decoration-line: none;
+	}
+	.logoo{
+		background-image: url(img/logoo.png);
+		width: 101px;
+		height: 36px;
+		
+	}
+</style>
+</head>
+<body>
+	<header id="top" name="top">
+		<div class="top">
+			<a href="#" class="topL">
+				<p>ZEALER</p>
+				<p>科技生活第一站</p>
+			</a>
+			<div class="topM">
+				<div class="topButton1">
+					<p>MEDIA</p>
+					<p>ZEALER 官方</p>
+				</div>
+				<div class="topButton2">
+					<p>X</p>
+					<p>科技基因</p>
+				</div>
+				<div class="topButton3">
+					<p>S</p>
+					<p>手机服务</p>
+				</div>
+				<div class="topButton4">
+					<p>LAB</p>
+					<p>决策助手</p>
+				</div>
+			</div>
+			<div class="topR">
+				<span>🔍</span>
+				<input type="text" placeholder="Search" class="search" onclick="placeholder=''" onblur="placeholder='Search'">
+				<a href="">登录</a> | <a href="">注册</a>
+			</div>
+		</div>
+	</header>
+	<div class="content content1">
+		<div class="section">
+			<div class="pic1 shadow"></div>
+			<div class="box">
+				<img src="img/3.jpg" alt="" class="pic3 floatText">
+				<div class="mask"></div>
+				<div class="shortLine"></div>
+				<div class="shortLine2"></div>
+				<p class="ft">Faceu郭列：为理想主义装上翅膀</p>
+			</div>
+			<div class="box2">
+				<img src="img/2.jpg" alt="" class="pic2 floatText">
+				<div class="mask2"></div>
+				<div class="shortLine3"></div>
+				<div class="shortLine4"></div>
+				<p class="ft2">全面屏 LOGO指纹识别   王自如上手 坚果 Pro 2</p>
+			</div><div class="pic4"></div>
+		</div>
+	</div>
+	<div class="content content2">
+		<div class="section st2">
+			<div class="line1"></div>
+			<div class="title">
+				<div class="square"></div>
+				<span>与科技生活，不期而遇</span>
+				<div class="square"></div>
+			</div>
+			<div class="picbox1">
+				<div class="textBox">
+					<div class="textBoxT">
+						<h2>MEDIA</h2>
+						<p>官方视频</p>
+						<p>More</p>
+						<p>科技生活方式第一站</p>
+						
+					</div>
+					<div class="boxShadow"></div>
+					<div class="offvideo">
+						<img src="img/video.jpg" alt="">
+					</div>
+				</div>
+				<div class="items1">
+					<div class="pics pic5">
+						<img style="margin-right: 18px" src="img/5.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(135,146,165);float: left; margin: 13px 0; height: 16px"></span>全面屏 Logo指纹识别 王自如一点都不自如</p>
+						<p></p>
+					</div>
+					<div  class="pics pic5">
+						<img src="img/6.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(135,146,165);float: left; margin: 13px 0; height: 16px"></span>Faceu郭列：为理想主义装上翅膀</p>
+						<p></p>
+					</div>
+					<div class="pics pic5">
+						<img style="margin:17px 18px 0 0;" src="img/7.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(135,146,165);float: left; margin: 13px 0; height: 16px"></span>智慧生活 | 王自如带你体验方太抽油烟机</p>
+						<p style="margin-top: 17px;"></p>
+					</div>
+					<div class="pics pic5">
+						<img  src="img/8.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(135,146,165);float: left; margin: 13px 0; height: 16px"></span>「ZEALER 出品」 苹果 iPhone X 深度上手</p>
+						<p></p>
+					</div>
+				</div>
+				<div class="items2" style="margin-left: 13px;">
+					<img src="img/9.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content content3">
+		<div class="section st2">
+			<div  class="line2">
+				
+			</div>
+			<div class="title2">
+				<div class="square">
+					
+				</div>
+				<span>让科技基因，无处不在</span>
+				<div class="square">
+					
+				</div>
+			</div>
+			<div class="items3">
+				<div class="textBox">
+					<div class="textBoxT textBoxT2">
+						<h2>X</h2>
+						<p>科技基因</p>
+						<p>More</p>
+						<p style="white-space: nowrap;">in association with ZEALER</p>
+					</div>
+					<div class="boxShadow">
+
+					</div>
+					<div class="offvideo">
+						<img src="img/10.jpg" alt="">
+					</div>
+				</div>
+				<div class="items2" style="margin-right: 14px">
+					<img src="img/11.jpg" alt="">
+				</div>
+				<div class="items1">
+					<div style="margin-right: 18px"  class="pics pic6">
+						<img src="img/12.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(227,181,190);float: left; margin: 13px 0; height: 16px"></span>慢镜头还原真空吸入的奇妙场景</p>
+						<p></p>
+					</div>
+					<div  class="pics pic6">
+						<img src="img/13.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(112,109,190);float: left; margin: 13px 0; height: 16px"></span>【ZNDS双11特辑】双十一要不要买台互联网品牌电视</p>
+						<p></p>
+					</div>
+					<div style="margin:17px 18px 0 0;" class="pics pic6">
+						<img  src="img/14.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(117,168,102);float: left; margin: 13px 0; height: 16px"></span>iPhoneX，小米mix2，三星note8，全面屏三...</p>
+						<p ></p>
+					</div>
+					<div class="pics pic6">
+						<img  src="img/15.jpg" alt="">
+						<p><span style="border-left: 5px solid rgb(194,168,94);float: left; margin: 13px 0; height: 16px"></span>罗技 MX Sound 2.0上手开箱</p>
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="items4">
+				<div class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/16.jpg" alt="">
+					</div>
+					<div class="items4BoxText">
+						<h3>- 米奇沃克斯 -</h3>
+						<span>拍摄一下午的作品展示</span>
+					</div>
+				</div>
+				<div class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/17.jpg" alt="">
+					</div>
+					<div class="items4BoxText">
+						<h3>- 米奇沃克斯 -</h3>
+						<span>我和她之间的一个约定</span>
+					</div>
+				</div>
+				<div class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/18.jpg" alt="">
+					</div>
+					<div class="items4BoxText">
+						<h3>- LongWay摩托志 -</h3>
+						<span>【Longway摩托志】春风 CF650NK...</span>
+					</div>
+				</div>
+				<div style="margin-right: 0;" class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/19.jpg" alt="">
+					</div>
+					<div class="items4BoxText">
+						<h3>- UnboxTherapy -</h3>
+						<span>【Unbox Therapy】中兴可折叠双屏...</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content content4">
+		<div class="section st2">
+			<div class="line2">
+				
+			</div>
+			<div class="title3">
+				<div class="square">
+					
+				</div>
+				<span>享受科技,物尽其用</span>
+				<div class="square">
+					
+				</div>
+			</div>
+			<div class="items3">
+				<div class="textBox">
+					<div class="textBoxT textBoxT3">
+						<h2>S</h2>
+						<p>手机服务</p>
+						<p>More</p>
+						<p>还原服务本质</p>
+					</div>
+					<div class="boxShadow">
+					</div>
+					<div class="pic7">
+						<img src="img/20.jpg" alt="">
+					</div>
+					<div class="pic8">
+						<div class="pic9">
+							<img src="img/21.jpg" alt="">
+						</div>
+						<div class="pic10">
+							<img src="img/22.jpg" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="items4">
+				<div class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/23.jpg" alt="">
+					</div>
+					<div class="items4BoxText items4BoxText2">
+						<h3></h3>
+						<span>楼斌拆解 iPhone 8 Plus</span>
+					</div>
+				</div>
+				<div class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/24.jpg" alt="">
+					</div>
+					<div class="items4BoxText items4BoxText2">
+						<h3></h3>
+						<span>屏幕「防蓝光」真有其事还是商业炒...</span>
+					</div>
+				</div>
+				<div class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/25.jpg" alt="">
+					</div>
+					<div class="items4BoxText items4BoxText2">
+						<h3></h3>
+						<span>用意念玩游戏,你准备好了么?</span>
+					</div>
+				</div>
+				<div style="margin-right: 0;" class="items4Box">
+					<div class="items4BoxPic">
+						<img src="img/26.jpg" alt="">
+					</div>
+					<div class="items4BoxText items4BoxText2">
+						<h3></h3>
+						<span>保养头发,你应该知道这些...</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content content5">
+		<div class="section st2">
+			<div class="line2">
+			</div>
+			<div class="title4">
+				<div class="square">
+					
+				</div>
+				<span>用数据服务，帮你决策</span>
+				<div class="square">
+					
+				</div>
+			</div>
+			<div class="items3">
+				<div class="textBox">
+					<div class="textBoxT textBoxT4">
+						<h2>LAB</h2>
+						<p>决策助手</p>
+						<p>More</p>
+						<p>帮你做最优决策</p>
+					</div>
+					<div class="boxShadow">
+					</div>
+				</div>
+				<div class="pic11">
+					<div class="pic12">
+						<img src="img/27.jpg" alt="">
+					</div>
+					<div class="pic13">
+						<img src="img/28.jpg" alt="">
+					</div>
+					<div class="pic14">
+						<img src="img/29.jpg" alt="">
+					</div>
+				</div>
+				<div class="pic15">
+					<img src="img/30.jpg" alt="">
+				</div>
+			</div>
+			<div class="pic16">
+				<div class="pic17">
+					<img src="img/31.jpg" alt="">
+					<span>HUAWEI Mate 9</span>
+				</div>
+				<div class="pic17">
+					<img src="img/32.jpg" alt="">
+					<span>小米 MIX</span>
+				</div>
+				<div class="pic17">
+					<img src="img/33.jpg" alt="">
+					<span>iPhone 7</span>
+				</div>
+				<div class="pic18">
+					<img src="img/34.jpg" alt="">
+					<span>iPhone 7 Plus</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="bottom1">
+			<ul>	
+				<div class="logoo">
+					
+				</div>
+				
+			</ul>
+			<ul>	
+				<span>业务</span>
+				<li>手机服务</li>
+				<li>实验室</li>
+				<li>社区</li>
+			</ul>
+			<ul>	
+				<span>关于我们</span>
+				<li>会员条款</li>
+				<li>加入我们</li>
+				<li>关于 ZEALER</li>
+			</ul>
+			<ul>	
+				<span>关注我们</span>
+				<li>新浪微博</li>
+				<li>联系我们</li>
+			</ul>
+			<ul>	
+				<span>官方微信</span>
+				<li><img src="img/wechat.png" alt=""></li>
+			</ul>
+			<ul>	
+				<span>APP下载</span>
+				<li><img src="img/wechat2.png" alt=""></li>
+			</ul>
+		</div>
+		<div class="bottom2">
+			<div class="friend">
+				<span>友情链接</span>
+			</div>
+			<div class="friendName">
+				<a href="">快科技</a>
+				<a href="">91门户</a>
+				<a href="">ROM之家</a>
+				<a href="">IT之家</a>
+				<a href="">前瞻网</a>
+				<a href="">威锋网</a>
+				<a href="">蜂鸟网</a>
+				<a href="">i黑马</a>
+				<a href="">推酷网</a>
+				<a href="">互联网一些事</a>
+				<a href="">手机之家</a>
+				<a href="">IT168</a>
+				<a href="">苹果园</a>
+				<a href="">爱活网</a>
+				<a href="">优亿市场</a>
+				<a href="">雷锋网</a>
+				<a href="">科技问答</a>
+				<a href="">机智猫</a>
+				<a href="">智能界</a>
+				<a href="">月牙科技</a>
+			</div>
+			
+			
+		</div>
+		<div class="bottom3">
+			<img class="guohui" src="img/newGovIcon.gif" alt="">
+			<span>粤ICP备12076188号</span>
+			<img  class="zi" src="img/bottom_text.png" alt="">
+		</div>
+		<div class="gotop">
+			<a href="#top">︿</a>
+		</div>
+	</footer>
+</body>
+</html>

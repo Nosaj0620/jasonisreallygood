@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>挤出时间</title>
+</head>
+<body>
+	<button class="button" id="button" value="23123">金坷垃好处有啥</button>
+	<img src="1.jpeg" id="img1" alt="">
+</body>
+<script>
+	/*
+		根据元素的ID获取元素
+		ducument.getElementById('元素的ID');
+	*/
+	var s = document.getElementById('button');
+	console.log(s);
+	//为s绑定点击事件(function是声明函数的关键字)
+	// s.onclick = function(){
+	// 	s.style.backgroundColor= "yellow";
+	// 	s.style.color= "red";
+	// 	s.style.width= 200+"px";
+	// 	s.style.height= 200+"px";
+	// 	s.style.borderRadius= 200+"px";
+	// }
+	s.onmouseover = function(){
+		s.style.backgroundColor= "yellow";
+		s.style.color= "red";
+		s.style.width= 200+"px";
+		s.style.height= 200+"px";
+		s.style.fontSize=20+"px";
+		s.style.outLine="none";
+		s.style.borderRadius= 200+"px";
+	}
+	s.onmouseout = function(){
+		s.style.backgroundColor= "green";
+		s.style.color= "pink";
+		s.style.width= 200+"px";
+		s.style.height= 200+"px";
+		s.style.fontSize=20+"px";
+		s.style.borderRadius= 200+"px";
+	}
+	var img1 = document.getElementById('img1');
+	console.log(img1.src);
+	img1.src= "2.png";
+</script>
+</html>

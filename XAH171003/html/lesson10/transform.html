@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>transform</title>
+	<style>
+	body{
+		margin:0 200px;
+		text-align: center;
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+		-ms-transform-style:preserve-3d;
+		-o-transform-style:preserve-3d;
+		/*开启3D空间*/
+		transform-style:preserve-3d;
+		/*设置观察者距离,依然是在父级里设置*/
+		perspective: 500px;
+		perspective-origin: center;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		background-color: blue;
+		font-size: 28px;
+		color: white;
+		margin:20px auto;
+		transition: 1 s;
+		/*origin设置变形的基准点*/
+		margin-bottom: 100px;
+		transform-origin: center;
+		text-align: center;
+		line-height: 200px;
+		backface-visibility: visible;
+
+	}
+	.box:hover{
+		-webkit-transform: translate(500px,500px);
+		-moz-transform: translate(500px,500px);
+		-ms-transform: translate(500px,500px);
+		-o-transform: translate(500px,500px);
+		transform: translate(500px,500px);
+		
+	}
+	.box2:hover{
+		/*scale:值大于1时代表放大,值小于1时代表缩小*/
+		transform: scaleX(5);
+		transform: scaleY(0.5);
+		transform:scale(2,0.5);
+	}
+	.box3:hover{
+		transform: skewX(45deg);
+		transform: skewY(35deg);
+		transform: skew(180deg,180deg) ;
+	}
+	.box4:hover{
+		transform: rotate(-2880deg)
+		translate(200px,200px) ;
+		
+	}
+
+	.box5:hover{
+		transform: translate3d(300px,200px,300px);
+	}
+	.box6:hover{
+		transform: scale3d(2,2,2);
+	}
+	.box7:hover{
+		backface-visibility: visible;
+		transform: rotate3d(90deg);
+	}
+	/*在变形里面:
+		x方向:总是平行于盒子的width方向;
+		y方向:总是平行于盒子的height方向;
+		z方向:总是垂直于x,y所构成的平面;
+		盒子在进行变形时,先旋转后移动,和先移动后旋转结果不同,所以在使用transform变形时一定要注意变形的先后顺序*/
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		translate
+	</div>
+	<div class="box2">
+		scale
+	</div>
+	<div class="box3">
+		skew
+	</div>
+	<div class="box4">
+		rotate
+	</div>
+	<div class="box5">
+		3D effect 平移
+	</div>
+	<div class="box6">
+		3D effect 缩放
+	</div>
+	<div class="box7">
+		3D effect 旋转
+	</div>
+</body>
+</html>

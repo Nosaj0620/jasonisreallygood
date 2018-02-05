@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>hover</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+
+	}
+	.box{
+		width: 500px;
+		border: 1px solid red;
+	}
+	.box1{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+	}
+	.box2{
+		width: 200px;
+		height: 200px;
+		background-color: pink;
+	}
+		/*hover设置鼠标悬停在盒子上的样式
+			同级兄弟盒子不能互相指定hover效果,如果希望实现鼠标移入一个盒子范围让另一个盒子发生效果的改变,需要让两个盒子建立联系(两个盒子有共同父级,或者其中一个盒子时另一个盒子的父级)
+			只有当鼠标进入父级范围内的时候,能够让子级去发生样式改变,子级不能让父级发生样式改变.*/
+			.box1:hover+.box2{
+				width: 400px;
+			}
+			.box2:hover{
+				background-color: black;
+			}
+			.nav{
+				background-color: rgba(0,0,0,0.5);
+				width: 100%;
+
+
+			}
+			.nav a{
+				color: white;
+				
+			}
+			.scroll{
+				border:1px solid black;
+				width: 75px;
+				text-align: center;
+				padding: 5px 5px;
+				position: absolute;
+				background-color:white;
+				display: none;
+				margin-top: 3px;
+				left: 215px;
+
+			}
+			.scroll a{
+				margin:10px 0;
+				text-decoration: none;
+				color: black;
+
+			}
+			.more{
+
+			}
+			a:hover+.scroll {
+				display: block;
+			}
+			.scroll:hover{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<a href="##">新闻</a>
+			<a href="##">hao123</a>
+			<a href="##">地图</a>
+			<a href="##">视频</a>
+			<a href="##">贴吧</a>
+			<a href="##">学术</a>
+			<a class="setting" href="##">设置
+				<div class="scroll">
+					<a href="#">搜索设置</a>
+					<a href="#">高级搜索</a>
+					<a href="#">关闭预测</a>
+					<a href="#">搜索历史</a>
+				</div>
+			</a>
+			<a class="more" href="">更多产品</a>
+
+
+			</div>
+	<!-- <div class="box">
+		<div class="box1">box1</div>
+		<div class="box2">box2</div>
+	</div> -->
+</body>
+</html>

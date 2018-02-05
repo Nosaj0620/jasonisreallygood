@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>双色球</title>
+</head>
+<body>
+	
+	<button id="btn"  >roll</button>
+	<div id="text" style="display: inline-block;"></div>
+	
+</body>
+<script>
+	function roll(){
+		var arr=[];
+		var b=parseInt(Math.random()*15+1);
+		if(b<10){
+			b="0"+b;
+		}
+		for(var a=0;a<=6;a++){
+			var s =parseInt(Math.random()*32+1);
+			if(s<10){
+				arr.push("0"+s);
+			}else{
+				arr.push(s);
+			}
+		}
+		arr.push(" 蓝号: "+b);
+		text.innerText=(arr.join(" "));
+		console.log(arr.join(" "));
+	}
+	btn.onclick=function() {
+		roll();
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

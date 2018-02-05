@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jq动画1</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#box {
+				width: 200px;
+				height: 200px;
+				background-color: deepskyblue;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		/*ele.animate({params,time,callback});
+		 * params:动画效果(css样式列表)
+		 * time:动画持续时间长度(单位ms,作用类似于css的transition)
+		 * callback:动画执行结束之后的回调函数
+		 */
+		//		var box = document.getElementById("box");
+		//		window.onmousemove = function(){
+		//			var e = event || window.event;
+		//			box.style.left = e.screenX-box.offsetWidth+"px";
+		//			box.style.top = e.screenY-box.offsetHeight+"px";
+		//		}
+		$('#box').on('click', boxAni);
+
+		function boxAni() {
+			$('#box').animate({
+					'width': '500px',
+					'height': '500px',
+					'background': 'rgb(210,145,23)'
+				}, 1000, function() {
+					$('#box').animate({
+						'width': '100%',
+						'height': '100%',
+						'background': 'rgb(20,45,23)'
+					},5000,boxAni());
+				});
+			}
+	</script>
+
+</html>

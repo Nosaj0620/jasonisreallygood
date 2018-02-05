@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>常用标签和选择器2017-10-25 14:42:53</title>
+	<style>
+		/*a标签的4个伪类顺序:lvha(爱恨分明)*/
+		/*未被访问的链接*/
+		a:link{color:pink;}
+		/*访问过的链接*/
+		a:visited{
+			color:red;
+			text-shadow: 1px 0 0 black;
+		}
+		/*鼠标悬停*/
+		a:hover{
+			color: lightyellow;
+			text-shadow: 1px 0 0 black;
+		}
+
+		/*鼠标正在点击的效果*/
+		a:active
+		{
+			color: black;
+			text-shadow: 1px 0 0 lightgreen;
+		}
+		/*逗号选择器：同时匹配多个标签*/
+		h1,h2,a{
+			color: rgb(31,56,158);
+		}
+		/*组合选择器：标签名+选择器名：更精确的查找标签*/
+		h1#turn{
+			background-color: red;
+		}
+		/*后代选择器：选择器1 选择器2{样式}：选择器1是选择器2的父级*/
+		/*!important:将重要的样式优先显示出来;添加在样式后面,分号前面*/
+		ul li{
+			color: yellow !important;
+			font-size: 30px;
+		}
+		/*子级选择器：选择器1>选择器2{样式}；选择器1必须是选择器二的父级
+		直系子元素 只能选中他儿子,不能选中孙子*/
+		.box>div{
+			width: 100px;
+			height: 100px;
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 标题标签 -->
+	<!-- focus: 一个页面只允许出现一个h1标签 -->
+	<h1 id="turn">这是一级标题</h1>
+	<h2>这是二级标题</h2>
+	<h3>这是三级标题</h3>
+	<h4>这是四级标题</h4>
+	<h5>这是五级标题</h5>
+	<h6>这是六级标题</h6>
+	<!-- 段落 -->
+	<!-- 规范:inline inline-block类型的盒子不能嵌套block类型的盒子;
+	block类型的盒子可以嵌套所有类型的盒子 除P标签外 -->
+	<p>大河向东流啊 天上的星星参北斗啊</p>
+	<p>一群嗜血的蚂蚁 
+		<span>hshshshshshh</span>
+		被腐肉所吸引</p>
+	<p>我像只鱼儿在你的荷塘</p>
+	<!-- 列表 -->
+	<!-- type:1,a,A,I.i -->
+	<ol type="a" >
+		<li><a href="../lesson01/index.html">猜</a></li>
+		<li>猜</li>
+		<li>看</li>
+		<li>我</li>
+		<li>是</li>
+		<li>谁</li>
+	</ol>
+	<!-- type:默认disc实心圆 circle square -->
+	<ul type="circle">
+		<li>铁</li>
+		<li>头</li>
+		<hr>
+		<li>功</li>
+		<li>无</li>
+		<br>
+		<li>影</li>
+		<li>脚</li>
+	</ul>
+
+		<q>jfkdghihidhf ysdhgfsdgfisudhfshdgfsuy sydgfusdygfysgdyfsyudfsudfysgdfsuy dfsydfysd</q>
+		<blockquote>siduyhfew8rhiwehruewy8urhyweiurhyiewuryihweiu rhwe8ry b3289yr8237yr823r8732</blockquote>
+		<img src="img/timg.jpeg" alt="图片加载失败" title="你的名字" width="500"	height="500">
+		<!-- a标签 -->
+		<a href="#turn">锚点链接</a>
+		<a href="test.html" target="_blank">内部链接</a>
+		<a href="http://www.w3school.com.cn" target="_blank" style="text-decoration: none;">外部链接</a>
+		<div class="box">
+			<div>
+				div1 <br>div2
+				<div>p1 <br> p2</div>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+*{
+	padding:0;
+	margin: 0;
+}
+body{
+	width: 100%;
+	background-color: rgb(239,239,239);
+}
+.nav{
+	width: 100%;
+	background-color: rgb(0,0,0);
+	opacity: 0.7;
+	text-align: center;
+	box-shadow: 0 0 20px black;
+	min-width: 454px;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	
+	font-family: Lucida Calligraphy;
+}
+.logo{
+	width: 110px;
+	height: 32px;
+	padding: 10px 0;
+}
+.nav a{
+	text-decoration: none;
+	padding:10px 30px;
+	font-size:13px;
+	color: grey;
+}
+.nav a:nth-child(1){
+	color: white;
+}
+.scroll{
+	width: 1180px;
+	height: 665px;
+	margin: 120px auto 50px auto;
+	box-shadow: 0 0 10px grey;
+	position: relative;
+	text-align: center;
+
+}
+.scroll img{
+	width: 100%;
+
+
+}
+.mask{
+	background-color: rgba(0,0,0,0.7);
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+}
+.scroll p{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	line-height: 30px;
+	height: 30px;
+	color: white;
+	font-size: 15px;
+	z-index:1;
+}
+.introduce{
+	width: 95%;
+	padding: 20px 0;
+	margin: 0 auto;
+	text-indent: 2em;
+	border-bottom: 1px solid rgb(226,226,226) ;
+	border-top:1px solid rgb(226,226,226) ;
+	font-family: apple chancery;
+	color: rgb(83,83,83);
+}
+.sponsor{
+	margin: 2% auto;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+}
+.sponsor img{
+	width: 4.8%;
+	padding: 0 10px;
+}
+.content{
+	width: 96%;
+	margin: 20px auto;
+	/*min-width: 1196px;*/
+	font-size: 0;
+}
+
+.box{
+	float: left;
+	background: white;
+	width: 31%;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 2% 1.16%;
+	position: relative;
+	text-align: center;
+	box-shadow: 0 0 3px black;
+}
+.picB{
+	width: 100%;
+	height: 100%;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+.mask2{
+	background-color: rgba(0,0,0,0.6);
+	width: 100%;
+	height: 84.5%;
+	position: absolute;
+	top: 0px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	display: none;
+}
+.project{
+	font-size: 20px;
+	color: rgb(94,94,94);
+	padding: 5px 0;
+	display: inline-block;
+
+}
+.box:hover .mask2{
+	display:block;
+}
+.box:hover .p{
+	display:block;
+}
+.box .p{
+	font-size: 28px;
+	color: white;
+	position: absolute;
+	top:60px;
+	bottom:0;
+	left:0;
+	right: 0;
+	margin: auto;
+	display: none;
+}
+.footer{
+	background-color: rgb(224,224,224);
+	display: inline-block;
+	width: 100%;
+	height: 230px;
+	position: relative;
+}
+.ftleft{
+	width: 49%;
+	height: 96%;
+	position: relative;
+	border-right: 1px solid rgb(174,174,174);
+	top: 10px;
+
+}
+.ftleft img{
+	width: 30px;
+	height: 25px;
+	float: right;
+	margin-right: 10px;
+	padding: 20px 0;
+
+}
+.ftright{
+	float: right;
+	width: 49%;
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	
+}
+.ftright img{
+	padding: 20px 10px;
+
+}
+.ftright p{
+	color: grey;
+	font-size: 14px;
+	text-shadow: 0 0 2px white;
+}

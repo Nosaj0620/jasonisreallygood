@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>baggage</title>
+	<style></style>
+</head>
+<body><h2>21世纪新发明:我的兄弟叫顺溜之行李称重器之我该交多少钱前传</h2>
+	我的行李重:
+	<input type="text" id="weight" placeholder="请输入您的行李重量" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+	我该交
+	<input type="text" id="money" readonly="readonly" > 
+	元
+</body>
+<script>
+	var weight = document.getElementById('weight');
+	var money  = document.getElementById('money');
+	weight.oninput = function(){
+		if(weight.value <= 50){
+			money.value =(Number(weight.value)*0.15).toFixed(2);
+		}
+		else if(weight.value > 50){
+			money.value =  (50 * 0.15 + (Number(weight.value) - 50 )*0.25).toFixed(2);;
+		}
+	}
+</script>
+</html>

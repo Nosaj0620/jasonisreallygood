@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>choose_Char</title>
+<style>
+	*{
+		padding: 0;
+		margin:0;
+	}
+	#wrap{
+		width: 480px;
+		margin: 20px auto;
+		border: 3px inset rgba(125,32,44,0.5);
+		padding: 5px 10px;
+		box-shadow:  inset 0  0 400px rgba(122,55,23,0.4);
+	}
+	#nav{
+		width: 100%;
+	}
+	#nav::after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	#time{
+		float: left;
+	}
+	#score{
+		float: right;
+	}
+	#content{
+		width: 100%;
+		height: 640px;
+
+	}
+	#bigText{
+		text-align: center;
+		font-size: 280px;
+		-webkit-user-select: none;
+		user-select: none;
+		-webkit-font-smoothing:antialiased;
+		font-family: Wawati SC;
+	}
+	#smallText{
+		font-size: 60px;
+		margin-top: 80px;
+		text-align: center;
+		-webkit-user-select: none;
+		user-select: none;
+		border: 1px solid black;
+		-webkit-font-smoothing:antialiased;
+
+	}
+	#smallText span{
+		border: 2px solid transparent;
+		transition: 0.2s;
+		text-shadow:  0 3px 3px grey;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+	#smallText span:hover{
+		font-size: 65px;
+		cursor: pointer;
+		box-sizing: border-box;
+
+		/*border:  2px solid rgba(222,22,22,0.5);*/
+
+	}
+	#intro{
+		/*text-indent: 2em;*/
+		padding: 0px 15px;
+		margin-left: 20px;
+	}
+</style>
+</head>
+<body>
+	<!-- 容器 -->
+	<div id="wrap">
+		<!-- 头部 -->
+		<div id="nav">
+			<div id="time">倒计时:60s</div>
+			<div id="score">得分:0</div>
+		</div>
+		<!-- content -->
+		<div id="content">
+			<div id="bigText">黄</div>
+			<div id="intro">
+				根据上面的字的颜色从下面选择正确的字,选择正确自动开始
+			</div>
+			<!-- 小字 -->
+			<div id="smallText">
+				<span class="text">黄</span>
+				<span class="text">蓝</span>
+				<span class="text">红</span>
+				<span class="text">绿</span>
+				<span class="text">黑</span>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var timeDiv = document.getElementById("time");//倒计时
+	var bigText= document.getElementById("bigText");//大字
+	var scoreDiv = document.getElementById("score");//分数
+	var smallText  = document.getElementsByClassName("text");//获取所有小字(集合)
+	//随机生成内容
+	var charArr= ['黄','红','蓝','黑','绿'];
+	var colorArr = ['yellow','red','blue','black','green'];
+	//数组长度为5  元素取值范围[0,4],元素不重复
+	
+	//生成随机数
+	function randomNumber(x,y){
+		return Math.round(Math.random()*(y-x)+x);
+	}
+	//生成一个下标数组
+	function randomIndex(){
+		var a = [];
+		while(a.length<5){
+			var arrNum = randomNumber(0,4);
+			if(a.indexOf(arrNum)<0){
+				a.push(arrNum);
+			}
+		}
+		return  a;
+	}
+	// var newArr=randomIndex();
+	// console.log(newArr);
+	//大字
+	// function createText(){
+		
+		
+	// }
+	//大字颜色
+	function createColor(){
+		var bigCharIndex = randomNumber(0,4);//下标
+		bigText.innerText = charArr[bigCharIndex];//根据随机的下标取出字,为bigText设置文本内容
+		var bigCharIndex = randomNumber(0,4);//下标
+		bigText.style.color = colorArr[bigCharIndex];//根据随机的下标取出字,为bigText设置文本内容
+
+
+		var charIndexArr = randomIndex();
+		var colorIndexArr = randomIndex();
+		for(var i =0 ;i < charIndexArr.length;i++){
+			//小字          
+			smallText[i].innerText = charArr[charIndexArr[i]];
+			//小字颜色
+			smallText[i].style.color = colorArr[colorIndexArr[i]];
+		}
+	}
+	createColor();
+	var scoreNum=0;
+	var timing = 60;
+	// 立一个flag;
+	var flag='0';
+	//为每一个小字绑定点击事件
+	function game(){
+		for(var j = 0; j< smallText.length;j++){
+			//绑定
+			smallText[j].onclick = function (){
+				//获取当前点击的小字
+				var thisChar = this.innerText;
+				//获取当前点击的小字在charArr里的位置
+				var indexOfSmallText = charArr.indexOf(thisChar);
+				//获取大字的颜色
+				var bigColor = bigText.style.color;
+				//获取大字颜色在colorArr里的位置
+				var indexOfBigColor = colorArr.indexOf(bigColor);
+				createColor();
+				console.log(thisChar);
+				if(indexOfSmallText == indexOfBigColor){
+					scoreNum++;
+					scoreDiv.innerText = "得分:"+scoreNum;
+					if(flag=='0'){
+						var timer = setInterval(function(){
+							timing--;
+							//时间为0 提示时间到游戏结束
+							timeDiv.innerText="倒计时:"+timing+"s";
+							if(timing<0){
+								smallText[0].innerText="游";
+								smallText[1].innerText="戏";
+								smallText[2].innerText="结";
+								smallText[3].innerText="束";
+								smallText[4].innerText="!";
+								alert("游戏结束,得分:"+scoreNum+"!");
+								timeDiv.innerText="倒计时:0s";
+								//清空所有点击事件
+								for(var j = 0;j < smallText.length; j++){
+									smallText[j].onclick = null;
+								}
+								clearInterval(timer);
+							}
+							flag='1';
+						},1000);
+						
+					}
+				}
+			}
+		}
+	}
+	game();
+	
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>结构选择器</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}	
+	.box1{
+		font-size: 0;
+	}
+	.box1 p{
+		background-color: black;
+		width: 40px;
+		height: 40px;
+		display: inline-block;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+	.box2>p{
+		background-color: yellow;
+	}
+	p+a{
+		background-color: #ff5550;
+	}
+</style>
+</head>
+<body>
+	<!-- 子代选择器:选择器A>选择器B{样式}
+	A是B的父级,而B是A的第一代直接子级 -->
+	<div class="box1">
+		<p>1</p>
+		<p>2</p>
+		<div class="box2">
+			<p>3</p>
+			<p>4</p>
+			<p>5</p>
+		</div>
+	</div>
+	<!-- 相邻兄弟选择器:选择器A+选择器B{样式}
+	在html结构中A与B是兄弟级关系 -->
+	<p>6</p>
+	<a href="">7</a>
+	<a href="">8</a>
+</body>
+</html>

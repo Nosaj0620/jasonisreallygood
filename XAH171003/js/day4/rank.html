@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>rank</title>
+</head>
+<body>
+	<input type="number" id="score" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+	<button id="btn">查看</button>
+</body>
+<script>
+	var btn = document.getElementById('btn');
+	btn.onclick = function(){
+		var t = document.getElementById('score');
+		console.log(Number(t.value));
+		if( t.value ==""){
+			alert('请输入正确成绩');
+		}else if(t.value <60){
+			t.value="不及格";
+		}else if(t.value ==0){
+			t.value="零鸭蛋牛逼";
+		}else if(t.value >=60 && t.value<70){
+			t.value="及格";
+		}else if(t.value >=70 && t.value<80){
+			t.value="中等";
+		}else if(t.value >=80 && t.value<90){
+			t.value="良好";
+		}else if(t.value >=90 && t.value<=100){
+			t.value="优秀";
+		}else if(t.value >100){
+			alert("Are u kidding me?");
+		}
+
+	}
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>变量类型的转换</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	数据类型的转换
+	显式转换:
+	Numebr()//转数字
+	String()//转字符串
+	Boolean()//转布尔类型
+	parseInt()//取整
+	parseFloat()//取浮点型
+
+	隐式转换:
+	算术运算符(+ - * / %)的隐式转换:将进行运算的数据转换成number类型,再进行运算.
+	(+:如果有一方是字符串,进行的是字符串的拼接),如果在转换过程中出现数学逻辑无法解释的问题,返回NaN.
+	
+
+	==
+	(1) 如果比较的两个数据中有布尔类型的值,会先将这个布尔类型的值转换成number类型的数据,在进行比较;
+	(2) 如果比较的两个数据一方为string,一方为number,会先将string墙砖为number类型的数据,再做比较
+	*/
+
+	var a ='32';
+	var b = 3;
+	console.log(a + b );//'323'
+	console.log(a - b );//29
+	console.log('asdf' - 10);//NaN
+	console.log('300' - '100');
+	console.log('20' * 6);//120
+	console.log('20' * '10');//200
+	console.log('asdf' * '20');//NaN
+	console.log('20' / 4);//5
+	console.log('20' / '10');//2
+	console.log('asdf' / '20');//NaN
+
+	console.log(true == 'asdf');//false
+	console.log('true' == true);//false
+</script>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>game2</title>
+	<style>
+	.wrap{
+		margin:0 auto ;
+		width: 450px;
+		border: 1px solid black;
+		padding: 20px;
+	}
+	.time{
+		float: left;
+	}
+	.score{
+		float: right;
+	}
+	.mid{
+		clear: both;
+		text-align: center;
+		font-size:280px;
+		margin:  40px 0;
+	}
+	.info{
+		padding-left: 40px;
+	}
+	.bottom{
+		text-align: center;
+		font-size: 60px;
+	}
+	span{
+		margin: 0 20px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap" id="wrap">
+		<div class="top">
+			<div class="time" id="time">时间:60s</div>
+			<div class="score" id="score">得分:0</div>
+		</div>
+		<div id="mid" class="mid">
+			Go     
+		</div>
+		<div id="info" class="info">根据上面的字的颜色从下面选择正确的字</div>
+		<div class="bottom">
+			<span class="text">红</span>
+			<span class="text">黄</span>
+			<span class="text">绿</span>
+			<span class="text">蓝</span>
+			<span class="text">黑</span>
+		</div>
+	</div>
+</body>
+<script>
+	var textArr = ['红','黄','蓝','黑','绿'];//字的数组
+	var colorArr = ['red','yellow','blue','black','green'];//颜色的数组
+	var mid = document.getElementById('mid');//获取大字
+	var info = document.getElementById('info');//获取游戏规则
+	var timeDiv = document.getElementById('time');//获取时间
+	var score = document.getElementById('score');//获取分数
+	var texts = document.getElementsByClassName('text');
+	// console.log(texts);
+	//生成随机数组
+	function randomNum(x,y){
+		return Math.round(Math.random()*(y-x)+x);
+	}
+	function randomIndex(){//生成一个下标数组 并且去重 
+		var a = [] ;
+		while(a.length<5){
+			var arrNum = randomNum(0,4);
+			if(a.indexOf(arrNum)<0){
+				a.push(arrNum);
+			}
+		}
+		return a;
+	}
+
+	//随机选取字的颜色
+	function randomColor(){
+		var bigCharIndex = randomNum(0,4);//随机获取下标
+		mid.innerText = textArr[bigCharIndex];//根据随机的下标取出字,随机设置大字
+		var bigColorIndex = randomNum(0,4);
+		mid.style.color = colorArr[bigColorIndex];//根据随机的小标取出颜色,随机设置大字颜色
+		//生成两个随机下标数组,用来判断答案正误
+		var charIndexArr = randomIndex();//生成文字的无序下标数组 
+		var colorIndexArr = randomIndex();//生成颜色的无序下标数组
+		for(var i= 0 ; i <5 ; i++){
+			//随机小字内容
+			texts[i].innerText= textArr[charIndexArr[i]];
+			//随机小字颜色
+			texts[i].style.color= colorArr[colorIndexArr[i]];
+		}
+	}
+	randomColor();
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	var flag = 0;
+	function game(){
+		//先声明一下得分和计时
+		var scoreNum = 0;
+		var time = 60;
+		for(var j = 0; j<texts.length;j++){
+			//给每一个小字绑定点击事件
+			texts[j].onclick = function(){
+				//获取当前点击的小字内容
+				var thisChar = this.innerText;
+				//获取当前点击小字在chararr里的下标
+				var textIndex = textArr.indexOf(thisChar);
+				//获取大字颜色
+				var bigColor = mid.style.color;
+				//获取大字颜色在colorArr里的下标
+				var bigColorIndex = colorArr.indexOf(bigColor);
+				randomColor();
+				if(textIndex == bigColorIndex){
+					scoreNum++;
+					score.innerText = "得分:"+scoreNum;
+					if(flag =='0'){
+						var timer = setInterval(function(){
+							time--;
+							timeDiv.innerText = time+"s";
+							if(time<0){
+								alert('game over')
+								timeDiv.innerText = 0+"s";
+								for(var k = 0;k<texts.length;k++){
+									texts[k].onclick = null;
+								}
+								clearInterval(timer);
+							}
+							flag=1;
+						},100)
+					}
+				}
+			}
+		}
+	}
+	game();
+</script>
+</html>

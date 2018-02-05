@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>light</title>
+	<style>
+	body{
+		white-space: nowrap;
+	}
+	a img{
+		width: 150px;
+		vertical-align: middle;
+	}
+	img{
+		vertical-align: middle;
+		margin: 100px;
+	}
+	#img2{
+		width: 150px;
+		
+	}
+</style>
+</head>
+<body>
+	<img src="img/1.png" id="img1" alt="">
+	<a href="###" id="on">
+		<img src="img/Untitled2.png" id="img2" alt="">
+	</a>
+</body>
+<script>
+	var kg = document.getElementById('on');
+	var img1 = document.getElementById('img1');
+	var img2 = document.getElementById('img2');
+	
+	kg.onclick = function(){
+		if(img1.src.match('img/1.png')){
+			img1.src="img/2.png";
+			img2.src="img/Untitled.png";
+		}
+		else {
+			img1.src="img/1.png";
+			img2.src="img/Untitled2.png";
+		}
+	}
+</script>
+</html>

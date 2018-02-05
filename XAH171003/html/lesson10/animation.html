@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>animation</title>
+	<style>
+	@keyframes mov{
+		0%{
+			transform: translate(0,0);
+		}
+		50%{
+			transform: translateY(200px);
+		}
+		80%{
+			transform: translateX(1100px);
+		}
+		100%{
+			transform: translateX(0);
+		}
+	}
+	.box{
+		width: 100px;
+		height: 100px;
+		background-color: purple;
+		/*应用动画名称*/
+		-webkit-animation-name:mov;
+		-moz-animation-name:mov;
+		-o-animation-name:mov;
+		animation-name:mov;
+		/*设置动画时间*/
+		-webkit-animation-duration: 3s;
+		/*设置*/
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		/*设置播放次数*/
+		animation-iteration-count: infinite;
+		/*设置动画方向
+			0%-100%:normarl(默认值);
+			100%-0%:reverse;
+			0%-100%-0%:alternate;
+			100%-0%-100%:;
+			*/
+		animation-direction: alternate;
+	}
+	.box1{
+		width: 100px;
+		height: 100px;
+		background-color: green;
+		animation: mov 3s linear infinite alternate forwards;
+		animation-delay: 2s;
+	}
+	.box1:hover{
+		animation-play-state: paused;
+	}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box1"></div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>开心网region</title>
+	<style>
+	body{
+		width: 800px;
+		margin:0 auto;
+	}
+	body span{
+		font-size: 15px;
+		vertical-align: middle;
+	}
+	table span{
+		color: red;
+		vertical-align: middle;
+	}
+	table input{
+		width: 250px;
+		vertical-align: middle;
+	}
+	tr th:nth-child(1){
+		text-align: right;
+	}
+	tr th:nth-child(2){
+		text-align: left;
+	}
+
+	.sign{
+		font-size: 14px;
+		vertical-align: middle;
+	}
+	.hr{
+		background-color: rgb(212,213,214);
+
+	}
+	table{
+		margin-left: 100px;
+	}
+	.sex{
+		width: 49%;
+		display: inline-block;
+	}
+	.bottom{
+		width: 50%;
+		margin:50px auto;
+	}
+	.button{
+		padding: 10px 30px;
+		color: white;
+		background-color: rgb(248,42,4);
+	}
+</style>
+</head>
+<body>
+	<h2>注册:开通您的开心网账户</h2>
+	<hr>
+	<span>开心网是帮助你与你的同事,家人,同学,朋友保持联系的真实社交平台,通过这个平台你可以及时了解他们的最新动态;分享你的照片,心情,快乐;结识更多朋友!</span>
+	<table border="0" width="420" cellpadding="5">
+		<tr>
+			<th>你的电子邮箱:</th>
+			<th><span>*</span> <input type="email"></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th class="sign"><img style="vertical-align: middle;" src="img/2.png" alt="">如果你没有邮箱,你可以<a href="##">使用手机号注册</a></th>
+		</tr>
+		<tr>
+			<th>设置开心网密码:</th>
+			<th><span>*</span> <input type="password"></th>
+		</tr>
+		<tr>
+			<th>再输入一遍密码:</th>
+			<th><span>*</span> <input type="password"></th>
+		</tr>
+		<div class="hr"></div>
+	<!-- </table> -->
+	<tr>
+		<td colspan="2"><hr></td>
+	</tr>
+	<!-- <table border="1" width="470" cellpadding="5"> -->
+		<tr>
+			<th>你的姓名:</th>
+			<th><span>*</span> <input type="email"></th>
+		</tr>
+		<tr>
+			<th>性别:</th>
+			<th><span>*</span>
+				男<input style="width: 100px;" type="radio"> 女<input style="width: 20px;" type="radio"></th>
+
+		</tr>
+		<tr>
+			<th>出生日期:</th>
+			<th><span>*</span>
+				
+				<select  style="width: 80px;" name="year" id="">
+					<option value="qunian"></option>
+					<option value="qunian">去年</option>
+					<option value="jinnian">今年</option>
+					<option value="mingnian">前年</option>
+				</select>年
+				
+				<select name="month" id="">
+					<option value="qunian"></option>
+					<option value="qunian">上月</option>
+					<option value="jinnian">这月</option>
+					<option value="mingnian">下月</option>
+				</select>月
+				
+				<select name="day" id="">
+					<option value="qunian"></option>
+					<option value="qunian">昨天</option>
+					<option value="jinnian">今天</option>
+					<option value="mingnian">明天</option>
+				</select>日
+			</th>
+		</tr>
+		<tr>
+			<th>谁可以浏览我:</th>
+			<th><span>*</span>
+				<select style="width: 180px;" name="month" id="">
+					<option value="qunian"></option>
+					<option value="qunian">上月</option>
+					<option value="jinnian">这月</option>
+					<option value="mingnian">下月</option>
+				</select>
+			</th>
+		</tr>
+	<!-- </table> -->
+	<tr>
+		<td colspan="2"><hr></td>
+	</tr>
+	<!-- <table border="1" cellpadding="5"> -->
+		<tr>
+			<th style="vertical-align: middle;">验证码:</th>
+			<th><span>*</span>
+				<input   style="width: 100px; vertical-align: middle;" type="text">
+				<img style="vertical-align: middle;" src="img/1.png" alt="">
+			</th>
+		</tr>
+		<tr>
+			<th>
+				
+
+			</th>
+			<th style="text-align: right; padding-right: 40px;">
+				
+				<a style="color: black; " href="#">看不清换一张</a>
+			</th>
+		</tr>
+	</table>
+	<div class="bottom">
+		<a href="#">开心网服务条款</a><br>
+		<input class="button" type="button" value="同意条款,立即注册">
+	</div>
+	
+</body>
+</html>

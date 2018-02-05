@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>碰撞检测</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	#box1,#box2{
+		width: 100px;
+		height: 100px;
+		position: fixed;
+	}
+	#box1{
+		background: orange;
+		left: 10px;
+		top: 10px;
+	}
+	#box2{
+		background: skyblue;
+		left: 400px;
+		top: 400px;
+	}
+</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+<script>
+	// box1.onmouseover = function(){
+		var box1= document.getElementById('box1');
+		var box2= document.getElementById('box2');
+		document.onmousemove = function(){
+			var e = event || window.event;
+			box1.style.left = e.clientX - 50 + 'px';
+			box1.style.top = e.clientY - 50 + 'px';
+			if(box1.offsetLeft+box1.offsetWidth >=box2.offsetLeft && box1.offsetLeft<=box2.offsetLeft +box2.offsetWidth && box1.offsetTop+box1.offsetHeight>=box2.offsetTop && box1.offsetTop<=box2.offsetTop+box2.offsetHeight){
+				console.log('poz');
+			}
+		}
+	// }
+</script>
+</html>

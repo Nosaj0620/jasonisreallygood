@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>你不要像这样看着我</title>
+		<style type="text/css">
+			.on{
+				font-size: 20px;
+				color: darkorange;
+			}
+			.up{
+				font-size: 30px;
+				color: cadetblue;
+			}.box{
+				width: 200px;
+				height: 200px;
+				background: cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">你不要像这样看着我</div>
+	</body>
+	<script src=src="../jquery-3.2.1.min.js"></script>
+	<script>
+	/*对元素类名进行操作的函数:
+	 * ele.addClass('className1 className2');//添加一个或多个类名
+	 * ele.removeClass('className1 className2')//删除一个或者多个类名
+	 * ele.toggleClass('on');//设置或者移除类名(切换);
+	 * 
+	 * 获取并设置CSS属性值
+	 * ele.css();设置或者获取ele元素的样式(可同时设置多个);
+	 * */
+		$('#wrap').addClass('on box');//添加类名
+		$('#wrap').removeClass('on');//移除类名
+		document.getElementById('wrap').onclick = function(){
+			$('#wrap').toggleClass('on box');
+		}
+		
+		console.log($('#wrap').css('color'));//获取wrap的color样式
+		$('#wrap').css('text-align','center');
+		$('#wrap').css({
+			'border-radius':'50%',
+			'box-shadow':'0 0 30px black',
+			'line-height':'200px'
+		});
+		
+	</script>
+</html>

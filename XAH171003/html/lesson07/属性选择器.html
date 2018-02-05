@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>属性选择器</title>
+	<style>
+		a[href="###"]{
+			color: red;
+			background-color: yellow;
+		}
+		img[alt~="img"]{
+			background-color: grey;
+			width: 100px;
+			height: 100px;
+			border: 1px solid blue;
+			display: inline-block;
+		}
+		p[class|=top]{
+			background-color: red;
+		}
+		[class^=top]{
+			padding: 40px;
+			color:blue;
+		}
+		[class*=ct]{
+			display: inline-block;
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<!-- [属性]{样式} -->
+	<a href="">qweqwe</a>
+	<!-- [属性=属性值]{样式} -->
+	<a href="###">wqeqwe</a>
+	<p href="">wqeqwe</p>
+	<!-- [属性~=完整词汇]{样式} -->
+	<img src="" alt="img">
+	<!-- [属性|=指定开头词汇]{样式}
+	指定开头的词汇是一个完整的单词,或者后面跟着连接符,比如top-us -->
+	<p class="top">321</p>
+	<p class="top-title">321</p>
+	<p class="topContent">312</p>
+	<!-- [属性^=指定开头词汇]{样式}
+	指定开头词汇可以是部分单词 -->
+	<!-- [属性*=指定值部分单词]{样式} -->
+	<div class="cctt">fffff</div>
+	<div class="cthe">ggggg</div>
+	<div class="sthc">ssss</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>game</title>
+	<style>
+	*{
+		padding: 0;
+		margin:0;
+	}
+	#wrap{
+		margin: 20px auto;
+		font-size: 0;
+		width: 600px;
+		height: 600px;
+	}
+	#wrap div{
+		
+	}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+</body>
+<script>
+
+	var arr = [];
+	for(i=0;i<100;i++){
+		var newDiv = document.createElement("div");//创建元素
+		var wrap = document.getElementById("wrap");//获取wrap
+		arr.push(wrap.appendChild(newDiv));//将newDiv插入到wrap当中去
+		newDiv.style.width=" 60px";
+		newDiv.style.height="60px";
+		newDiv.style.border=" 1px solid grey";
+		newDiv.style.display=" inline-block";
+		newDiv.style.background=" black";
+		newDiv.style.boxSizing=" border-box";
+		newDiv.onclick = function(){
+			//this变量是一个有指向的变量:指向当前函数的所有者.
+			divClick(this);
+
+		}
+	}
+	// var style = window.getComputedStyle(newDiv,null);
+	function divClick(x){
+		var thisIndex = arr.indexOf(x);
+		// console.log(thisIndex);
+		judgeBg(x);
+		if(thisIndex<90){
+			judgeBg(arr[thisIndex+10]); 
+		}
+		if(thisIndex>9){
+			judgeBg(arr[thisIndex-10]); 
+		}
+		if(thisIndex  % 10 != 0){
+			judgeBg(arr[thisIndex-1]); 
+		}
+		if(thisIndex% 10 != 9){
+			judgeBg(arr[thisIndex+1]); 
+		}
+		// judgeBg(arr[thisIndex+10]); 
+		
+		
+	}
+	function judgeBg(a){
+
+		if(a.style.background== "black"){
+			a.style.background = 'pink';
+			a.style.border = 'none';
+			
+		}else{
+			a.style.background = 'black';
+			a.style.border = '1px solid grey';
+		}
+
+	}
+</script>
+</html>

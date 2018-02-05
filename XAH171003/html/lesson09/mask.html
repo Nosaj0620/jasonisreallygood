@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>mask</title>
+	<style>
+	.box{
+		width: 400px;
+		height: 400px;
+		background:url(img/2.jpg) no-repeat;
+		background-size: 100% 100%;
+		-webkit-mask:-webkit-linear-gradient(top,rgba(255,255,255,1),rgba(255,255,255,0));
+			/*mask:蒙版效果,目前只支持webkit内核
+			蒙版图:必须是一个具有拒不透明的特殊图片,不是所有图片都能作为蒙版图的;
+			*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+</body>
+</html>

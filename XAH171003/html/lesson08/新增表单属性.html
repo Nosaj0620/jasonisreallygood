@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新增表单属性</title>
+	<style>
+		.userNmae{
+			outline: none;
+		}
+		input[type="image"]{
+			width: 400px;
+			height: 400px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- novalidate:提交表单时,不对表单里的内容进行格式验证;而默认是进行格式验证的. -->
+	<!-- autocomplete:规定当用户输入字段时,是否应该启用自动完成功能
+		on:默认值,启用自动完成功能;
+		off:禁用自动完成功能; -->
+	<!-- autofocus:当页面加载的时候,input元素自动获取焦点 -->
+	<!-- type:image与sunmit都具有提交表单的功能,还是在浏览器里显示的效果不一样 -->
+	
+	<form action="" novalidate>
+		用户名: <input class="userNmae" type="text" autofocus><br>	
+		邮件: <input type="email" name="email" >
+		<br>
+		<input type="image" class="" value="提交">
+	</form>
+	
+</body>
+</html>

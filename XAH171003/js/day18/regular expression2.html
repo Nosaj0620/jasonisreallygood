@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+	</head>
+	<body>
+		<input type="text" name="" id=""  value="" />
+	</body>
+	<script>
+	/*元字符:
+	 * 在正则表达式中,有一些字符有特殊的含义,如果要去匹配这个字符本身,要将其进行转义(例如/\//).
+	 * 常见的元字符 {  }  (  )  [  ]   / \\   ^   $    +   *   .   ?   -  |
+	 * 
+	 * 两次
+	 * /a{2}/g;
+	 * 返回字符串中所有的两个连着的a;
+	 * /a{2,6}/g;
+	 * 返回字符串中所有的2,3,4,5,6个连着的a;
+	 * /a{2,}/g 
+	 * 返回字符串中2个及2个以上连着的a;
+	 * 
+	 * ?  没有或者1次
+	 * *  没有或者多次
+	 * +  1次或者1次以上
+	 * 
+	 * 脱字符^:
+	 * /^g/; 规定字符串必须要以g打头
+	 * 
+	 * 中括号[]
+	 * /[abc]/; a 或 b  或者c
+	 * /[^abc]/;不是a b c 
+	 * /[a-z]/;a~z都可以
+	 * 
+	 * 模式设置:
+	 * g:是否全局匹配
+	 * i:是否区分大小写
+	 * m:是否识别换行符(多行匹配)
+	 * 
+	 * \d 匹配0-9之间的任一数字,相当于[0-9];
+	 * \D 匹配所有0-9以外的字符,相当于[^0-9];
+	 * \w 匹配任意的字母,数字和下划线,相当于[A-Za-z0-9_]
+	 * \W 除所有字母,数字和下划线以外的字符,相当于[^A-Za-z0-9_]
+	 * \s 匹配空格,包括制表符,空格符,断行符等;
+	 * \S 匹配非空格字符
+	 * \b 匹配单词的边界
+	 * \B匹配非单词边界
+	 * [\b]匹配退格键
+	 * \m匹配换行键
+	 * \r 匹配回车键
+	 * \f 匹配换页符
+	 * \t 查找制表符table
+	 * */
+		function test(){//有返回值可以直接打印过程不用赋值给变量再打印
+			return  1; 
+		}
+		console.log(test());	
+		var reg = /\//g;
+		var str= '123';
+		var str2= 'a';
+		var str3 = 'fa';
+		var str4 = 'A';
+		console.log(str.search(reg));
+		var reg2 =  /a{2,6}/g;
+		console.log(str.match(reg2));
+		var reg3  =  /a{2,}/		
+		var str2 =  'abcdefghijklmn';
+		var reg4 = /1?/g;
+		console.log(str.match(reg4));
+		var reg5 = /1+/g;
+		console.log(str.match(reg5));
+		var reg6 = /^1/;//字符串必须是1开头
+		console.log(reg6.test(str));
+		var reg7 = /[abc]/;
+		console.log(reg7.test(str2));
+		var reg8 = /[^abc]/;
+		console.log(reg8.test(str3));
+		var reg9  = /[a-z]/i;
+		console.log(reg9.test(str4));
+		
+	</script>
+</html>

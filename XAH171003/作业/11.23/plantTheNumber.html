@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>plant number</title>
+</head>
+<body>
+	<ul>
+		<li id="hole1"></li>
+		<li id="hole2"></li>
+		<li id="hole3"></li>
+		<li id="hole4"></li>
+		<li id="hole5"></li>
+		<li id="hole6"></li>
+		<li id="hole7"></li>
+		<li id="hole8"></li>
+		<li id="hole9"></li>
+		<li id="hole10"></li>
+	</ul>
+</body>
+<script>
+	for(var order =1;order<=10;order++){
+		var od = document.getElementById('hole'+String(order));
+		od.innerText=Math.floor(Math.random()*95+5);
+	}
+</script>
+</html>

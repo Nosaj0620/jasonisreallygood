@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="box">
+				<p></p>
+			</div>
+		</div>
+		<div class="box"></div>
+		<div class="box2"></div>
+		<div class="box2"></div>
+		<div class="box2"></div>
+		<ul>
+			<li></li>
+		</ul>
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+		<input type="text" />
+		<input type="numbe" />
+		<input type="password" />
+		<input type="file" />
+		<input type="email" />
+	</body>
+	<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+	<script type="text/javascript" src=src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		/*jquery是原生js的一个轻量级的库,有强大的选择器(页面中的DOM节点)
+		 * 大大减少了对DOM元素操作的代码
+		 * 强大的兼容
+		 * 注意:script标签有src属性,不能再在其标签内部写任何js代码
+		 * jQuery的选择器:
+		 *  使用jQuery选择器获取到的元素不再是原生的js对象(不能再使用原生js对象的函数),而是一个jQuery对象(可以使用jQuery封装好的函数);
+		 * $('#wrap');//id选择器
+		 * $('.box');//class选择器
+		 * $('p');//标签选择器
+		 * $('*');//所有节点
+		 * $(this);//获取当前函数的所有者(获取到的是jQuery对象)
+		 * $('div.box')//获取class名为box的div;
+		 * $('.box2:first');//获取第一个class名为box2的元素
+		 * $('ur li:first'); // 获取到第一个ul标签里的第一个li标签
+		 * $('ur li:first-child'); // 获取到所有ul标签里的第一个li标签
+		 * $('[type]'); //所有含有type属性的元素
+		 * $('input[type]'); //所有含有type属性的所有input元素
+		 * $('input[type=text]'); //所有含有type属性的所有input属性为text的元素
+		 * */
+		var jsWrap = document.getElementById("wrap");
+		//		 console.log(jsWrap);
+		var jqWrap = $('#wrap');
+		var box = $('#box:nth-of-type(1)>p');
+		//		 console.log(box);
+		var boxes = $('.box');
+		var allEle = $('*');
+		console.log(allEle); //只包含元素节点
+//		function test() {
+//			console.log(this);
+//			console.log($(this));
+//		}
+		var firstLi = $('ul li:first');
+		var firstChildLi = $('ul li:first-child');
+		console.log(firstLi);
+		console.log(firstChildLi);
+		var boxDiv = $('div.box');
+		var firstBox2 = $('.box2:first');
+		var inputBox = $('input[type]');
+		var typeIsNotText = $('input[type!=text]');
+		var typeIsText = $('input[type=text]');
+		var evenLi = $('#list li:even');
+		console.log(evenLi);
+		var oddLi = $('#list li:odd');
+		console.log(oddLi);
+	</script>
+
+</html>

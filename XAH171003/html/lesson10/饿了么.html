@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>饿了么</title>
+	<style>
+	@keyframes mov{
+		0%{
+			transform: translateX(0) rotateY(0deg);
+		}
+		45%{
+			transform: translateX(925px) rotateY(0deg);
+		}
+		50%{
+			transform: translateX(925px) rotateY(180deg);
+		}
+		95%{
+			transform: translateX(0px) rotateY(180deg);
+		}
+		100%{
+			transform: translateX(0px) rotateY(0deg);
+		}
+		
+	}
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.box{
+		width: 1000px;
+		height: 600px;
+		background-image: url(img/bg.png);
+		position: relative;
+	}
+	img{
+		position: absolute;
+		bottom: 2px;
+		left: 2px;
+		z-index: 1;
+		-webkit-animation: mov 10s   ease-in-out infinite;
+		
+
+</style>
+</head>
+<body>
+	<div class="box">
+		<img src="img/car.png" alt="">
+	</div>
+</body>
+</html>

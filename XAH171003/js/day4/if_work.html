@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>if</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	div{
+		transform-origin: left-top;
+		margin: 50px auto;
+	}
+</style>
+</head>
+<body>
+	<div id="box" style="width: 100px;height: 100px;background-color: skyblue;" flag="true"></div>
+</body>
+<script>
+	var a = document.getElementById('box');
+	a.onclick = function(){
+		var thisFlag = box.getAttribute('flag');
+		// 获取到的flag是一个字符串(true=='true' 结果为flase false=='false' 结果也为flase)
+		console.log(thisFlag);
+		if (thisFlag == 'true'){
+			
+			// a.style.transformOrigin="right-top";
+			box.setAttribute('flag','false');
+		}
+		else{
+			
+			box.setAttribute('flag','true');
+		}
+	}
+	/*根据JS变量的值来控制代码块的执行
+	var changeFlage = true;
+	a.onclick = function(){
+		// a.style.transform= "scale(2)";
+		if (changeFlage){
+			a.style.transform= "scale(2)";
+			a.style.transformOrigin="right-top";
+			changeFlage=false;
+		}
+		else{
+			a.style.transform= "scale(1)";
+			changeFlage=true;
+		}
+	}*/
+	var a = 10,b = 20, c = 30;
+	var max;
+	// if(a>b){
+	// 	max=a;
+	// }else{
+	// 	max=b;
+	// }
+	/*
+		三目运算符:
+		表达式1 ? 表达式2:表达式3;
+		判断表达式1的值(布尔类型),为真返回表达式2的值,为假返回表达式3的值.
+	*/
+	max = a>b? a:b;
+	max = max>c? max:c;
+	console.log(max);
+	</script>
+	</html>

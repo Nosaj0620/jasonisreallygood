@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>display</title>
+	<style>
+	.box{
+		width: 200px;
+		height: 100px;
+		background-color: red;
+		display:block;
+	}
+	.box1{
+		height: 20px;
+		background-color: yellow;
+	}
+	.b1,.b2{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		font-size: 15px;
+		margin: 20px;
+	}
+	.ik1,.ik2{
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-color: green;
+		font-size: 15px;
+		/*		margin: 30px;*/
+	}
+	.ik2{
+		display: inline;
+	}
+	.fa{
+		font-size: 0;
+	}
+	.h1{
+		width: 100px;
+		height: 100px;
+		background-color: purple;
+		/*display: none;*/
+		visibility: hidden;
+	}
+</style>
+</head>
+<body>
+	<!-- display:block,inline,inline-block,none -->
+	<h2>以下是block类型的盒子</h2>
+	<div class="box">
+		<div class="box1">
+		</div>
+	</div>
+	<h2>以下是inline类型的盒子</h2>
+	<div class="fa">
+		<span class="b1">我是参照物B1</span> 
+		<span class="b2">我是参照物B2</span>
+	</div>
+	<h2>以下是inline-block类型的盒子</h2>
+	<div class="fa">
+		<div class="ik1">inline-block1</div>
+		<div class="ik2">inline-block2</div>
+	</div>
+	<h2>以下是none类型的盒子</h2>
+	<div class="h1">看不见我🙈</div>
+	
+</body>
+</html>
+<!-- 
+	display属性:
+		block:块级元素;
+		1:在宽高不设置的情况下,宽度占满整个父级,高度由内容撑开;
+		2:独占一行;
+		3:支持所有的css样式设置;
+		inline:内联级元素
+		(不支持宽高设置,不支持上下margin 只支持左右,支持padding等其他CSS样式
+		可以和同类型盒子同行显示
+		宽高是由内容撑开);
+		inline-block:内联-块级元素
+		1:相同类型的元素可以同行显示;
+		2:支持所有css样式设置
+		3：宽高默认情况下由内容撑开；
+		!focus!:
+				对于inline和inline-block类型的盒子,盒子与盒子之间的空格和回车符会被浏览器解析成盒子的间隙;
+		解决办法:
+				1:将上面盒子结束标签与下面盒子的开始标签中间或者回车符删除;
+				2:设置盒子的父级 font-size为0;在分别设置盒子本身的font-size;
+		display:none;盒子消失不见并且浏览器不会保留位置
+		visibility:hidden;盒子消失不见但是浏览器会保留位置
+	-->
+
+
+
+

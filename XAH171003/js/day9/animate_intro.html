@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>animate</title>
+	<style>
+	/**{
+		padding: 0;
+		margin:0;
+	}*/
+	.wrap{
+		border: 1px solid grey;
+		/*margin: 20px;*/
+	}
+	.box{
+		padding:30px;
+		margin: 20px;
+		width: 200px;
+		height: 200px;
+		background: rgba(223,143,183,.55);
+		border: 1px solid skyblue;
+		position: relative;
+	}
+	.item{
+		/*margin: 70px;*/
+		background: white;
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		left: 15px;
+
+	}
+</style>
+</head>
+<body>
+	<div id="wrap" class="wrap">
+		<div id="box" class="box">
+			<div class="item" id="item">
+				
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	/*
+	js获取最终样式getConputedStyle(ele);
+	返回一个对象(是一种数据格式)
+	获取这个元素的某一个样式
+	getComputedStyle(ele).width;
+	getComputedStyle["width"];
+	ele.clientWidth/ele.clientHeight 获取元素的内容 + padding的宽/高
+	ele.offsetWidth/ele.offsetHeight 获取元素的内容 + padding+border的宽/高
+	ele.offsetLeft/ele.offsetTop:获取元素(定位)的左边(其content+padding)到其父级左边的距离
+
+	以上所有获取元素样式的方法都是只读
+	*/
+	var box =document. getElementById('box');
+	var wrap =document. getElementById('wrap');
+	var item = document.getElementById('item');
+	var bgColor = getComputedStyle(box);
+	var wrapStyle = getComputedStyle(wrap);
+	var itemStyle = getComputedStyle(item);
+	console.log(box.clientWidth);
+	console.log(box.clientHeight);
+	console.log(box.offsetWidth);
+	console.log(box.offsetHeight);
+	console.log(box.offsetLeft);
+	console.log(wrap.clientLeft);
+	console.log(item.offsetLeft);
+	//box.currentStyle;
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>practice</title>
+	</head>
+
+	<body>
+		用户名:<input type="text" id="ipt1" /><br> 密 码 : <input type="text" id="ipt2" /><br>
+		<button id="btn1">登录</button>
+	</body>
+	<script type="text/javascript">
+		var ipt1 = document.getElementById('ipt1');
+		var ipt2 = document.getElementById("ipt2");
+		var btn1 = document.getElementById("btn1");
+		btn1.onclick = function() {
+			var username = ipt1.value;
+			var pswd = ipt2.value;
+			if(username.match(/\S/) == null || pswd.match(/\S/) == null) {
+				alert('wtf r u thinking?')
+			} else {
+				var reg = /[^\s\b]{6,}/;
+				if(!reg.test(pswd)){
+					alert('请输入正确信息')
+				}
+			}
+		}
+	</script>
+
+</html>

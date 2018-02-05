@@ -1,0 +1,123 @@
+/*星号是通配符,作用是选中html里的所有标签*/
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	background-color: rgb(148,207,225);
+}
+.section{
+	background-color: rgb(225,60,94);
+	padding: 20px;
+	margin-bottom:20px;
+
+
+}
+.box{
+	width: 500px;
+}
+.top{
+	font-size: 14px;
+	color: white;
+	margin-bottom: 10px;
+}
+.top img{
+	vertical-align: middle;
+}
+.top span{
+	vertical-align: middle;
+}
+.bottom{
+	background-color: rgb(234,94,124);
+	padding: 30px 35px;
+}
+.bottom img{
+	vertical-align: middle;
+}
+.bottom span{
+	color: white;
+	font-size: 14px;
+	vertical-align: middle;
+	display: inline-block;
+	width: 280px;
+	padding-left: 20px;
+}
+/*第二部分样式*/
+.s2{
+	background-color: white;
+	border:1px solid red;
+	margin-bottom: 20px;
+}
+.t2{
+	background-color: rgba(225,60,94,0.3);
+	padding: 20px 20px;
+	border-bottom: 1px solid red;
+}
+.t2 img{
+	vertical-align: middle;
+}
+.t2 span{
+	vertical-align: middle;
+	color: rgb(224,53,84);
+	font-size: 14px;
+}
+.b2{
+	background-color: white;
+	padding: 30px 35px;
+}
+.b2 img{
+	vertical-align: middle;
+	padding-left: 20px;
+}
+.b2 span{
+	color: rgb(224,53,84);
+	font-size: 14px;
+	vertical-align: middle;
+	display: inline-block;
+	width: 280px;
+	padding-left: 20px;
+}
+
+
+/*第三部分样式*/
+.s3{
+	background-color: white;
+	padding: 5px 20px 20px 20px;
+	margin-bottom:20px;
+	border: 1px solid grey;
+}
+.t3{
+	font-size: 14px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid grey;
+	line-height: 50px;
+}
+/*.line{
+	width: 92%;
+	height: 1px;
+	background-color: grey;
+	margin-top: 20px;
+	margin:0 auto;
+}*/
+.t3 img{
+	vertical-align: middle;
+}
+.t3 span{
+	vertical-align: middle;
+	color:grey;
+}
+.b3{
+	background-color: white;
+	padding: 30px 35px;
+}
+.b3 img{
+	vertical-align: middle;
+}
+.b3 span{
+	color: black;
+	font-size: 14px;
+	vertical-align: middle;
+	display: inline-block;
+	width: 280px;
+	padding-left: 20px;
+}	

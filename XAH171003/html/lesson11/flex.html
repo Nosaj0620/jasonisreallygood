@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性布局</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	.wrap{
+		width: 1200px;
+		height: 1200px;
+		margin: 0 auto;
+		border: 1px solid red;
+		/*定义当前盒子是弹性盒子*/
+		display: flex;
+		/*规定子级是否换行,默认nowrap不换行*/
+		flex-flow: wrap;
+		/*规定子级在父级里的排列方向:
+		row: 子级沿着弹性盒子的X轴方向,从左到右排列
+		row-reversze:子级沿着弹性盒子的X轴方向,从右至左排列
+		column-reversze:子级沿着弹性盒子的Y轴方向,从上至下排列
+		column-reversze:子级沿着弹性盒子的Y轴方向,从下至上排列*/
+		flex-direction: column;
+		/*flex-flow 是 flex-direction和flex-wrap的简写形式*/
+		flex-flow:  wrap row ;
+		/*justify-content 设置子级在水平方向上分布:
+		flex-start:子级居左
+		flex-end:子级居右
+		center:水平居中;
+		space-between:平均分布;
+		space-around:子级两侧有间隙,类似左右margin相等的效果;
+		*/
+		justify-content: center;
+		/*align-content: 设置子级垂直方向上的分布
+		flex-start:子级居上
+		flex-end:子级居下
+		center:垂直居中;
+		space-between:平均分布;
+		space-around:子级上下有间隙;
+		*/
+		align-content: center;
+		/*子级在父级的垂直方向上的分布:
+		align-items:flex-start:子级的顶部与父级的顶部对齐;
+		flex-end:子级的底部与父级的底部对齐;
+		center:子级垂直方向居中
+		stretch:拉伸(默认值)*/
+		align-items: center;
+	}
+	.wrap p{
+		width: 210px;
+		height: 300px;
+		background-color: rgb(37,162,99);
+		color: pink;
+		text-shadow: 0 0 5px black;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		
+		
+		<p>	
+			p2]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+
+		<p>	
+			p3]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p4]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p5]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p1]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p2]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+
+		<p>	
+			p3]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p4]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p5]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		<p>	
+			p1]为您推荐：图像捕捉屏幕截屏抓图工具截图软件FastStone Capture (FSCapture) 是经典好用的屏幕截图软件，还具有图像编辑和屏幕录制两大功能，可捕
+			捉全屏图像，或者活动窗口、窗口内的控件象截图、支持手绘区域自由截图
+		</p>
+		
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>divhide</title>
+	<style>
+	#hide{
+		width: 200px;
+		height: 60px;
+		background-color: rgba(54,111,21,0.5);
+		box-shadow: inset 0 0 40px rgba(222,122,22,0.5);
+		border:1px solid rgba(54,111,21,0.5); 
+		font-size: 25px;
+		
+	}
+	#target{
+		width: 400px;
+		height: 400px;
+		background-color: pink;
+		margin: 50px;
+	}
+</style>
+</head>
+<body>
+	<button id="hide">隐藏</button>
+	<div id="target">
+		
+	</div>
+</body>
+<script>
+	var btn = document.getElementById('hide');
+	var box = document.getElementById('target');
+	btn.onclick = function(){
+		if(btn.innerText=='隐藏'){
+			btn.innerText="显示";
+			box.style.display = "none";
+		}
+		else if(btn.innerText=='显示'){
+			btn.innerText="隐藏";
+			box.style.display = "block";
+		}
+	}
+</script>
+</html>

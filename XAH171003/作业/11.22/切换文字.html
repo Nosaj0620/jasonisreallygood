@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>hhh</title>
+	<style>
+		#text{
+			width: 300px;
+			height: 300px;
+			margin: 40px;
+			background-color: lightblue;
+			text-align: center;
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<button id="x">aaaaaa</button> <button id="y">bbbbbbb</button>
+	<div id="text">aaaaa</div>
+</body>
+<script>
+	var x = document.getElementById('x');
+	var y = document.getElementById('y');
+	var t = document.getElementById('text');
+	x.onclick = function(){
+		t.innerText="aaaaa"
+	}
+	y.onclick = function(){
+		t.innerText="bbbbb"
+	}
+
+</script>
+</html>

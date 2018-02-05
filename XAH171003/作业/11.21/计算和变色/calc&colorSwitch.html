@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>calcandcolorSwich</title>
+	<style>
+	#go{
+		width: 100px;
+		height: 50px;
+
+	}
+	hr{
+		margin: 30px 0;
+	}
+	#box{
+		width: 500px;
+		height: 500px;
+		border: 2px solid red;
+		margin: 50px;
+		transition: 1s;
+	}
+	#switch{
+		width: 100px;
+		height: 50px;
+	}
+</style>
+</head>
+<body>
+	<h2>第一题</h2>
+	<input id="first" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> + 
+	<input id="second" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> = 
+	<input id="result" type="text" readonly="readonly">
+	<input type="button" value="计算" id="go" >
+	<hr>
+	<h2>第二题</h2>
+	R <input class="color" id="color1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="0"> 
+	G <input class="color" id="color2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="0"> 
+	B <input  class="color" id="color3" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="0"> 
+	<button id="switch">变色</button>
+	<div class="box" id="box"></div>
+</body>
+<script>
+	var first = document.getElementById('first');
+	var second = document.getElementById('second');
+	var result = document.getElementById('result');
+	var go = document.getElementById('go');
+	go.onclick = function(){
+		
+		result.value = Number(first.value) + Number(second.value);
+	}
+	var r = document.getElementById('color1');
+	var g = document.getElementById('color2');
+	var b = document.getElementById('color3');
+	var go2 = document.getElementById('switch');
+	var box = document.getElementById('box');
+	go2.onclick = function(){
+		box.style['backgroundColor'] = 'rgb(' + r.value + ',' + g.value + ',' + b.value + ')';
+	}
+</script>
+</html>
+
+
+
+
+
+

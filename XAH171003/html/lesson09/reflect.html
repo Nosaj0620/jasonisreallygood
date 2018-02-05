@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>box-reflect</title>
+	<style>
+		img{
+			width: 200px;
+			height: 400px;
+			margin: 200px;
+			-webkit-box-reflect:left 10px -webkit-linear-gradient(top,red,rgba(255,255,255,0));
+			}
+			/*box-reflect:设置倒影,由于倒影不占据默认文本流,所以需要给倒影留有足够的显示空间,否则容易遮挡页面的其他内容*/
+		.box{
+			width: 800px;
+			height: 800px;
+			
+			background-image: repeating-linear-gradient(right,transparent 0%,transparent 150px,red 150px,red 300px);
+
+		}
+	</style>
+</head>
+<body>
+	<img src="img/dlrb.jpeg" alt="">
+	<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>管道创建</title>
+		<style type="text/css">
+			#wrap,
+			#pipeWrap {
+				width: 400px;
+				height: 550px;
+			}
+			
+			#wrap {
+				position: relative;
+				margin: 0 auto;
+				overflow: hidden;
+				background: url(img/bg.jpg);
+				background-size: cover;
+			}
+			
+			#pipeWrap {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.pipe {
+				width: 62px;
+				height: 493.5px;
+				position: absolute;
+				top: 0;
+				left: 400px;
+				/*background-color: yellow;*/
+			}
+			
+			.topItem {
+				height: 150px;
+				position: absolute;
+				width: 100%;
+				top: 0;
+				background-color: deepskyblue;
+				background: url(img/up_mod.png);
+			}
+			
+			.bottomItem {
+				height: 150px;
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				background-color: deepskyblue;
+				background: url(img/down_mod.png);
+			}
+			
+			.topHead {
+				width: 100%;
+				height: 60px;
+				position: absolute;
+				bottom: 0;
+				background: url(img/up_pipe.png);
+			}
+			
+			.bottomHead {
+				width: 100%;
+				height: 60px;
+				position: absolute;
+				top: 0;
+				background: url(img/down_pipe.png);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="pipeWrap">
+
+			</div>
+		</div>
+	</body>
+	<script>
+		function randomNum(x, y) {
+			return Math.round(Math.random() * (y - x) + x);
+		}
+		var pipeWrap = document.querySelector('#pipeWrap');
+
+		function createPipe() {
+			var onePipe = document.createElement('div'); //创建管道
+			onePipe.className = 'pipe';
+			var topHeight = randomNum(60, 240); //上管道高度(随机)
+			var bottomHeight = 350 - topHeight; //下管道高度(计算)
+			onePipe.innerHTML = '<div class = "topItem" style = "height:' + topHeight + 'px;"><div class = "topHead" ></div></div><div class = "bottomItem" style = "height:' + bottomHeight + 'px;"><div class = "bottomHead" ></div></div>';
+			pipeWrap.appendChild(onePipe);
+			onePipe.leftTimer = setInterval(function() { //每个管道都有自己的left值累减的计时器
+				onePipe.style.left = onePipe.offsetLeft - 2 + "px";
+				//管道移除时，清除
+				if(onePipe.offsetLeft == -onePipe.offsetWidth) {
+					clearInterval(onePipe.leftTimer); //清除计时器
+					onePipe.remove(); //移除此节点
+				}
+			}, 12);
+		}
+		//每隔一段时间，创建一个管道
+		var createPipeTimer = setInterval(function() {
+			createPipe();
+		}, 1500);
+		createPipe();
+	</script>
+
+</html>

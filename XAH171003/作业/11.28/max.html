@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>求N个数最大值</title>
+	<style>
+	div{
+	
+
+	}
+</style>
+</head>
+<body>
+	<input style="width: 200px;" type="text" id="ipt" placeholder="输入一个数字来确定数组的长度">
+	<div id="screen"></div>
+	<button id="btn">显示数组</button>
+	<button id="btn2">点我求该数组的最大值</button>
+	<div id="screen2"></div>
+</body>
+<script>
+	var ipt = document.getElementById('ipt');
+	function arr(x){
+		var array = [];
+		for(i=0;i<x;i++){
+			array.push(parseInt(Math.random()*200));
+		}
+		s=document.getElementById('screen').innerText = "["+array+"]";
+		console.log(s);
+		btn2.onclick= function (){
+			var max = Math.max.apply( Math, array );
+			document.getElementById('screen2').innerText = ("该数组最大值为"+max);
+		}
+	}
+	btn.onclick = function(){
+		arr(ipt.value);
+	}
+	
+	
+</script>
+</html>

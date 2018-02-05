@@ -1,0 +1,343 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background:rgb(245,245,245);
+}
+/*设置页面头部的样式*/
+header{
+	height: 108px;
+}
+/*设置页面上导航的样式*/
+.nav1{
+	height: 28px;
+	background-color: rgb(18,140,95);
+}
+.topBox{
+	width: 1180px;
+	margin: 0 auto;
+	text-align: right;
+	/*消除display:inline-block 
+	display:inline类型的盒子之间的间隙*/
+	font-size: 0;
+}
+.topBox a{
+	/*设置下划线*/
+	text-decoration: none;
+	/*设置文字颜色*/
+	color: white;
+	/*设置文字大小*/
+	font-size: 13px;
+	/*对于单行文字在垂直方向上居中
+	可以设置line-height高度与父级等高*/
+	line-height: 28px;
+	/*设置左边框样式*/
+	border-left: 1px solid rgb(60,168,117);
+	/*边框与内容的距离*/
+	padding: 0 40px;
+	/*对于display:inline 类型的盒子
+	单独设置高度是不响应的*/
+	display: inline-block;
+	height: 28px;
+
+}
+/*给topbox下所有s的a标签添加hover(鼠标悬停)效果*/
+.topBox a:hover{
+	background: rgb(61,153,96);
+}
+/*设置页面下导航的样式*/
+.nav2{
+	height: 80px;
+	background-color: white;
+}
+.bottomBox{
+	width: 1180px;
+	/*内边距:上下 左右*/
+	padding: 30px 0;
+	margin: 0 auto;
+	text-align: right;
+}
+.bottomBox img{
+	float: left;
+}
+.bottomBox a{
+	text-decoration: none;
+	color: grey;
+	font-size: 15px;
+	margin: 0 20px;
+}
+.bottomBox a:hover{
+	color: black;
+
+}
+/*设置页面内容的样式*/
+.content{
+	width: 1180px;
+	margin: 0 auto;
+}
+.nav3{
+	padding: 30px 0;
+}
+.nav3 a{
+	text-decoration: none;
+	font-size: 15px;
+	color: black;
+	padding: 10px 35px;
+	/*添加圆角*/
+	border-radius: 3px;
+}
+.nav3 .videoC{
+	background-color: rgb(60,168,117);
+	color: white;
+}
+/*设置鼠标悬停效果*/
+.nav3 a:hover{
+	background-color: rgb(60,168,117);
+	color: white;
+}
+/*设置瀑布流样式*/
+.waterFlow{
+	/*border:2px solid red;*/
+}
+/*清浮动*/
+.waterFlow::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.cell {
+	/*改变盒模型尺寸的计算方式*/
+	box-sizing: border-box;
+	width: 580px;
+	/*内边距:  上   左右 下*/
+	padding: 20px 20px 0;
+	/*向左浮动*/
+	float: left;
+	background-color: white;
+	margin-bottom: 20px;
+}
+.cellTop{
+	font-size: 15px;
+	height: 20px;
+	padding: 0 0 1px 0;
+}
+.cellTop span{
+	float: right;
+}
+.cellContent{
+	position: relative;
+}
+.cellContent img{
+	width: 540px;
+	height: 300px;
+}
+.mask{
+	width: 540px;
+	height: 300px;
+	background-color: rgb(0,0,0);
+	/*不透明度0.45*/
+	opacity: 0;
+	position: absolute;
+	top:5px;
+	left: 0;
+}
+.cellContent a{
+	width: 540px;
+	height: 300px;
+	position: absolute;
+	top:0;
+	left: 0;
+	text-align: center;
+	line-height: 300px;
+	/*color: white;*/
+	font-size: 60px;
+	text-decoration: none;
+	opacity: 0;
+}
+
+.cellBottom{
+	/*display:inline 不能独占一行
+	  display:block  独占一行div*/
+	  margin-bottom: 10px;
+}
+.cellBottom span{
+	color:grey;
+	font-size: 15px;
+	/*display: inline-block;
+	height: : 10px;*/
+}
+.cellBottom .green{
+	color: rgb(29,119,70);
+	float: right;
+	/*设置鼠标样式:小手*/
+	cursor: pointer;
+}
+/*设置鼠标悬停效果*/
+/*给cellContent添加hover效果,让mask改变样式*/
+.cell:hover .mask{
+	opacity: 0.45;
+}
+/*给cellContent添加hover效果,让[a]改变样式*/
+.cell a:hover{
+	opacity:1;
+}
+/*阴影 x轴偏移量 y轴偏移量 阴影模糊半径*/
+.cell:hover{
+  box-shadow: 0 3px 20px rgb(150, 150, 150); 
+}
+
+.cellRight{
+	float:right; 
+}
+/*设置分页链接的样式*/
+.pageControl{
+	text-align: center;
+	padding-bottom: 50px;
+}
+.pageControl span{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	line-height: 50px;
+	border-radius: 25px;
+	cursor: pointer;
+	color:rgb(42,128,82);
+}
+.pageControl span:nth-child(2){
+	color:white;
+	background-color: rgb(39,161,92);
+
+}
+.pageControl span:hover{
+	background-color: rgb(39,161,92);
+	color: white;
+}
+
+footer{
+	width: 100%;
+	padding-bottom:60px;
+}
+/*底部框*/
+.bottomText{
+	/*display: inline-block;*/
+	width: 1180px;
+	margin: 0 auto;
+	padding-top: 70px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid grey;	
+	
+	
+}
+.bottomText::after{
+	content: "";
+    display: block;
+    clear: both;
+}
+/*底部文字样式*/
+
+
+footer .bottomText .title{
+	font-weight: bolder;
+	margin-bottom: 13px;
+	color:black;
+	font-size: 20px;
+	text-shadow:none;
+}
+.bottomText ul{
+	float: left;
+	margin-right: 10%;
+	color: grey;
+	display: inline-block;
+	list-style: none;
+	font-size: 12px;
+	left: 0;
+	top:0;
+	
+}
+.bottomText ul li{
+	margin:10px 0;
+	cursor: pointer;
+}
+.bottomRight{
+	float: right;
+	text-align: center;
+	padding:25px 60px 0 50px;
+}
+.bottomRight img/*:hover*/{
+	cursor: pointer;
+}
+.bottomText1{
+	margin: 0 auto;
+	width: 1180px;
+	color: grey;
+	font-size: 13px;
+}
+.
+.bottomText1 .span1 {
+	padding: 20px 0 20px;
+	float: left;
+}
+.bottomText1R{
+	float: right;
+	
+	/*padding-right: 40px;*/
+}
+ .scroll{
+    position: fixed;
+	bottom: 0;
+	right: 35px;
+	width: 121px;
+	height: 100px;
+	text-align: right;
+	font-size: 0;
+}
+.scroll a{
+  display: inline-block;
+  width: 40px;
+  height: 37px;
+
+}
+.backtop{
+	width: 100%;
+	background-color: rgb(226,226,226);
+	  
+}
+.feedback{
+	width: 100%;
+	padding-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

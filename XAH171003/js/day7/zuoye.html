@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>practice</title>
+</head>
+<body>
+	<input type="text" id="inp1">
+	<button id="btn1">判断是否为素数</button>
+	<div id="res"></div>
+	<button id="btn2">变!</button>
+
+</body>
+<script>
+	var inp1 = document.getElementById("inp1");
+	var btn1 = document.getElementById("btn1");
+	var res1 = document.getElementById("res1");
+	btn1.onclick = function(){
+		var res = judgeSushu();//
+		console.log(res);
+		if(res=true){
+			res.value=res.value+"不是素数";
+		}else{
+			res.value=res.value+"是素数";
+		}
+	}
+	function judgeSushu(){
+		if(inp1.value == ""){
+			alert("请输入正确的字符串");
+		}else{
+			if(inp1.value < 2 && inp1.value > 0){
+				return true;
+			}
+			for(i=2;i<inp1.value;i++){
+				if(inp1.value % i==0){
+					return "不是素数";//不是素数
+				}
+			}
+			return "是素数";//是素数
+		}
+	}
+	//...................................................................................................................................................................................................................
+	function randomArr(){
+		var arr = [];
+		for (var i=0; i<6;i++){
+			var num = Math.round(Math.random()*32+1);//随机数[1,33]
+			if(arr.indexOf(num)<0){
+				arr.push(num);
+			}else{
+				i--;
+			}
+		}
+		console.log(arr);
+	}
+	btn2.onclick = function(){
+		randomArr();
+	}
+	//...................................................................................................................................................................................................................
+	function randomArr2(){
+		var arr=[];//声明空数组
+		while(arr.length < 6){
+			var num = Math.round(Math.random()*32+1);//随机数
+			if(arr.indexOf(num)<0){
+				arr.push(num);
+			}
+		}
+		console.log(arr);
+	}
+	randomArr2();
+	//...................................................................................................................................................................................................................
+	function sumFn(){
+		var sum = 0;
+		for(var i = 0 ; i < arguments.length;i++){
+			sum+=arguments[i];
+		}
+		return sum;
+	}
+	console.log(sumFn(3,4,5,4));
+	function maxFn(){
+		var max;
+		for(i = 0; i < arguments.length;i++){
+			max = max > arguments[i]  ?  max : arguments[i];
+		}
+		return max;
+	}
+	console.log(maxFn(2,5,88));
+	function minFn(){
+		var min=0;
+		for(i = 0; i < arguments.length;i++){
+			min = min > arguments[i]  ? arguments[i] : min ;
+		}
+		return min;
+	}
+	console.log(minFn(2,5,88));
+</script>
+</html>

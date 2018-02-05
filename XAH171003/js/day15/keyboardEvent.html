@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>键盘事件</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	#box1{
+		width: 900px;
+		height: 303px;
+		background: -webkit-linear-gradient(top,red,yellow,orange,skyblue);
+		position: relative;
+		/*border-radius: 50%;*/
+	}
+	#box2{
+		width: 320px;
+		height: 130px;
+		border: 5px inset white;
+		display: none;
+		bottom: 0;
+		right:0;
+		position: absolute;
+	}
+	#box2:hover{
+		/*cursor: none;*/
+	}
+</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2"></div>
+	</div>
+	
+</body>
+<script>
+	/*
+	键盘事件
+	(1)keypress:按下按键并抬起的时候触发;只对数字键字母键和部分功能键起作用.
+	(2)keydown:按下按键的时候触发,对几乎所有按键都有效.
+	(3)keyup:抬起按下的按键的时候触发
+	*/
+	// document.onkeypress = function(){
+	// 	var e = event|| window.event;
+	// 	console.log(e);
+	// 	// alert('press');
+	// }
+	document.onkeydown = function(){
+		var e = event|| window.event;
+		console.log(e);
+		// alert('press');
+	}
+	// document.onkeyup = function(){
+	// 	var e = event|| window.event;
+	// 	console.log(e);
+	// 	// alert('press');
+	// }
+	var box = document.getElementsByTagName('div');
+	
+	// box[0].onmousemove = function(){
+	// 	var e= window.event || event;
+	// 	box[1].style.left = (e.clientX-52)+"px";
+	// 	box[1].style.top = (e.clientY-52)+"px";
+	// 	box[1].onmousemove = function(){
+	// 		var e= window.event || event;
+	// 		box[1].style.left = (e.clientX-52)+"px";
+	// 		box[1].style.top = (e.clientY-52)+"px";
+	// 	}
+	// }
+	// box[0].onmouseout = function(){
+	// 	box[1].style.display = 'none';
+
+	// }
+
+	box[0].onmouseover = function(){
+		box[1].style.display = 'block';
+		box[0].onmousemove=function(){
+			var box1Width =box[0].offsetWidth;
+			var box2Width =box[1].offsetWidth;
+			var box1Height =box[0].offsetHeight;
+			var box2Height =box[1].offsetHeight;
+			var e= window.event || event;
+			var left_ = e.clientX-box2Width/2;
+			var top_ = e.clientY-box2Height/2;
+			
+			// box[1].style.left = (e.clientX-box2Width/2)+"px";
+			// box[1].style.top = (e.clientY-box2Height/2)+"px";
+			if(e.clientX<=box2Width/2 ){
+				// box[1].style.left = 0;
+				left_=0;
+			}
+			if(e.clientX>=box1Width-box2Width/2 ){
+				left_ = box1Width-box2Width;
+			}
+			if(e.clientY<=box2Height/2 ){
+				top_ = 0;
+			}
+			if(e.clientY>=box1Height-box2Height/2 ){
+				top_ = box1Height-box2Height;
+			}
+			box[1].style.left = left_+"px";
+			box[1].style.top = top_+"px";
+		}
+	}
+	box[1].onmouseout=function(){
+		box[1].style.display = 'none';
+	}
+	
+</script>
+</html>

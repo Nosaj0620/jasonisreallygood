@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>em和rem</title>
+	<style>
+	.wrap1{
+		font-size: 20px;
+	}
+	.wrap{
+		font-size: 2rem;
+	}
+	.text{
+		font-size: 2rem;
+	}
+	.p1{
+		font-size: 32px;
+	}
+	html{
+		font-size: 40px;
+	}
+	/*em 只跟直接父级的font-size有关
+	rem 只跟html的font-size有关
+	r=> roo                    t*/
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="wrap1">
+			<p class="text">我是文字</p>
+			<p class="p1">我是文字</p>
+		</div>
+		
+	</div>
+</body>
+</html>

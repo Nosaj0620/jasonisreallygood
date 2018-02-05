@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="container" data-id='23'>
+			22
+
+			<p>ppp</p>
+		</div>
+		<input type="text" id="ipt1" value="1" />
+		<input type="text" id="ipt2" value="3" />
+		<input type="text" id="ipt3" value="" />
+		<button>点击获取value值</button>
+	</body>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script>
+		/*创建一个jQuery对象:
+		 * $('<div id="wrap">这是一个新的DIV</div>');
+		 * 
+		 * 
+		 * 把创建的对象放在父级元素里:
+		 * ele.append(newEle);尾部添加
+		 * ele.prepend(newEle);头部添加
+		 * ele.after(newEle);元素之后添加
+		 * ele.before(newEle);尾部之前添加
+		 * 
+		 * 
+		 * text()函数和html()函数:
+		 * 设置或者获取jQuery对象(html元素)的文本或者html内容
+		 * 
+		 *attr()函数:
+		 * 接受一个参数:ele.attr('class');获取ele元素的class属性值;
+		 * 两个参数:ele.attr('class','fsj');将ele元素的class属性设置为fsj;
+		 * val()函数:设置或者获取表单元素的value值
+		 * 
+		 * 删除元素
+		 * ele.remove();移除ele本身
+		 * ele.empty();清空元素的所有子节点
+		 * */
+		var newDiv = $('<div id="wrap">这是一个新的DIV</div>');
+		console.log(newDiv);
+		//		$('#container').text('这是一句话');
+		console.log($('#container').text());
+		//		$('#container').html('<div>我是一个粉刷匠</div>');
+		//		console.log($('#container').html());
+		$('#container').attr('class', 'aa');
+		console.log($('#container').attr('data-id'));
+		console.log($('#ipt1').val());
+		$('#ipt3').val('粉刷匠');
+		var newDiv = $('<div>我是一个粉刷匠,粉刷本领强,我要把那新房子,刷的很漂亮</div>'); //创建一个jQuery对象
+		var newDiv2 = $('<div>刷完了房顶又刷墙,刷子飞舞忙,诶呦我的小鼻子,变了变了样</div>'); //创建一个jQuery对象
+		$('#container').append(newDiv2);
+		$('#container').prepend('<div>我是一个粉刷匠刷的很漂亮</div>');
+		$('#container').after('<mark>巴啦啦魔法,刷成黄色的</mark>');
+		$('#container').before('<h1>巴啦啦魔法,刷大</h1>');
+		//		$('#container p').remove();
+		$('#container').empty();
+	</script>
+
+</html>

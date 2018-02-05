@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>zoom</title>
+	<style>
+	img{
+		margin: 280px auto;
+		display: block;
+	}
+	#zoom{
+		position: fixed;
+		width: 1000px;
+		top: 0;
+		margin:0 auto;
+		height: 100px;
+	}
+</style>
+</head>
+<script type="text/javascript">
+	function mouseOver()
+	{
+		document.b1.src ="scope2.jpeg"
+	}
+	function mouseOut()
+	{
+		document.b1.src ="scope3.jpeg"
+	}
+</script>
+<body>
+	<img src="scope1.jpeg" alt="" id="img" style="width: 50px;">
+	<button id="zoom">zoomup</button>
+
+
+	<a href="http://www.w3school.com.cn" target="_blank">
+		<img border="0" alt="Visit W3School!" src="scope1.jpeg" name="b1"
+		onmouseOver="mouseOver()"
+		onmouseOut="mouseOut()" />
+	</a>
+</body>
+<script>
+	/*
+	字符串和变量拼接:字符串用引号引起来,变量直接使用变量名,用加号连接.
+	*/
+	var zoom = document.getElementById('zoom');
+	var img = document.getElementById('img');
+	img.onclick = function(){
+		var zm = parseInt(img.style.width);
+		if (zm<3000) {
+			
+			img.style.width=Number(zm)*2+"px";
+		}
+		else{
+			alert("太大啦受不了啦");
+		}
+		console.log(zm);
+	}
+
+
+
+</script>
+</html>

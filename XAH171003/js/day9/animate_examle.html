@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>example</title>
+	<style>
+	.box{
+		width:100%;
+		height: 400px;
+		border: 1px solid grey;
+		position: relative;
+	}
+	.item{
+		width: 90px;
+		height: 90px;
+		/*border: 1px solid red;*/
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: skyblue;
+		/*transition: 0.1s linear;*/
+	}
+</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<div class="item" id="item">
+		</div>
+	</div>
+</body>
+<script>
+	var item = document.getElementById('item');
+	var box = document.getElementById('box');
+	var lefft = getComputedStyle(box);
+	var speedWidth =5;
+	var speedHeight = 10;
+
+	var nowLeft = 0;
+	var nowTop = 0;
+
+	
+	var timer1 = setInterval(function(){
+		var maxLeft = box.offsetWidth-item.offsetWidth;
+		var itemRight =item.offsetRight;//每10毫秒获取一次小框的top值
+		if(nowLeft >= maxLeft ){
+			speedWidth= -speedWidth;
+		}
+		nowLeft+=speedWidth;
+		item.style.left = nowLeft+'px';
+		
+		if(nowLeft < 0  ){
+			speedWidth= -speedWidth;
+			nowLeft+=speedWidth;
+			item.style.left = nowLeft+'px';
+		}
+	},10)
+	var timer2 = setInterval(function(){
+		var itemTop = item.offsetTop;//每10毫秒获取一次小框的top值
+		var maxTop =box.offsetHeight - item.offsetHeight;//每10毫秒获取一次(大框的高度-小球高度)值
+		if(nowTop >= maxTop ){
+			speedHeight= -speedHeight;
+		}
+		
+		nowTop+=speedHeight;
+		item.style.top = nowTop+'px';
+		
+		if(nowTop < 0  ){
+			speedHeight= -speedHeight;
+			nowTop+=speedHeight;
+			item.style.top = nowTop+'px';
+		}
+	},10);
+	// timer=setInterval(function(){
+	// 	var left = item.offsetLeft;
+	// 	console.log(left);
+	// 	var lefft = box.offsetWidth;
+	// 	left+=5;
+	// 	item.style.left = left+"px";
+	// 	// i+=2;
+	// 	if(left >=lefft-200){
+	// 		clearInterval(timer);
+	// 		timer2=setInterval(function(){
+	// 			left-=5;
+	// 			item.style.left = left+"px";
+	// 		},10)
+	// 	}
+	// 	else if(left ==0){
+	// 		clearInterval(timer2);
+	// 		left+=6;
+	// 		item.style.left = left+"px";
+	// 	}
+	// },10);
+
+</script>
+</html>

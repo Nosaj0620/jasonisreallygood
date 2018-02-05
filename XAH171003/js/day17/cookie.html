@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie</title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+					 本地存储cookie
+					 1)大小为5k左右
+					 2)存储cookie:document.cookie,cookie = 'key=value';(键值对)
+					 3)取cookie :document.cookie;
+					 4)cookie的存取都是以字符串的形式
+					 5)cookie的生命周期,当浏览器关闭之后,cookie就被清除;
+					 
+					 localStorage
+					 1)大小为5MB左右
+					 2)存储和读取以及修改
+						 localStorage.key = 'value';	
+						 localStorage['key'] = 'value';	
+						 localStorage.setItem('key',value);
+						 getItem('key')//读取
+					 3)清除localStorage.clear();
+					 4)如果不设置时长,localstorage的数据会一直保存在本地
+					 	
+				 * */
+		document.cookie = 'name=zwl';
+		document.cookie = 'age=10';
+		document.cookie = 'sex=girl';
+		document.cookie = 'sadasdygasydsa=asdsadsadas';
+		document.cookie = 'haha=asdfadsdasd';
+		console.log(typeof document.cookie); //获取cookie
+		function cooky(x, y) {
+			document.cookie = x + '=' + y;
+		}
+		cooky('ff', 'dd');
+
+		function getValueByKey(x) {
+			//获取cookie字符串并且截取成数组
+			var cookyArr = (document.cookie).split('; ');
+			for(i = 0; i < cookyArr.length; i++) { //将截取好的每个元素里在截取变成新数组
+				cookyArr[i] = cookyArr[i].split('=');
+				if(cookyArr[i][0] == x) { //判断key值
+					return cookyArr[i][1]; //返回相对应的value
+				}
+			}
+			return false;
+		}
+		console.log(getValueByKey('ff'));
+		//存储localStorage
+		localStorage.username = '哈哈';
+		localStorage.pswd = 'wojiamemeda';
+		localStorage['sex'] = 'boy';
+		var arr = [1, 2, 3, 4, 5];
+		localStorage.setItem('arr1', arr);
+		cooky('arr1', arr);
+		//取localstorage
+		console.log(localStorage.arr1);
+		console.log(localStorage['username']);
+		console.log(localStorage.getItem('arr1'));
+		//修改localStorage
+		localStorage.username = '我日你妈卖批哦';
+
+		//清localStorage
+		localStorage.clear();
+	</script>
+
+</html>

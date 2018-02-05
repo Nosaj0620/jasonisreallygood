@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>3D输入框哈哈哈哈哪是琵琶不是吉他</title>
+	<style>
+	*{
+		padding: 0;
+		margin:0;
+	}
+	body{
+		background-color: rgb(21,21,21);
+		font-size: 0;
+	}
+	input[type="text"]{
+		width: 340px;
+		height: 41px;
+		border-radius: 5px 0 0 5px;
+		outline: none;
+		vertical-align: middle;
+		color:white;
+		padding-left: 10px;
+		text-shadow: -1px -1px 1px lightgreen;
+		background-color: rgb(21,21,21);
+		font-size: 16px;
+		margin-right: 0;
+		border: 2px solid green;
+		box-shadow: 0 0 1px green,0 0 3px white;
+		
+
+
+
+	}
+	input[type="text"]:focus{
+		box-shadow: 0 0 3px white , 0 0 10px green, 0 0 15px white, 0 0 25px green ,0 0 3px
+		white , 0 0 10px green;
+		background-color: black;
+	}
+
+
+	input::-webkit-input-placeholder{
+		color: white;
+	}
+	.button{
+		color: white;
+		font-size: 18px;
+		height: 45px;
+		width: 100px;
+		border-radius: 0 20px 20px 0;
+		display: inline-block;
+		background-color: rgb(21,21,21);
+		vertical-align: middle;
+		outline: none;
+		border: 1px solid black;
+		box-shadow: 0 0 1px green,0 0 3px white;
+		/*background-image: url(img/eye.jpeg);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat; 
+		text-shadow: 0 0 3px black;*/
+		
+	}
+	.button:active{
+		border: 2px solid green;
+		box-shadow: 0 0 3px white, 0 0 10px green, 0 0 15px white, 0 0 25px green, 0 0 30px
+		green, 0 0 30px white, 0 0 30px green ; 
+		color: #8DB933;
+		text-shadow: 0 0 3px black;
+		background-image: url(img/eye.jpeg);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat; 
+		transition: 0.3s;
+		z-index: 99;
+		
+	}
+	.box{
+		width: 480px;
+		height: 56px;
+		margin: 280px  auto;
+		position: relative;
+
+	}
+	.bb{
+		padding: 5px;
+		overflow: hidden;
+		width: 350px;
+	}
+	.b{
+		display: inline-block;
+		height: 45px;
+		width: 100px;
+		z-index: 99;
+		
+
+	}
+	.b div{
+		width: 5px;
+		height: 5px;
+		box-shadow: 0 0 3px white, 0 0 10px green, 0 0 15px white, 0 0 25px green, 0 0 30px
+		green, 0 0 30px white, 0 0 30px green;
+		background-color: rgb(182,240,62);
+		position: absolute;
+		top: 20px;
+		left: 400px;
+		z-index:-1;
+		opacity: 1;
+		border-radius: 5px;
+	}
+	.b:hover .items1{
+		position: absolute;
+		transform: rotate(45deg) translate(200px,-200px);
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items2{
+		position: absolute;
+		transform: rotate(45deg) translate(110px,-200px);
+
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items3{
+		position: absolute;
+		transform: rotate(-45deg) translate(100px,-200px);
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items4{
+		position: absolute;
+		transform: rotate(45deg) translate(-200px,-200px);
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items5{
+		position: absolute;
+		top: -40px;
+		left: 600px;
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items6{
+		position: absolute;
+		top: -40px;
+		left: 230px;
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items7{
+		position: absolute;
+		top: -40px;
+		left: 60px;
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items8{
+		position: absolute;
+		top: 210px;
+		left: 100px;
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items9{
+		position: absolute;
+		top: 200px;
+		left: 600px;
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items10{
+		position: absolute;
+		top: -400px;
+		left: 600px;
+		transition: 1s;
+		opacity: 0;
+	}
+	.b:hover .items11{
+		position: absolute;
+		top: -40px;
+		left: 340px;
+		transition: 1s;
+		opacity: 0;
+	}
+
+	/*.xdtt{
+		position: absolute;
+		float: left;
+		height: 40px;
+		background-image: url(img/xdt.jpeg);
+		background-size: cover;
+		background-position: center 60%;
+		left: -400px;
+		border-radius: 10px;
+		top: 2px;
+		
+		
+	}
+	input[type="text"]:focus+.xdtt{
+		left: 355px;
+		transition: 0.8s;
+		opacity: 0;
+		}*/
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+		<input type="text" required placeholder="请输入搜索的内容" onfocus="placeholder=''" onblur="placeholder='请输入搜索的内容'">
+		<!-- <img class="xdtt" src="img/xdt.png" alt="">
+		 -->
+		
+		
+		
+		<div class="b">
+			<input  type="submit" class="button" value="搜索">
+			
+			<div class="items1"></div>
+			<div class="items2"></div>
+			<div class="items3"></div>
+			<div class="items4"></div>
+			<div class="items5"></div>
+			<div class="items6"></div>
+			<div class="items7"></div>
+			<div class="items8"></div>
+			<div class="items9"></div>
+			<div class="items10"></div>
+			<div class="items11"></div>
+		</div>
+	</body>
+	</html>

@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>game</title>
+	<style>
+	*{
+		margin: 0;
+		padding:0;
+	}
+	.main{
+		background-color: rgb(224,224,224);
+		margin: 0 auto; 
+	}
+	.main:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.left{
+		width: 1010px;
+	}
+
+	button{
+		opacity: 1;
+		position: absolute;
+		padding: 10px 30px;
+		background-color: red;
+		border: none;
+		float: left;
+		color: white;
+		font-size: 20px;
+		right: 0;
+		bottom: 1px;
+		opacity: 0;
+	}
+	.box{
+		float: left;
+		
+		margin: 10px 5px;
+		position: relative;
+		height: 202px;
+		width: 324px;
+	}
+
+	.info1{
+		width: 324px;
+		height: 202px;
+		background-color: rgb(224,224,224);
+		position: relative;
+		bottom:207px;
+		right: -334px;
+		opacity: 0;
+		z-index: -1;
+	}
+	.info2{
+		width: 324px;
+		height: 202px;
+		background-color: rgb(224,224,224);
+		position: relative;
+		/*bottom:-10px;
+		right: -1px;*/
+		bottom:207px;
+		right: -334px;
+		opacity: 0;
+		z-index: -1;
+	}
+	.info3{
+		width: 324px;
+		height: 202px;
+		background-color: rgb(224,224,224);
+		position: relative;
+		/*bottom:-10px;
+		right: -1px;*/
+		bottom:-15px;
+		right: 668px;
+		opacity: 0;
+		z-index: -1;
+
+	}
+	.info4{
+		width: 324px;
+		height: 202px;
+		background-color: rgb(224,224,224);
+		position: relative;
+		bottom:207px;
+		right: -334px;
+		opacity: 0;
+		z-index: -1;
+
+	}
+	.info5{
+		width: 324px;
+		height: 202px;
+		background-color: rgb(224,224,224);
+		position: relative;
+		bottom:207px;
+		right: -334px;
+		opacity: 0;
+		z-index: -1;
+
+	}
+	.info6{
+		width: 324px;
+		height: 202px;
+		background-color: rgb(224,224,224);
+		position: relative;
+		bottom:229px;
+		right: 666px;
+		bottom: 429px;
+		opacity: 0;
+		z-index: -1;
+	}
+	.box6:hover .info6{
+		opacity: 1;
+		z-index: 1;
+	}
+	.box5:hover .info5{
+		opacity: 1;
+		z-index: 1;
+	}
+	.box4:hover .info4{
+		opacity: 1;
+		z-index: 1;
+	}
+	.box3:hover .info3{
+		opacity: 1;
+		z-index: 1;
+	}
+	.box2:hover .info2{
+		opacity: 1;
+		z-index: 1;
+	}
+	.box1:hover .info1{
+		opacity: 1;
+		z-index: 1;
+	}
+
+	.box:hover button{
+		opacity: 1;
+	}
+	.star{
+		margin-top: 10px;
+
+	}
+	.top h3{
+		padding-top: 10px;
+	}
+	.middle{
+		padding-top: 20px;
+		font-size: 14px;
+	}
+	.bottom{
+		float: right;
+		color: red;
+	}
+	.right{
+		float: left;
+		position: absolute;
+		background-color: rgb(239,239,239);
+		width: 315px;
+		height: 444px;
+		display: inline-block;
+	}
+	.hot{
+		position: absolute;
+		top:0;
+	}
+	.title{
+		padding:10px 10px;
+		border-bottom: 1px solid gray;
+	}
+	.name span{
+		padding: 8px 15px;
+		display: inline-block;
+	}
+	.name{
+		border-bottom: 1px dashed grey;
+	}
+	
+</style>
+</head>
+<body>
+	<div class="main">
+		<div class="left">
+			<div class="box box1">
+				<img class="pic1" src="img/game_1.jpg" alt="">
+				<button class="play">开始游戏</button>
+				<div class="info1">
+					<div class="top">
+						<h3>梁山传奇</h3>
+						<div class="star">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+						</div>
+					</div>
+					<div class="middle">
+						<p>专业传奇定制</p>
+						<p>类型:自由化PVP</p>
+						<p>游戏简介:正版授权，英雄合击玩法,超爽PK!</p>
+					</div>
+					<div class="bottom">
+						<span style="font-size: 30px;">9</span>
+						<span style="font-size: 17px;">.67</span>
+					</div>
+				</div>
+			</div>
+			<div class="box box2">
+				<img src="img/game_2.jpg" alt="">
+				<button class="play">开始游戏</button>
+				<div class="info2">
+					<div class="top">
+						<h3>蓝月传奇</h3>
+						<div class="star">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+						</div>
+					</div>
+					<div class="middle">
+						<p>专业传奇定制</p>
+						<p>类型:自由化PVP</p>
+						<p>游戏简介:正版授权，英雄合击玩法,超爽PK!</p>
+					</div>
+					<div class="bottom">
+						<span style="font-size: 30px;">9</span>
+						<span style="font-size: 17px;">.67</span>
+					</div>
+				</div>
+			</div>
+			<div class="box box3">
+				<img class="pic3" src="img/game_3.jpg" alt="">
+				<button class="play">开始游戏</button>
+				<div class="info3">
+					<div class="top">
+						<h3>传奇盛世</h3>
+						<div class="star">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+						</div>
+					</div>
+					<div class="middle">
+						<p>专业传奇定制</p>
+						<p>类型:自由化PVP</p>
+						<p>游戏简介:正版授权，英雄合击玩法,超爽PK!</p>
+					</div>
+					<div class="bottom">
+						<span style="font-size: 30px;">9</span>
+						<span style="font-size: 17px;">.67</span>
+					</div>
+				</div>
+			</div>
+			<div class="box box4">
+				<img src="img/game_4.jpg" alt="">
+				<button class="play">开始游戏</button>
+				<div class="info4">
+					<div class="top">
+						<h3>新版传奇</h3>
+						<div class="star">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+						</div>
+					</div>
+					<div class="middle">
+						<p>专业传奇定制</p>
+						<p>类型:自由化PVP</p>
+						<p>游戏简介:正版授权，英雄合击玩法,超爽PK!</p>
+					</div>
+					<div class="bottom">
+						<span style="font-size: 30px;">9</span>
+						<span style="font-size: 17px;">.67</span>
+					</div>
+				</div>
+			</div>
+			<div class="box box5">
+				<img src="img/game_5.jpg" alt="">
+				<button class="play">开始游戏</button>
+				<div class="info5">
+					<div class="top">
+						<h3>梁山传奇</h3>
+						<div class="star">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+						</div>
+					</div>
+					<div class="middle">
+						<p>专业传奇定制</p>
+						<p>类型:自由化PVP</p>
+						<p>游戏简介:正版授权，英雄合击玩法,超爽PK!</p>
+					</div>
+					<div class="bottom">
+						<span style="font-size: 30px;">9</span>
+						<span style="font-size: 17px;">.67</span>
+					</div>
+				</div>
+			</div>
+			<div class="box box6">
+				<img src="img/game_6.jpg" alt="">
+				<button class="play">开始游戏</button>
+				<div class="info6">
+					<div class="top">
+						<h3>梁山传奇</h3>
+						<div class="star">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+							<img src="img/score.png" alt="">
+						</div>
+					</div>
+					<div class="middle">
+						<p>专业传奇定制</p>
+						<p>类型:自由化PVP</p>
+						<p>游戏简介:正版授权，英雄合击玩法,超爽PK!</p>
+					</div>
+					<div class="bottom">
+						<span style="font-size: 30px;">9</span>
+						<span style="font-size: 17px;">.67</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<img class="hot" src="img/hot.png" alt="">
+			<div class="title">
+				<h3>游戏实时排行榜</h3>
+			</div>
+			<div class="name">
+				<span>1</span>
+				<span style="color: red;" >蓝月传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>2</span>
+				<span>蓝月1.85</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>3</span>
+				<span>传奇盛世</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>4</span>
+				<span>梁山传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>5</span>
+				<span>原始传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>6</span>
+				<span>传奇世界</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>7</span>
+				<span>经典传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>8</span>
+				<span>马云传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span>9</span>
+				<span>蓝鸥传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+			<div class="name">
+				<span style="padding: 0 12px;" >10</span>
+				<span>复古传奇</span>
+				<span style="color: grey;">XY游戏</span>
+				<img src="img/range.png" alt="">
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

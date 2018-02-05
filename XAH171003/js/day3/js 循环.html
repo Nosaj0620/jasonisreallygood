@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>js 循环</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//js 循环
+	/*
+		1.while循环(2个步骤循环)
+			1)先判断循环条件,为假结束循环,为真则执行循环体.
+			2)执行循环体
+		2.do...while...循环(2个步骤循环)
+			1)先执行循环体代码
+			2)判断循环条件,为假结束循环,为真继续执行循环
+
+			注:while循环先判断条件,再执行循环体;
+			do...while...循环先执行循环体,在判断条件;当条件相同且都为真的情况下,他们作用相同;当条件相同且都为假时,do...while循环会执行一次循环体代码,while循环一次都不会执行.
+		3. for 循环
+			1)初始化循环变量,为其赋初值(只执行一次)
+			2)判断循环条件,为假结束循环,为真执行循环体代码;
+			3)循环变量变化(自增/自减)
+			*/
+	//while循环
+	var a1 = 0;
+	//条件
+	while(a1 <10 ){
+		//循环体
+		document.write(a1+" ");
+		a1++; //a1 最终值为10  因判定 10 不小于10  所以不执行a1为10的循环体
+	}                                
+	//do...while...循环
+	var a2 = 0;
+	do{
+		//循环体
+		
+		document.write("<br>"+a2+" ");
+		a2++;
+	}
+	while(a2<5);//条件
+
+	//for循环
+	for(var a3= 0; a3 < 5;a3++){
+		console.log(a3);
+	}
+	for(var a4 = 10; a4 >0;a4--){
+		console.log(a4);
+	}
+	var i=0;
+	var x = "";
+	while(i<5){
+		x=x+"数字"+i +"<br>";
+		i++;
+	}
+	document.write(x);
+	var sum=0;
+	for(var a5=0;a5<=100;a5=a5+15){
+		sum+=a5;
+	}
+	document.write(sum);
+</script>
+</html>

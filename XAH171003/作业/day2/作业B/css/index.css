@@ -1,0 +1,13 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.kind{
+	width: 700px;
+	height: 45px;
+	padding: 5px 2px;
+
+}
+.kinds{
+		border-bottom: 1px dashed grey;
+}

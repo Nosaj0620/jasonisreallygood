@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>example</title>
+	<style>
+
+</style>
+</head>
+<body>
+	<div class="box" id="box" style="width: 200px; height: 200px;background: black;">
+	</div>
+	<input type="text" id="test">
+	<button id="judge">点击获取输入框的value</button>
+</body>
+<script>
+
+	var a =  true;//页面加载 即弹出alert
+	var a =  false;//不满足if条件,不能弹出
+	var a =  '0';
+	
+	var ele = document.getElementById('box');
+	ele.onclick = function(){
+		console.log(ele.style.background);
+
+		/*
+			1. if(条件) {
+				代码块
+			}
+			当条件的值(布尔类型)为true时,执行代码块,否则不给予反馈.
+			2. if(条件) {
+				代码块1
+			}else{
+				代码块2
+			}
+			当条件的值(布尔类型)为true时,执行代码块1,否则执行代码块2.
+			3. switch(条件){
+				case 情况1:
+					代码块1;
+					break;//后续代码不再执行
+				case 情况2:
+					代码块2;
+					break;//后续代码不再执行	
+				default:
+					代码块3;
+			}
+			判断条件,根据其具体情况(case判断),执行相对应的代码块.
+			4. 三目(元)运算符
+			var x = y ? z1:z2;
+			根据y的值(布尔类型)为x赋值,如果y为true,那么会将z1赋值给x,否则将z2赋值给x;
+		*/
+		
+		if(ele.style.background =='black'){
+			ele.style.background= "yellow";
+		}
+		else if(ele.style.background =='yellow'){
+			ele.style.background='black';
+		}
+	}
+	 var test = document.getElementById('test');
+	 var judge = document.getElementById('judge');
+	 // 为按钮绑定点击事件
+	 var n=3;
+	 	switch(n){
+	 		case 3:
+	 		// alert(3);
+	 		break;
+	 	}
+	 judge.onclick = function(){
+	 	console.log(test.value);
+
+	 	// typeof() 获取数据类型
+	 	if(test.value == '')
+	 	{
+	 		alert('请输入信息');
+	 	}else if(typeof(test.value)== 'string'){
+	 		alert('你输入了一个字符串');
+	 	}else if(typeof(test.value)== 'number'){
+	 		alert('你输入了一个数字');
+	 	}else{
+	 		alert('其他情况');
+	 	}
+	 }
+	 var bol = true;
+	 var a1 ;
+	 if(bol){
+	 	a1=1;
+	 }else{
+	 	a1=2;
+	 }
+	 var a2 = bol ? 5: 2;
+	 console.log(a1);
+	 console.log(a2);
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>清浮动</title>
+	<style>
+	.box{
+		border: 1px solid red;
+			/*width: 200px;
+			height: 500px;
+			float: left;
+			display: inline;*/
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			float: left;
+		}
+		.clear{
+			
+		}
+		/*.box::after{
+			content: "";
+			display: block;
+			clear: both;
+			}*/
+		.box2{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+		.box3{
+			background-color: red;
+			width: 100px;
+			height: 100px;
+		}
+		.bfc{
+			display: inline-block;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!-- 隔离性盒子 不会对内部盒子造成影响 -->
+			<div class="bfc">
+				<div class="box1"></div>
+			</div>
+
+			<div class="box3"></div>
+			<div class="box2"></div>
+			<div class="box2"></div>
+
+			<!-- <div class="clear"></div> -->
+		</div>
+	</body>
+	</html>
+<!-- 清浮动的方法:
+		1)给父级添加固定高度(简便但不灵活).
+		2)给父级添加浮动(简便但会使整个页面布局变乱)
+		3)给父级最后添加一个子级 设置clear:both;
+		4)谁需要清浮动就给谁添加:after伪元素(推荐使用)
+		5)利用BFC<BFC其实相当于一个隔离容器,容器内的元素怎样变化都不会对容器外的元素造成任何影响,反之亦然>布局清浮动.overflow:hidden(代码简单,但是格式化上下文太消耗资源)
+		 -->

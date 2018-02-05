@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>无良班主任居然用奇偶方法给孩子们分糖</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a = [],b=[],c=[];
+	
+	for(var i=0;i<20;i++){
+		var s=null;
+		s=parseInt(Math.random()*60+6)+" ";
+		if(s<10){
+			a.push("  "+s+"  ");
+		}else{
+			a.push(s);
+		}
+		if(i%2==0){
+			b.push(a[i]);
+		}else{
+			c.push(a[i]);
+		}
+	}
+	document.write("a数组:"+a+"<br>");
+	document.write("b数组:"+b+"<br>");
+	document.write("c数组:"+c);
+</script>
+</html>

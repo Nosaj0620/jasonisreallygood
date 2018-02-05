@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>22</title>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+		 * 工具方法:
+		 * $.trim(str); 去掉str前后连续的空格,返回一个新的字符串
+		 * $.each(arr,function(i,item){});//遍历数组
+		 * $.grep(arr,function(item,i){});//过滤后遍历数组,不能修改返回值(即数组元素)
+		 * $.map(arr,function(item,i){});//修改数组元素的值
+		 * $.inArray(item,arr);//获取item数据在arr数组中的位置
+		 * $.merge(arr1,arr2);//合并两个数组并返回一个新数组
+		 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+		 * 判断数据类型和状态做相应的操作
+		 * $.isArray(obj) 判断是否为数组对象,是返回true
+		 * $.isFunction(obj)判断是否为函数,是返回true
+		 * $.isEmptyObject(obj) 判断是否空对象,是返回true
+		 * $.isPlainObject(obj)判断是否为纯粹对象,是返回true
+		 * $.contains(obj)判断DOM节点是否含另一个DOM节点,是返回true
+		 * $.type(data)判断数据类型
+		 * $.isNumeric(data)判断数据是否为数值
+		 * $.isWindow(data)判断数据是否为window对象
+		 * 
+		 * 注:
+		 * jq对象和js原生对象相互转化
+		 * $('#wrap') [0];//从jq对象里取出该对象所对应的原生对象
+		 * var box = document.getElementById('box');
+		 * $(box);//将box这个原生对象转换成jq对象
+		 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+		var str = '  sd  sd    ';
+		console.log(str);
+		console.log($.trim(str));
+		var arr = [11,22,33,44,55,66,77,88,99,1010];
+		$.each(arr,function(i,item){
+//			console.log(i);
+		})
+		var newArr = $.grep(arr,function(item,i){
+			if(item%3==0){
+				return item;	//返回新的元素
+			}
+		});
+//		console.log(newArr);
+		var newArr2 = $.map(arr,function(item,i){
+			return item**2;	
+		});
+//		console.log(newArr2);
+		console.log($.inArray(33,arr))//$.inArray(item,arr);
+		console.log($.merge(newArr,newArr2));//
+		function test(){
+			var a = 0 ;
+//			setInterval(function(){
+//				a++;
+//				document.write(a);
+//			},100);
+		}
+		test();
+		var wrap = document.getElementById("wrap");
+		var box = document.getElementById("box");
+		console.log($.isFunction(test));//判断是否为函数 布尔类型
+		console.log($.contains(wrap,box));//true
+		var num1 = 122 ; 
+		var str = 'sdasdasda';
+		var arra= [2,65,546,234,54,5,2];
+		var abc = true;
+		console.log($.type(num1));//number
+		console.log($.type(str));//string
+		console.log($.type(arra));//array
+		console.log($.type(abc));//boolean
+		console.log($.isNumeric(num1));//true
+		console.log($.isWindow(window));//true
+		console.log($.isWindow(num1));//false
+		
+	</script>
+</html>

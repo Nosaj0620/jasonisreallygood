@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="html">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+</head>
+<body id="body">
+	<div id="wrap">这是rua噗
+		<p class="text">我是品标签</p>
+		<span class="text">我是span</span>
+		<div id="box">
+			沃斯box
+		</div>
+		<mark>我是mark</mark>
+
+	</div>
+	<input type="text" name="ipt1">
+	<input type="text" name="ipt2">
+	<input type="text" name="ipt3">
+
+</body>
+<script>
+	/*
+	DOM:文档对象模型(Document Object Model)
+	提供了js对html节点
+	document.getElementById('id名称');
+	根据元素的id名称获取元素,获取到的是单个元素.因为在html结构里,不允许有重复id的元素.
+	(如果有两个元素id重复了,那么根据此方法获取到的是这个id对应的第一个元素).
+
+	document.getElementsByClassName('class名称');
+	根据元素的class名称获取元素,该方法获取到的是一个元素集合,就算只有一个相对应的class名称的元素,获取到的也是一个集合
+	document.getElementsByTagName('标签名');
+	根据元素的标签名获取元素,获取到的是一个集合.
+
+	document.getElementsByName('name属性值')
+	根据元素的name属性值获取元素,获取到的是一个集合
+
+	根据元素的css选择器获取元素
+	querySelector('css选择器');
+	获取符合选择器单个元素.如果有多个符合条件的元素,只获取第一个.
+
+	document.querySelectorAll('css选择器名称');
+	根据元素的css选择器选择元素,获取符合选择器的所有元素的集合
+
+	获取元素的兄弟节点:
+	ele.nextSibling;
+	获取元素的下一个兄弟节点(包含文本节点);
+	ele.nextElementSibling;
+	获取元素的下一个兄弟节点,获取的是元素节点;
+	ele.previousSibling;
+	获取元素的上一个兄弟节点(包含文本节点);
+	ele.previousElementSibling;
+	获取元素的上一个兄弟节点,获取的是元素节点;
+
+	获取元素的父节点
+	ele.parentNode;
+
+	获取元素的子节点
+	ele.childNodes; //获取到元素的子节点集合(包含文本节点).
+
+	获取元素子节点,是一个集合
+	ele.children;
+	获取所有元素子节点
+
+
+	创建节点
+	document.createElement('tagname');
+	向指定元素插入子元素
+	ele1.appendChild(ele2);
+	ele2会作位ele1的最后子元素
+	ele1.prepend(ele2);
+	ele2会作为ele1的第一个子元素.
+
+	移除元素
+	ele1.removeChild(ele2);
+	ele1必须是ele2的父级.移除ele1元素里的ele2.
+	ele.remove();
+	移除ele这个元素本身.
+
+	替换元素
+	ele1.replaceChild(newEle.oldEle);
+	把old换成new;
+
+	newH2.id = 'newH2';//设置id
+	*/
+	var html = document.getElementById('html');
+	var wrap = document.getElementById('wrap');
+	var texts = document.getElementsByClassName('text');
+	console.log(wrap);
+	console.log(texts);
+	var divs = document.getElementsByTagName('div');
+	console.log(divs);
+	var inputs = document.getElementsByName('ipt1');
+	console.log(inputs);
+	var wrap1 = document.querySelector('#wrap');
+	console.log(wrap);
+	var wrapP  = document.querySelector('#wrap>p');
+	console.log(wrapP);
+	var texts2  = document.querySelectorAll('#wrap>.text');
+	console.log(texts2);
+	var box = document.getElementById('box');
+	var box_next = box.nextSibling;
+	//获取元素之后的节点,包含文本(回车符)
+	console.log(box_next);
+	var box_ele_next = box.nextElementSibling;
+	// 获取元素之后的元素节点(不包含文本节点);
+	console.log(box_ele_next);
+	var box_prev = box.previousSibling;
+	console.log(box_prev);
+	var box_ele_prev = box.previousElementSibling;
+	console.log(box_ele_prev);
+
+	var box_parent = box.parentNode.parentNode;
+	console.log(box_parent);
+
+	var wrap_child = wrap.childNodes;
+	console.log(wrap_child);
+
+	var wrap_ele_child = wrap.children;
+	console.log(wrap_ele_child); 
+
+	var newSpan =  document.createElement('span');
+	
+	wrap.appendChild(newSpan);
+	var i=0;
+	while(i<5){
+		var newSpan =  document.createElement('span');
+		wrap.appendChild(newSpan);
+		i++;
+	}
+	
+
+	var newDiv = document.createElement('div');
+	wrap.prepend(newDiv);
+	// console.log(wrap); = wrap.removeChild(box);
+	// box.removeChild(wrap);
+
+	var newH2 = document.createElement('h2');
+	newH2.innerText = '我是你爸爸';
+	wrap.replaceChild(newH2,box);
+
+	newH2.id = 'newH2';//设置id
+	newH2.className = 'newH2';//设置classname
+
+</script>
+</html>

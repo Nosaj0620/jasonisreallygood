@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>array</title>
+</head>
+<body>	
+</body>
+<script>
+	
+	/*数组:一组有顺序的数据
+		1.创建数组
+		(1) 使用new关键字创建.
+		(2) 字面量创建.
+		2. 取值和复制
+			var a = arr [index];//取到在数组中指定位置(index)的元素
+			arr[index]= 新的值;// 为数组中指定位置(index)的元素赋值
+		3. arr.push('值1','值2');//向数组的尾部添加元素(多个)
+		    arr.unshift('值1','值2')//向数组的头部添加元素
+		    arr.pop()//从数组的尾部弹出元素
+		    arr.shift()//从数组的头部弹出元素
+		    arr.concat('值',数组);//将arr和'值',另一个数组拼接到一起,返回一个新的数组
+		    arr.join(指定字符串);//将数组里的所有元素以指定字符串作为拼接符连接到一起,返回一个新的字符串
+		    arr.splice(index,length,newEle);//在数组里的指定位置添加或删除若干元素
+		    	//index(必需):要进行操作的位置(下标:0开始);
+		    	//length(必需):要删除的元素个数,若不删除,将此值设置为0;
+		    	//newEle(可选):要添加到数组里的新的数据;
+		    	*/
+	var array = new Array(1,2,3,4,5,6,7,8);//创建一个8个元素的数组
+	console.log(array);
+	var array2= new Array(10);//创建一个有长度的空数组
+	console.log(array2);
+	var array3= new Array(2,20);//创建一个数组,第一个元素为2,第二个元素为10
+	console.log(array3);
+	var array4= new Array("hello","moto",1,2);//数组可以保存不同类型的数据元素
+	var arr7 = ['hello','moto','1',2,3];//创建空数组
+	console.log(arr7);
+	var arr5 = [];//创建空数组
+	var arr6 = [1,2,3];//创建空数组
+	var dict1 = {hello:12};//创建一个dic
+	// console.log(dict1.hello);
+	arr7[1]='nokia';
+	console.log(arr7);
+
+	//数组的基本操作方法
+	var arrControl = [1,2,3,4,5,6];
+	console.log(arrControl);
+	arrControl.push('a','b','c');//从尾部添加
+	console.log(arrControl);
+	var s= "f";//利用给变量赋值添加数组元素
+	arrControl.unshift('a','b',s);//从头部添加
+	//s="v";//更改无效
+	console.log(arrControl);
+	arrControl.pop();//从尾部删除
+	console.log(arrControl);
+	arrControl.shift();//头头部删除
+	console.log(arrControl);
+	//concat:连接数组和其他数据,返回一个新的数组.
+	var arr1 = array3.concat("kjhgf","haha",5);
+	var a12 = [3,4,5];
+	var a13 = array3.concat(a12);
+	console.log(arr1);
+	console.log(a13);
+
+	//依规定的符号将数组里的所有元素拼接,返回一个新的字符串.
+	var str = arr1.join('');
+	console.log(str);
+
+	var str2 = arr1.join();
+	console.log(str2);
+
+	var str3 = arr1.join('.');
+	console.log(str3);
+
+
+	//splice 添加和删除
+	var arrSplice = [3,4,5];
+	arrSplice.splice(1,0,5);
+	console.log(arrSplice);
+	arrSplice.splice(3,1);
+	console.log(arrSplice);
+
+	var arr100 = ['hello','moto','tshi','is','spata',10,2,0];
+	arr100.splice(2,1);
+	document.write(arr100);
+	console.log(arr100);
+</script>
+</html>

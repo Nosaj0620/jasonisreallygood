@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>碰撞检测</title>
+		<style></style>
+	</head>
+
+	<body>
+	</body>
+	<script>
+		//获取页面中所有与小鸟进行碰撞检测的管道
+		//碰撞检测的对象是小鸟和所有存在在页面里的item(topItem,bottomItem)
+		var pipeObj = document.querySelectorAll('.pipe>div'); //集合
+		function birdFall() {
+			for(var i = 0; i < pipeObj.length; i++) {
+				judge(bird, pipesObj[i]);
+			}
+		}
+
+		//封装碰撞检测函数
+		function judgeHit(box, box2) {
+			if(box.offsetLeft + box.offsetWidth >= box2.offsetLeft && box.offsetLeft <= box2.offsetLeft + box2.offsetWidth && box.offsetTop + box.offsetHeight >= box2.offsetTop && box.offsetTop <= box2.offsetTop + box2.offsetHeight) {
+				//游戏结束,展示结束页面,分数,清除所有计时器
+			}
+		}
+	</script>
+
+</html>

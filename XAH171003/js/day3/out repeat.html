@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	/*
+	 js跳出循环:
+	 	break:结束整个循环.
+	 	continue:结束当次循环,后续循环继续执行.
+	 */
+		for(var a = 0;a<=20;a+=2){
+			if(a==10){
+//				break;//0 2 4 6 8 10
+				continue;//0 2 4 6 8 12 14 16 18 20
+			}
+			document.writeln(a);
+		}
+	</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>年.月.日.作业</title>
+</head>
+<body>
+	<input type="text" id="input1">年
+	<input type="text" id="input2">月
+	<input type="text" id="input3">日
+	<input type="text" id="input4">天
+	<button id="btn">计算</button> 
+
+
+	请选择--> <select  id="fa">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+	</select>
+	<button id="wd">点一下就知道了</button>
+</body>
+<script>
+	// 获取元素
+	var btn = document.getElementById('btn');//按钮
+	var y = document.getElementById('input1');//年
+	var m = document.getElementById('input2');//月
+	var d = document.getElementById('input3');//日
+	var inp4 = document.getElementById('input4');//天数显示
+	btn.onclick = function(){
+		var mv = m.value;//月份数量
+		var sum = 0;//初始化天数
+		switch(mv-1){
+			case 11:
+			sum+=30;
+			case 10:
+			sum+=31;
+			case 9:
+			sum+=30;
+			case 8:
+			sum+=31;
+			case 7:
+			sum+=31;
+			case 6:
+			sum+=30;
+			case 5:
+			sum+=31;
+			case 4:
+			sum+=30;
+			case 3:
+			sum+=31;
+			case 2:
+			sum+=28;
+			case 1:
+			sum+=31;
+		} 
+		sum +=Number(d.value);
+		if(y.value % 4 == 0 && y.value % 100 != 0 || y.value % 400 ==0){
+			
+			if (mv > 2) {
+				sum+=1;
+			}
+		}
+		inp4.value=sum;
+	}
+	// document.getElementById('wd').onclick = function(){
+	// 	alert('今天是星期'+document.getElementById('fa').value);}
+	var cls1 = document.getElementById('wd');
+	cls1.onclick = function(){
+		var fa = document.getElementById('fa');
+		switch(Number(fa.value)){
+			case 1:
+			alert("今天是星期"+fa.value);
+			break;
+			case 2:
+			alert("今天是星期"+fa.value);
+			break;
+			case 3:
+			alert("今天是星期"+fa.value);
+			break;
+			case 4:
+			alert("今天是星期"+fa.value);
+			break;
+			case 5:
+			alert("今天是星期"+fa.value);
+			break;
+			case 6:
+			alert("今天是星期"+fa.value);
+			break;
+			case 7:
+			alert("今天是星期"+fa.value);
+			break;
+		}
+	}
+</script>
+</html>

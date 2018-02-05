@@ -1,0 +1,21 @@
+*{
+	margin: 2px;
+	padding:0;
+}
+.box{
+	border:1px solid red;
+	width: 1040px;
+	height: 315px;
+}
+.bpic{
+	width: 405px;
+	height: 205px;
+	float: left;
+	margin-left: 6px;
+}
+.pic{
+	width: 200px;
+	height: 100px;
+	float: right;
+	margin: 2px 4px;
+}

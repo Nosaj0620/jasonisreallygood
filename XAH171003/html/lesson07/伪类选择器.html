@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪类选择器</title>
+	<style>
+	body{
+		background-color: rgb(242,242,242);
+	}
+	p:empty{
+		width: 100px;
+		height: 100px;
+		border: 1px solid black;
+	}
+	xiaohuihui:first-child{
+		background-color: pink;
+	}
+	xiaohuihui:first-of-type{
+		color: green;
+	}
+	p:lang(zh){
+		background-color: red;
+		width: 100px;
+		height: 100px;
+	}
+	xiaohuihui:last-child{
+		box-shadow: 2px 2px 5px rgb(15,89,21);
+	}
+	xiaohuihui:last-of-type{
+		border-bottom: 5px solid yellow;
+	}
+</style>
+</head>
+<body>
+	<!-- 空选择器:empty{样式} 
+		选择的是空标签.即没有文字或者标签作为内容的标签 -->
+		<div class="box">
+			<p>1</p>
+			<p></p>
+			<p>
+				<a href=""></a>
+			</p>
+		</div>
+	<!-- first-child{样式}
+		父级里的第一个子元素是A,则A会被选中响应样式,若父级里的第一个子元素不是A,则不选中任何元素-->
+	<!-- first-of-type{样式}
+		首先找到父级里所有的B标签,然后给第一个B标签设置样式.先找类型,然后比对位置 -->
+	<!-- last-child{样式}
+		和first-child用法类似,首先找到父级的最后一个子元素,若这个子元素是A,则样式响应,否则样式不响应 -->
+	<!-- last-of-type{样式}
+		首先找到父级里所有的B标签,然后给最后一个B标签设置样式,先找类型,后比对位置 -->
+		<xiaohuihui>p1</xiaohuihui>
+		<h2>hh</h2>
+		<div>
+			<xiaohuihui>33</xiaohuihui>
+			<xiaohuihui>44</xiaohuihui>
+		</div>
+		<!-- :lang p:lang(xx){} 括号里不能加双引号-->
+		<p lang="zh">中文</p>
+		<p lang="it">意大利</p>
+		<p lang="en">英文</p>
+
+	</body>
+	</html>

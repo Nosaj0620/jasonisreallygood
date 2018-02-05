@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>boolean</title>
+</head>
+<body>
+</body>
+<script>
+	/*
+	1.转换成boolean类型为false的数据: 
+	数值的0 -0 特殊字符 null NaN undefined 空字符("") 
+	其他值则会被为解释为ture.
+	
+	2.关系运算符:运算结果是boolean类型的值(即true 或者 false)
+	> , >= , < , <= , == , === , !=, !==
+	注:
+	1)变量包含了其值和类型 
+	== 和!= 只对值进行判断
+	===和!==同时判断值和类型
+	2)'a'<3;
+	结果为false,字母转换为数字,结果都为NaN,任何数值(Number)类型的值和NaN比较,结果都为false.
+	3) > , >= , < , <= 的优先级高于== , != , === , !==
+	4)逻辑运算符: 
+	 && 	与(且):都真为真,遇假则假
+	  ||	或:都假为假,遇真则真
+	   !	非:非真即假,非假即真(级别高)
+	5)字符串与字符串的比较:
+	'23' < '3' //true
+	'23' < '21'//false
+	'23' < '213'//false
+	规律:先比较第一个字符(编码),如果不相等,第一个字符(编码)比较的结果就是两个字符串的比较结果.如果相等再比较第二个字符,以此类推.
+	'23'< 3 // false
+	将'23'转成number类型,与数字3进行比较
+	'age' > 3; 'age' < 3 ; 'age' == 3; //都为false
+	'age'转换为字符串之后是NaN,NaN和任何Number类型的数据作比较(任何比较),结果都是false的.
+	6) innerText 获取该元素内的文本内容
+	var x = xxx.innerText;
+	*/
+	var a = '5';
+	var b = 5;
+	console.log(a != b);
+	console.log("23"<"3");
+	console.log("age"<"Boy");
+	console.log(0<3&&2<1);//有一个为假便为false
+	console.log(0<3||2<1);//有一个为真便为true
+	console.log(!(4<5));//非真则为false
+	0 < 3 == 3 > 4 ; // false
+</script>
+</html>

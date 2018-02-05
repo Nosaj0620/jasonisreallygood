@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>carousel figure</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.wrap{
+		width: 800px;
+		overflow: hidden;
+		margin: 50px auto;
+		position: relative;
+		user-select: none;
+		height: 450px;
+		border: 5px solid rgba(148,22,23,0.7);
+		/*box-shadow: 0 0 30px rgba(22,22,22,0.8);*/
+		/*border-radius: 55px;*/
+		/*opacity: 0.85;*/
+
+	}
+	#scroll{
+		width: 3600px;
+		font-size: 0;
+		height: 450px;
+		position: absolute;
+		transition: 0.5s;
+	}
+	#scroll img{
+		width: 800px;
+		height: 450px;
+		display: inline-block;
+
+	}
+	
+	.circle{
+		margin: 0 auto;
+		height: 40px;
+		position: absolute;
+		bottom: 12px;
+		left: 336px;
+		z-index: 999;
+		user-select: none;
+		display: flex;
+		justify-content: center;
+
+	}
+	.circle>div{
+		width: 10px;
+		height: 10px;
+		border-radius: 55px;
+		background-color: white!important;
+		margin: 15px 10px;
+		border: 1px solid rgba(25,25,25,0.5);
+		transition: 0.4s;
+		position: relative;
+		/*position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		*/
+	}
+	.circle>div:hover{
+		padding: 2px;
+		cursor: pointer;
+		box-shadow: 0 0 3px rgba(15,211,58,0.5) ,0 0 10px rgba(255,255,255,1);
+
+	}
+	.point{
+		width: 1px;
+		height: 1px;
+		border-radius: 555px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		transition: 0.5s;
+		opacity: 0;
+		background-color: black;
+	}
+	.circle>div:hover .point{
+		padding: 5px;
+		background-color: #D450A2;
+		opacity: 0.8;	
+	}
+</style>
+</head>
+<body>
+	<div class="wrap" id="wrap">
+		<div id="circle" class="circle">
+			<div class="point1" id="point1">
+				<div class="point"></div>
+			</div>
+			<div class="point2" id="point2">
+				<div class="point"></div>
+			</div>
+			<div class="point3" id="point3">
+				<div class="point"></div>
+			</div>
+			<div class="point4" id="point4">
+				<div class="point"></div>
+			</div>
+		</div>
+		<div class="scroll" id="scroll">
+			<img src="psb2.jpeg" alt="">
+			<img src="psb3.jpeg" alt="">
+			<img src="psb4.jpeg" alt="">
+			<img src="psb5.jpeg" alt="">
+			
+		</div>
+	</div>
+</body>
+<script>
+
+	var wrap = document.getElementById('wrap');
+	var sc = document.getElementById('scroll');
+	var imgs =document.querySelectorAll("#scroll>img");
+	var circles =document.querySelectorAll("#circle>div");
+	var scrollStyle = getComputedStyle(sc);
+	var wrapStyle = getComputedStyle(wrap);
+	var wrapWidth = wrap.clientWidth;
+	var nowLeft = 0;
+	var once = 0;
+	var index= 0;
+	sc.style.left = 0+"px";
+	function nextPage(){
+		index++;
+		if (index>imgs.length-1){
+			index = 0;
+		}
+		sc.style.left = -index*wrapWidth+"px";
+	}
+	var timer = setInterval(function(){
+		nextPage();
+	},2000);
+	for(var i = 0 ;i < circles.length;i++){
+		circles[i].index = i;
+		circles[i].onclick= function(){
+			index = this.index;
+			sc.style.left = -this.index*wrapWidth+"px";
+			controlTimer();
+		}
+	}
+	
+	function controlTimer(){
+		clearInterval(timer);
+		timer = setInterval(function (){
+			nextPage();
+		},2000);
+	}
+	// 点击下一个按钮时
+	// next.onclick = function (){
+	// 	nextFn();
+	// 	controlTimer();
+	// }
+
+	// 点击上一个按钮时
+	// last.onclick = function (){
+	// 	index--;
+	// 	if (index<0){
+	// 		index = divs.length-1;
+	// 	}
+	// 	var l = -index*w;
+	// 	middle.style.left = l + "px";
+	// 	controlTimer();
+	// }
+</script>
+</html>

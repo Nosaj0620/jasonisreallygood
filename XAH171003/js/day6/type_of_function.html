@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>函数2</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//无参数无返回值函数
+	function sum1(){
+		var a=3;
+		var b=4;
+		var c = a+b;
+		console.log(c);
+	}
+	sum1() ;
+	//无参数有返回值函数
+	function sum2(){
+		var a=3;
+		var b=4;
+		var c = a+b;
+		return c;
+	}
+	//有参数无返回值函数
+	var num = sum2()
+	console.log(num);
+	function sum3(x,y){
+		var c = x+y;
+		console.log(c);
+	}
+	sum3(2,4);
+	sum3(6,4);
+	sum3(8,4);
+	//有参数有返回值函数
+	function sum4(x,y){
+		var c = x+ y;
+		return c;
+	}
+	var num2 = sum4(20,30);
+	console.log(num2);
+	//求三个数的最大值函数,并返回最大值
+	function maxOfJason(x,y,z){
+		var m = x;
+		m = m < y ?  y : z;
+		return m;
+	}
+	console.log(maxOfJason(5,20,15));
+	function random(x,y){
+		var num = parseInt(Math.random()*(y-x)+x);
+		return num;
+	}
+	console.log(random(1,10));
+</script>
+</html>

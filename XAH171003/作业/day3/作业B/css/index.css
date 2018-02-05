@@ -1,0 +1,106 @@
+*{
+	margin: 0;
+	padding: 0;
+
+}
+.main{
+	background-color: rgb(246,246,246);
+	width: 1330px;
+	height: 600px;
+	margin:20px auto;
+	padding: 20px 20px;
+}
+/*大白框*/
+.video{
+	background-color: white;
+	width: 1210px;
+	margin: 20px 55px;
+}
+.video:after{
+	content:"";
+	display: block;
+	clear: both;
+
+}
+/*左侧内容样式*/
+.left{
+	width: 580px;
+	float: left;
+	overflow: hidden;
+}
+/*右侧内容样式*/
+.right{
+	width: 630px;
+	float: left;
+	overflow: hidden;
+}
+.bpic{
+	width: 170px;
+	height: 170px;
+	border: 1px solid lightblue;
+	vertical-align: middle;
+}
+.lpic{
+	width: 200px;
+	height: 110px;
+}
+.title{
+	font-size: 24px;
+}
+.info{
+	width: 390px;
+	float: right;
+	vertical-align: middle;
+}
+.sp{
+	float: left;
+	color: grey;
+	padding-right:8px;
+	border-right: 1px solid rgb(213,213,213);
+	margin:5px 0;
+
+}
+.join{
+	float: left;
+	color: grey;
+	margin: 5px 10px;
+	margin-left: 5px;
+}
+.words,.num{
+	text-align: center;
+}
+p{
+	font-size: 12px;
+	float: left;
+	margin: 5px 0;
+}
+input{
+	width: 111px;
+	height: 32px;
+	float: left;
+	border: none;
+	background-color: rgb(39,159,252);
+	margin:4px 1px;
+	color: white;
+}
+.dataspan{
+	font-size: 12px;
+	color: grey;
+	float: left;
+	margin:10px 0;
+}
+.items{
+	width: 200px;
+	float: left;
+	margin:5px 5px;
+	margin-bottom: 0;
+}
+.items h5{
+	width: 200px;
+	height: 15px;
+	/*以下三行设置多余的文字以省略号的形式显示*/
+	text-overflow: ellipsis;
+	/*nowrap不换行*/
+	white-space: nowrap;
+	overflow: hidden;
+}

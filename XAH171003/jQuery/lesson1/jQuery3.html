@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				padding: 20px;
+				border: 1px solid red;
+				margin: 20px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<h1></h1>
+		<div class="box">
+			box1
+		</div>
+		<mark></mark>
+		<!--<div class="box">
+			box2
+		</div>-->
+	</body>
+	<script type="text/javascript" src=src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		console.log($('.box').css('width'));//200px
+		console.log($('.box').width()); //content的宽 200
+		console.log($('.box').height()); //content的高 200
+		console.log($('.box').innerWidth());//content的宽加左右padding
+		console.log($('.box').innerHeight());//content的高加上下padding
+		$('.box').outerWidth();//content的宽加左右padding+左右的border;
+		$('.box').outerHeight();//content的高加上下的padding+上下的border;
+		console.log($('.box').next());//下一个节点
+		console.log($('.box').prev());//上一个节点
+		console.log($('.box').parent());//父节点
+		console.log($('.box').children());//父节点
+		$('.box').click(function(){
+			console.log(this);
+			console.log($(this));
+		})
+	</script>
+</html>

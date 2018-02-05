@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ch-CN">
+<head>
+	<meta charset="utf-8">
+	<title>选择器</title>
+	<style type="text/css">
+		/*ID选择器: #选择器名{样式}
+	         特点 :1:优先级最高;
+			 2:一个标签只允许有一个ID
+			 3:一个ID在当前文件只允许出现一次*/
+			 #onlyID{
+			 	width: 500px;
+			 	height: 500px;
+			 	background-color: pink;
+			 }
+		/*标签选择器:标签名{样式}*/
+			 p{
+			 	width:100px;
+			 	height: 100px;
+			 	background-color: blue;
+			 }
+		/*class选择器:.选择器{样式}
+			特点:1:可以给不同种类的标签起相同的名字,这些标签就会渲染出相同的样式
+			2:可以给一个标签起多个class名字,这个标签就会渲染多个选择器里的样式.*/
+			.p2{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin: 0;
+			}
+			.fa .text{
+				font-size: 90px;
+			}
+			/*空格选择器: 父级选择器+子级选择器*/
+			body .text{
+				font-size: 30px;
+				color: pink;
+			}
+			.text{
+				background-color: grey;
+				
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- 最常用的三种选择器:id,class,标签选择器  优先级: ID＞class＞标签选择器-->
+		<div class="fa">
+			<div class="p2">div1</div>
+			<div class="p2 text">div2</div>
+			<div class="p2">div3</div>
+			<p>p1</p>
+			<p class="p2" id="onlyID">p2</p>
+			<a href="">a1</a>
+			<a href="">a2</a>
+		</div>
+	</body>
+	</html>

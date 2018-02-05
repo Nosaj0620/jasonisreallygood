@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>info</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a =[];
+	var sum=0;
+	for(var i=0;i<10;i++){
+		var s=parseInt(Math.random()*165-66);
+		a.push(s);
+		sum=sum+a[i];
+		console.log(sum);
+	}
+	document.write(a+"<br>");
+	var max = Math.max.apply( Math, a );
+	document.write("最大值是:"+max+"<br>");
+	for(var c=0;c<10;c++){
+		if(a[c]==max){
+			document.write("最大值下标是:"+c+"<br>");
+		}
+	}
+	var min = Math.min.apply( Math, a );
+	document.write("最小值是:"+min+"<br>");
+	for(var b=0;b<10;b++){
+		if(a[b]==min){
+			document.write("最小值下标是:"+b+"<br>");
+		}
+	}
+	document.write("和为:"+sum+"<br>");
+</script>
+</html>

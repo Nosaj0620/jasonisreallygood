@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Match</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.wrap{
+		width: 1000px;
+		height: 1000px;
+		margin:40px auto;
+		font-size: 0;
+
+	}
+	.wrap div{
+		background: black;
+		border: 1px solid pink;
+		box-sizing: border-box;
+		display: inline-block;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap" id="wrap">
+		
+	</div>
+	<button id="btn1">初级</button>
+	<button id="btn2">高级</button>
+	<button id="btn3">最高级</button>
+</body>
+<script>
+	var arr=[];
+	var colNum=10;
+	var rowNum= 10;
+	var divWidth=70;
+	var divHeight=70;
+	var btn1 = document.getElementById('btn1')
+	var btn2 = document.getElementById('btn2')
+	var btn3 = document.getElementById('btn3')
+	var wrap = document.getElementById('wrap')
+	wrap.style.width=divWidth*colNum+"px";
+	wrap.style.height=divHeight*rowNum+"px";
+	createDiv();
+
+
+	//初级按钮
+
+	btn1.onclick = function(){
+		colNum=5;
+		rowNum= 5;
+		divWidth=140;
+		divHeight=140;
+		createDiv();
+	}
+	btn2.onclick = function(){
+		colNum=10;
+		rowNum= 10;
+		divWidth=70;
+		divHeight=70;
+		createDiv();
+	}
+	btn3.onclick = function(){
+		colNum=20;
+		rowNum= 20;
+		divWidth=35;
+		divHeight=35;
+		createDiv();
+	}
+	function createDiv(){
+		
+		wrap.innerHTML=" ";
+		arr=[];
+		for(var i = 0 ;i< colNum*rowNum;i++){
+			var newDiv = document.createElement('div');
+			arr.push(wrap.appendChild(newDiv));
+			newDiv.style.width=divWidth+"px";
+			newDiv.style.height=divHeight+"px";
+			newDiv.style.background= "black";
+			newDiv.onclick= function(){
+				yizu(this);
+				console.log(this.style.background);
+			}
+		}
+	}
+	
+	function divBg(a){
+		if(a.style.background == "black"){
+			a.style.background = "grey";
+		}else {
+			a.style.background = "black"
+
+		}
+	}
+	function yizu(x){
+		var thisIndex = arr.indexOf(x);
+		divBg(x);
+		if(thisIndex > colNum-1){
+			divBg(arr[thisIndex-colNum]); 
+		}
+		if(thisIndex < rowNum * colNum - colNum){
+			divBg(arr[thisIndex+colNum]); 
+		}
+		if(thisIndex  % colNum != 0){
+			divBg(arr[thisIndex-1]); 
+		}
+		if((thisIndex+1)% colNum != 0){
+			divBg(arr[thisIndex+1]); 
+		}
+	}
+
+</script>
+</html>

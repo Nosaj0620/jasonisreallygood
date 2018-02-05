@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box1{
+			width: 400px;
+			height: 400px;
+			overflow: hidden;
+			position: relative;
+			border: 1px solid black;
+		}
+		.box2{
+			position: absolute;
+			bottom: -100px;
+			background-color: orange;
+			width: 400px;
+			height: 100px;
+			transition: 0.3s;
+		}
+		.box1:hover .box2{
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="box2"></div>
+	</div>
+</body>
+</html>

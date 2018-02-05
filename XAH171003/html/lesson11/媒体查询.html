@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>媒体查询</title>
+	<link rel="stylesheet" href="css/bac.css" media=" screen and (max-width:800px) and (min-width:500px)">
+	<style @media screen and (max-width: 1000px)>
+
+	.box{
+		width: 800px;
+		height: 800px;
+		background-color: pink;
+	}
+	@media screen and (max-width: 800px) and (min-width: 400px){
+		.box{
+			width: 400px;
+			height: 400px;
+			background-color: green;
+		}
+	}
+	@media screen and (max-width: 399px) {
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+		}
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+</body>
+</html>

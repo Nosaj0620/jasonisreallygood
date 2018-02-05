@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>boxmove</title>
+	<style>
+		#box{
+			width: 400px;
+			height: 400px;
+			background-color: blue;
+			position: absolute;
+			cursor: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+
+</body>
+<script>
+	var box  = document.getElementById('box');
+	box.onmouseover = function(){
+		box.onmousemove =function(){
+			console.log(1);
+			var e= window.event || event;
+			box.style.left = (e.clientX-200)+"px";
+			box.style.top = (e.clientY-200)+"px";
+		}
+	}
+</script>
+</html>

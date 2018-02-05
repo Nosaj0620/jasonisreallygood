@@ -1,0 +1,104 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.wrap{
+	width:100%;
+}
+/*设置头部样式*/
+.head{
+	width:100%;
+    line-height: 50px;
+
+	border-bottom: 1px solid rgb(211,211,211);
+}
+
+.head a{
+	/*去掉下划线*/
+    text-decoration: none;
+    /*居右*/
+    float: right;
+    line-height: 49px;
+    
+    padding-left: 10px;
+    font-size:15px;
+    color: rgb(67,67,67);
+}
+
+/*设置内容样式*/
+.content{
+
+    width: 100%;  
+font-size: 0;
+
+}
+.first{
+    background: url(../imgs/b_bg.jpeg);
+}
+.first img{
+    width:100%;
+    height: 1697px;
+    background: center;
+     background-size: cover;
+}
+.p{
+    margin: 20px 200px;
+    color:rgb(67,67,67);
+    font-size:15px;
+}
+.btn{
+    width:372px;
+    height: 59px;
+   
+    margin: 70px auto;
+    background: url(../imgs/btn_bg.png) center center no-repeat;
+    background-size: cover;
+    line-height: 59px;
+  color:red;
+}
+.btn p{
+    color: red;
+font-size:30px;
+text-align: center;
+}
+.news {
+    margin: 15px 200px;
+    color: black;
+    font-size: 20px;
+}
+.news b{
+    color: red;
+    
+}
+.second{
+  padding-top:0;
+width:100%;
+background: url(../imgs/b_bg.jpeg);
+}
+.img2{
+    margin: 20px 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

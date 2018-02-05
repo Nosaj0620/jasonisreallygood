@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+			/*指定过渡总时间*/
+			transition-duration: 2s;
+			/*指定参与过渡效果的样式属性
+			all:默认值,值所有的属性都会参与过度变化,那在设置过渡变化时,一定要给变化的属性设置初始状态的最终状态;*/
+			transition-property: all;
+			
+			/*指定过渡曲线
+			1:贝塞尔曲线:cubic-bezier(x1,y1,x2,y2)
+			2:ease:默认值;
+			3:ease-in:加速;
+			4:ease-out:减速;
+			5:ease-in-out:先加速后减速;
+			6:linear:匀速;
+			7:steps(n):阶段变化,按N步完成;
+			8:step-end:先将时间消耗完,然后直接到结束的状态;
+			9:step-start:先到结束的状态,然后将时间消耗完*/
+			transition-timing-function: ease-in-out;
+			/*规定过渡是否延迟*/
+			transition-delay: 0.5s;
+			transition:all 10s ease-in ;
+
+
+		}
+		.box:hover{
+			width: 1000px;
+			height: 1000px;
+			background-color: blue;
+
+		}
+		
+		.wrap{
+			border: 1px solid blue;
+		}
+		.wrap div{
+			height: 100px;
+			width: 100px;
+			background-color: yellow;
+			opacity: 1;
+			transition:1s;
+		}
+		.wrap:hover div{
+			opacity: 0;
+			
+		}
+		.wrap .box2{
+			transition-delay: 1s;
+		}
+		.wrap .box3{
+			transition-delay: 2s;
+		}
+		.wrap .box4{
+			transition-delay: 3s;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="wrap">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</div>
+</body>
+</html>

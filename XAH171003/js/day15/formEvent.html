@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>表单事件</title>
+	<style>
+		#screen{
+
+			/*word-wrap: break-word;*/
+			/*overflow: auto;*/
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="ipt" id="ipt">
+	
+	<button id="btn1">onchange</button>
+	<button id="btn2">oninput</button>
+	<select name="" id="sel">
+		<option value="2"> 1</option>
+		<option value="sss">2</option>
+		<option value="ffff">3</option>
+		<option value="zzzz">4</option>
+		<option value="dddd">5</option>
+		<option value="mmmm">6</option>
+	</select>
+	<input type="text" class="ipt2" id="ipt2"><br>
+	<textarea id="texta"></textarea>
+	<div id="screen" style="width: 400px;background: grey;"></div>
+</body>
+<script>
+	/*
+		表单事件:
+		onfocus:当元素获取焦点时触发.
+		onblur:当元素失去焦点时触发.
+		onchange:元素的value值发生改变时触发.
+		oninput:当输入域的值发生变化时触发.
+		*/
+		var ipt = document.getElementById('ipt');
+		var btn1 = document.getElementById('btn1');
+		var texta = document.getElementById('texta');
+		var btn2 = document.getElementById('btn2');
+		var ipt2 = document.getElementById('ipt2');
+		var screen = document.getElementById('screen')
+		ipt.onfocus = function(){
+			ipt.style.background = 'yellow';
+			ipt.onblur = function(){
+				ipt.style.background = 'white';
+			}
+		}
+
+		var sel = document.getElementById('sel')
+		console.log(sel);
+		ipt.onchange = function(){
+			console.log(1);
+		}
+		ipt2.oninput = function(){
+			console.log(this.value);
+		}
+		texta.oninput = function(){
+			screen.innerText = this.value;
+		}
+
+	</script>
+	</html>

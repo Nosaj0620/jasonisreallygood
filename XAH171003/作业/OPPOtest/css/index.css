@@ -1,0 +1,152 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+header{
+	height: 109px;
+}
+body{
+	background-color: rgb(245,245,245);
+}
+.nav1{
+	background-color: rgb(18,140,94);
+
+
+}
+.topbox{
+	width: 1180px;
+	margin:0 auto;
+	text-align: right;
+	font-size: 0;
+}
+.topbox a{
+	text-decoration: none;
+	color: white;
+	font-size: 13px;
+	border-left: 1px solid rgb(60,168,177);
+	padding: 0 30px;
+	height: 28px;
+	display: inline-block;
+	line-height: 28px;
+}
+.topbox a:hover{
+	background-color: rgb(60,153,96);
+}
+.nav2{
+	height: 80px;
+	background-color: white;
+}
+.bottombox{
+	padding: 30px 0;
+	width:1180px;
+	
+	margin: 0 auto;
+	text-align: right;
+}
+.bottombox img{
+	float: left;
+	padding-left: 20px;
+}
+.bottombox a{
+	
+	text-decoration: none;
+	margin: 0 18px;
+	color: grey;
+}
+.content{
+	width: 1180px;
+	margin:0 auto;
+}
+.nav3{
+	padding: 30px 0 ;
+}
+.nav3 a{
+	text-decoration: none;
+	padding: 10px 45px;
+}
+.nav3 .VD{
+	background-color: rgb(60,168,177);
+	color: white;
+	border-radius: 3px;
+}
+.nav3 a:hover{
+	color: white;
+	background-color: rgb(60,168,177);
+	border-radius: 3px;
+}
+.waterflow{
+	width: 100%;
+
+}
+.waterflow::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.items{
+	box-sizing: border-box;
+	width: 580px;
+	background-color: white;
+	padding: 20px 20px 0px;
+	margin-bottom: 20px;
+	float:left;
+	display: inline-block;
+}
+
+
+.I1 a{
+	text-decoration: none;
+}
+.I1 span{
+	float: right;
+}
+.I2{
+	position: relative;
+}
+.I2 img{
+	width: 540px;
+	height: 300px;
+}
+.mask{
+	width: 540px;
+	height: 300px;
+	background-color: black;
+	opacity: 0;
+	position: absolute;
+	top:5px;
+	left: 0;
+}
+.I2 p{
+	width: 540px;
+	height: 300px;
+	text-align: center;
+	line-height: 300px;
+	position: absolute;
+	top:0;
+	left: 0;
+	font-size: 80px;
+	opacity: 0;
+}
+.I3 .green{
+	float: right;
+	color:rgb(27,102,54);
+	cursor: pointer;
+}
+.items:hover{
+	box-shadow: 0 3px 20px rgb(150, 150, 150);
+}
+.items:hover .mask{
+	opacity: 0.45;
+}
+.items:hover p{
+	opacity: 1;
+	cursor: pointer;
+}
+.itemsR{
+	float: right;
+	display: inline-block;
+}
+.bottombox{
+	width: 100%;
+	margin:0 auto;
+}

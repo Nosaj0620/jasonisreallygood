@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>roll</title>
+	<style>
+	*{
+		padding: 0;
+		margin:0;
+	}
+	.wrap{
+		width: 900px;
+		height: 900px;
+		margin: 0 auto;
+		font-size: 0;
+	}
+	.wrap li{
+		width: 300px;
+		height: 300px;
+		box-sizing: border-box;
+		border: 1px solid black;
+		display: inline-block;
+	}
+	#itemsClick{
+		width: 300px;
+		height: 300px;
+		background: red;
+		cursor: pointer;
+		display: inline-block;
+		
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<li id="items1"></li>
+		<li id="items2"></li>
+		<li id="items3"></li>
+		<li id="items4"></li>
+		<div id="itemsClick"></div>
+		<li id="items5"></li>
+		<li id="items6"></li>
+		<li id="items7"></li>
+		<li id="items8"></li>
+	</div>
+</body>
+<script>
+	
+	var lis = document.querySelectorAll(".wrap>li");//获取所有div
+	var sss = document.getElementById('itemsClick');//获取要点击的图片
+	var divArr = [];//创建一个放置div的数组
+	for(i=0;i<lis.length;i++){//把所有div插入到数组里
+		divArr.push(lis[i]);
+	}
+	//创建一个随机数组
+	function randomNum(x,y){
+		return Math.round(Math.random()*(y-x)+x);
+	}
+	function randomIndex(){//去重
+		var a = [];
+		while(a.length<5){
+			var arrNum = randomNum(0,4);
+			if(a.indexOf(arrNum)<0){
+				a.push(arrNum);
+			}
+		}
+		return  a;
+	}
+	var finalArr = [0,1,2,4,7,6,5,3];
+	// var randomIndex =randomIndex();
+	index= -1;
+	function roll(){
+		for(var  k= 0;k < finalArr.length;k++){
+			divArr[k].style.background='';
+		}
+		divArr[finalArr[index]] .style.background='yellow';
+	}
+	function Click(){
+		itemsClick.onclick = function ss(){
+			itemsClick.onclick = null;
+			var timer = setInterval(function(){
+				index++;
+				if(index ==8){
+					index=0;
+				}
+				roll();
+			},50);
+			var timer2 = setTimeout(function(){
+				Click();
+				clearInterval(timer);
+			},randomNum(5000,7000));
+
+		}
+	}
+	Click();
+</script>
+</html>

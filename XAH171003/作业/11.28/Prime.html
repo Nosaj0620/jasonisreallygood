@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>prime</title>
+</head>
+<body>
+	<input type="text" id="primeIn" placeholder="请输入一个整数!">
+	<button id="btn">check!</button>
+</body>
+<script>
+	var primeIn = document.getElementById('primeIn');
+	
+	function judgePrime(x){
+		// if (primeIn.value==2) {
+		// 	console.log ( primeIn.value+"是素数");
+		// }
+		for(i=2;i<x;i++){
+			if(x % i ==0){
+				return "这不是质数";
+			}
+			
+		}
+		return "这是质数";
+	}
+	btn.onclick= function(){
+		var ff = judgePrime(primeIn.value);
+		console.log(ff);
+	}
+</script>
+</html>

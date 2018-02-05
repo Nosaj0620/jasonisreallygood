@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+	</head>
+
+	<body>
+
+	</body>
+	<script type="text/javascript">
+		/*
+			 正则表达式是用来操作字符串的公式,可以规定字符串的长度,内容,组成.还可以做字符串的过滤
+			 
+			 正则表达式的函数:
+			 reg.test(ele);在ele中查找符合reg公式的字符串,如果存在 返回true 否则返回false
+			 reg.exec(ele);返回ele中第一个符合reg公式的字符串 以及他的位置index和所在的整段字符串(如果reg设置成全局匹配,返回第二个,地板情况下,使用exec函数,reg不是做全局匹配设置)
+			 取返回值   res[0]  res.index
+			 
+			 字符串的函数:
+			 str.match(reg);
+			 在str中找到符合reg公式的字符串,如果没有则返回null 
+			 reg设置了全局匹配(即加g)返回所有符合reg的字符串组成的数组,如果未设置全局匹配,只返回第一个.
+			 str.search(reg或str2);
+			 找到str中第一个符合reg公式(或者第一个str2)出现的位置,就算reg设置了全局匹配,依旧返回第一次出现的位置
+			 str.replace(reg,newStr)
+			 将str中符合reg公式的字符串都替换成newstr.
+			 如果reg设置了全局匹配,就替换所有,如果未设置,只替换第一个
+			 
+			 
+		 * */
+		var reg1 = new RegExp('ab');
+		var reg2 = /3/g;
+		console.log(reg1, reg2);
+		var str = 'a123abc321bbab232323ab';
+		console.log(reg2.test(str));
+		console.log(reg2.exec(str).index);
+		
+		console.log(str.match(reg2));
+		var  index = str.search("ccc");
+		console.log(index);
+		var newStr= str.replace(reg2,'wc');
+		console.log(newStr);
+	</script>
+
+</html>

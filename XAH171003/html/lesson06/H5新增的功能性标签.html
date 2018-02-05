@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>H5新增功能性标签</title>
+	<style>
+		video{
+			width: 100%;
+			height: 100%;
+
+		}
+	</style>
+</head>
+<body>
+	<!-- controls:控制条
+	autoplay:自动播放
+	loop:循环播放
+	preload:预加载,当添加了autoplay的时候 可忽略该属性
+	poster:加载前现实的图片 -->
+	<video loop="loop" controls preload="preload">
+ 	 <source src="video/video2.mp4" type="video/mp4">
+  		你的浏览器不支持VIDEO标签
+	</video>
+	<audio src="audio/bgm.mp3" controls>
+		<source src="audio/bgm.ogg" type="audio/ogg">
+			该浏览器不支持播放音频
+	</audio>
+	<embed src="flash/1.swf" type="application/x-shockwave-flash">
+	<embed src="index.html" type="text/html">
+	<!-- 画布标签 -->
+	<canvas id="canvas"></canvas>
+</body>
+<script>
+	
+	var canvas= document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle='#565656';
+	ctx.fillRect(0,0,100,80);
+</script>
+</html>

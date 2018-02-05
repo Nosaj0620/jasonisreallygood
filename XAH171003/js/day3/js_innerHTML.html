@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>innerHTML</title>
+	</head>
+	<body id="wrap">
+		<p>wb</p>
+		<input type="text" name="" id="cls1" value="ssssssssjb" />
+		<span>ww</span>
+		<span>bb</span>
+		<mark>213</mark>
+		<div id="box"></div>
+		<div id="box2"></div>
+	</body>
+	<script type="text/javascript">
+	/*
+	 * innerHTML和innerText
+	 * 			1)innerHTML能获取到元素内的HTML内容.
+	 * 			   innerText只能获取文本内容.
+	 * 			2)使用innerHTML为元素设置内容时会将字符串的HTML样式字符翻译成页面元素.
+	 * 			innerText会保持原本字符串输出
+	 */
+		var wrap = document.getElementById("wrap");
+		var wrapHtml  = wrap.innerHTML;
+		console.log(wrapHtml);
+		var wrapText  = wrap.innerText;
+		console.log(wrapText);
+		var box = document.getElementById("box")
+		var box2 = document.getElementById("box2")
+		box.innerText =' <p>这是我新添加进去得去武汉覅味儿胡官方还未苏菲 </p>';
+		box2.innerHTML =' <p>这是我新添加进去得去武汉覅味儿胡官方还未苏菲 </p>';
+	</script>
+</html>

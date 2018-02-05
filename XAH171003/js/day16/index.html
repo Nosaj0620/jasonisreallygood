@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>flappy bird</title>
+		<link rel="stylesheet" type="text/css" href="flappybird.css" />
+	</head>
+
+	<body oncontextmenu="doNothing()">
+		<div id="mainWindow" >
+			<!--分数-->
+			<div id="score" style="font-size: 0;">
+				<img src="img/0.jpg" alt="">
+			</div>
+			<!--滚动条-->
+			<div id="scroll">
+				<!--<img src="img/banner.jpg" alt="" />-->
+			</div>
+			<!--管道容器-->
+			<div id="pipeWrap">
+
+			</div>
+			<!--小鸟-->
+			<div id="bird">
+
+			</div>
+			<!--游戏开始-->
+			<div id="gameStart">
+				<div class="headImg"></div>
+				<div></div>
+				<div class="sjbb">低难度版</div>
+			</div>
+			<!--开始按键-->
+			<div id="button">
+				<img src="img/start.jpg" />
+				<img src="img/submit.jpg" />
+			</div>
+			<!--游戏结束-->
+			<div id="gameOver">
+				<div class="overText">
+					<img src="img/game_over.jpg" />
+				</div>
+				<div class="scoreBoard">
+					<div class="img">
+						<div class="recordBox">
+							<div id="record"></div>
+							<div id="recordBest"></div>
+						</div>
+
+					</div>
+
+				</div>
+				<div id="okBtn">
+					<img src="img/ok.jpg" />
+				</div>
+			</div>
+		</div>
+		<audio id="bgm" src="audio/bgm.wav" autoplay="autoplay"  loop>
+			该浏览器不支持播放视频
+			<source src="audio/bgm.wav" type="audio/mp3">
+		</audio>
+		<audio id="bgm2" src="audio/bgm2.wav"  loop>
+			该浏览器不支持播放视频
+			<source src="audio/bgm2.wav" type="audio/mp3">
+		</audio>
+		<audio id="scoreGet" src="audio/score.wav" >
+			该浏览器不支持播放视频
+			<source src="audio/score.wav" type="audio/mp3">
+		</audio>
+		<audio id="flyFly" src="audio/fly.wav" >
+			该浏览器不支持播放视频
+			<source src="audio/fly.wav" type="audio/mp3">
+		</audio>
+		<audio id="dead" src="audio/dead.wav" >
+			该浏览器不支持播放视频
+			<source src="audio/dead.wav" type="audio/mp3">
+		</audio>
+		<audio id="Space" src="audio/Space.wav" >
+			该浏览器不支持播放视频
+			<source src="audio/Space.wav" type="audio/mp3">
+		</audio>
+		<div class="howToPlay">
+			鼠标右键跳 空格加速下落 Enjoy it!
+		</div>
+	</body>
+	<script type="text/javascript" src="flappybird.js">
+	</script>
+</html>

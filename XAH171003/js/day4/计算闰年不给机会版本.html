@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>if</title>
+</head>
+<body>
+	<input type="text" id="y" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+	<button id="btn">验证</button>
+</body>
+<script>
+	var btn = document.getElementById("btn");
+	btn.onclick = function(){
+		//输入不是数字类型的数值会弹窗,空字符和空格会弹窗
+		if( y.value != Number(y.value) || y.value<= 0){
+			// if( String(Number(y.value)) == 'NaN' || y.value == ""){
+				alert('请输入一个年份');
+			}
+			// 闰年计算
+			else  if(y.value %4 == 0 && y.value % 100 != 0 || y.value %400 ==0){
+				y.value="是闰年没错了";
+			}
+			// 不是闰年
+			else{
+				y.value="hin遗憾不是闰年";
+			}
+		}
+	</script>
+	</html>

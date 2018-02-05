@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>onload事件</title>
+	<script>
+		/*
+			当页面里的一些内容没有加载完成时,获取元素并执行操作是不可行的.
+			window.onload事件在页面内容加载完成之后执行.
+		*/
+		window.onload=function(){
+			var x = btn.innerText;
+			console.log(x);
+			btn.innerText='sadasdsad';
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">sadsa</button>
+</body>
+</html>

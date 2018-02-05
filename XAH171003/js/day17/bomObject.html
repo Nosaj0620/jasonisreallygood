@@ -1,0 +1,107 @@
+	<!DOCTYPE html>
+	<html lang="zh-CN">
+	
+		<head>
+			<meta charset="UTF-8">
+			<title></title>
+		</head>
+	
+		<body>
+			
+			<button id="btn1">打开</button>
+			<button id="btn2">关闭</button>
+			<button id="prev">下一页</button>
+			<button id="next">上一页</button>
+			<a href="https://www.baidu.com">11</a>
+		</body>
+		<script type="text/javascript">
+			/*
+				 
+				 * window对象:jsBOM的根对象
+				 * document是window的子对象
+				 * js文件里声明的全局函数以及全局变量,都是window对象的函数和属性
+				 * IE8及以下的浏览器的根对象是document,IE9之后更改为window
+				 * 
+				 * window.screenLeft和window.screenTop获取的是浏览器窗口左上角距离设备屏幕左上角的像素值(火狐是screenX和screenY);
+				 * 
+				 * 获取浏览器可视窗口的宽高(不包含任务栏):
+				 * window.innerHeight和window.innerWidth;
+				 * ie8及以下:
+				 * document.documentElement.clientWidth;
+				 * document.documentElement.clientHeight;
+				 * 
+				 * 打开或者关闭浏览器窗口
+				 * window.open('https://www.baidu.com');
+				 * window.close('https://www.baidu.com');
+				 * location对象:返回当前页面的url信息.
+				 * window.location.href 完整的url
+				 * window.location.host 域名
+				 * window.location.hostname IP
+				 * window.location.pathname 完整路径
+				 * window.location.port 端口号
+				 * window.location.protocol 协议
+				 * window.location.search 参数列表
+				 * 
+				 * navigator 对象 返回浏览器基本信息
+				 * 
+				 * screen对象返回设备屏幕的信息.
+				 * screen.availWidth,screen.availHeight返回不包含上下两个任务栏的宽高
+				 * screen.Width和screen.Height返回屏幕左上角到右下角之间的宽高
+				 * 
+				 * 
+				 * history对象
+				 * history.forward() url列表中的前一个
+				 * history.back() url列表中的后一个
+				 * history.go() 刷新当前页面
+				 * */
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+	
+			console.log(window);
+			//		window.alert('222');
+			window.localStorage.setItem('asdf', 'aaa');
+	
+			function testFn() {
+				console.log(1);
+			}
+			console.log(window);
+			testFn();
+			var testVar = 'asdafas';
+			console.log(window);
+			console.log(window.screenLeft, window.screenTop);
+			btn1.onclick = function() {
+				window.open('https://www.baidu.com');
+			}
+			btn2.onclick = function() {
+				window.close();
+			}
+			console.log(window.innerHeight)
+			console.log(document.documentElement.clientHeight);
+			console.log(window.location);
+			console.log(window.location.href);
+			console.log(window.location.host);
+			console.log(window.location.port);
+			console.log(window.location.search);
+			var a = window.location.search;
+			var b = a.substring(1);
+			var arr = b.split('&');
+			console.log(arr);
+			console.log(navigator);
+			console.log(navigator.appCodeName);
+			console.log(navigator.appName);
+			console.log(navigator.appVersion);
+			console.log(navigator.language);
+			console.log(screen);
+			console.log(screen.availHeight,screen.availWidth);
+			prev.onclick = function(){
+				history.forward();
+			}
+			next.onclick = function(){
+				history.back();
+			}
+			
+		</script>
+	
+	</html>

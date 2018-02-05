@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>flex2</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.box{
+			width: 500px;
+			height: 500px;
+			border: 1px solid purple;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.box p{
+			width: 300px;
+			height: 100px;
+		}
+		.box p:nth-child(1){
+			background-color: blue;
+			/*flex-grow: 3;*/
+			flex-shrink: 1;
+			flex-basis: 100px;
+		}
+		.box p:nth-child(2){
+			background-color: yellow;
+			/*flex-grow: 2;*/
+			flex-shrink: 1;
+
+			align-self: flex-start;
+		}
+		.box p:nth-child(3){
+			background-color: pink;
+			/*flex-grow: 1;*/
+			flex-shrink: 1;
+		}
+		/*设为flex布局以后,子元素的float,clear,和vertical-align属性将失效*/
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+</body>
+</html>

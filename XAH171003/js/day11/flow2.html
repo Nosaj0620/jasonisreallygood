@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流2</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.body::after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.body{
+		font-size: 0;
+		padding: 0;
+		border:1px solid black;
+		margin: 0 auto;
+		display: block;
+
+	}
+	.body li{
+		width: 200px;
+		/*margin: 10px;*/
+		list-style: none;
+		display: inline-block;
+		font-size: 90px;
+		float: left;
+		margin: 10px;
+	}
+</style>
+</head>
+<body>
+	<ul id="body" class="body">
+		
+
+	</ul>
+</body>
+<script>
+	var liArr=[];
+	var heightArr = [];
+	var list = document.querySelector('#body');//获取元素
+	function createLi(){
+		list.innerHTML = "";
+		heightArr = [];
+		liArr=[];
+		var windowWidth = document.getElementsByTagName('body')[0].offsetWidth;//获取浏览器宽度
+		var liNum = Math.floor(windowWidth/220);
+		for(var i =  0;i< liNum; i++){
+			var newLi = document.createElement('li');
+			list.appendChild(newLi);
+			heightArr.push(0);
+			liArr.push(newLi);
+		}
+	}
+	createLi();
+	//随机数函数
+	function randomNum(x,y){
+		return  Math.round(Math.random()*(y-x)+x);
+	}
+	function getMinIndex(){
+		var min; 
+		for(var j = 0; j<heightArr.length;j++){
+			// var minHeight = 0;
+			min =heightArr[j] > min ? min : heightArr[j];
+		}
+		var minIndex = heightArr.indexOf(min);
+		return minIndex;
+	}
+	//创建DIV
+	var num = 50;
+	function createDivs(){
+		//创建DIVs
+		for(var k =0; k <num; k++){
+			var items = document.createElement('div');
+			var newHeight = randomNum(100,300);
+			items.style.height = newHeight+"px";
+			items.style.backgroundColor = 'rgba('+randomNum(0,255)+','+randomNum(0,255)+','+randomNum(0,255)+','+randomNum(0.6,0.8)+')';
+			items.style.lineHeight = newHeight+"px";
+			items.innerText =k+1;
+			var index = getMinIndex();
+			var lis = document.querySelector('#body>li');
+			liArr[index].appendChild(items);
+			heightArr[index] += newHeight;
+		}
+	}
+	createDivs();
+	window.onresize  = function(){
+		
+		createLi();
+		createDivs();
+	}
+</script>
+</html>

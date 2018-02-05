@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>water celestial flower</title>
+</head>
+<body>
+</body>
+<script>
+	for(var num=100;num<1000;num++){
+		var b = Math.floor(num /100);
+		var s = Math.floor(num /10 - b * 10);
+		var g = Math.floor(num  - s * 10 -b *100);
+		if(Math.pow(b,3)+Math.pow(s,3)+Math.pow(g,3)==num){
+			document.write(num+"<br>");
+		}
+	}	
+</script>
+</html>

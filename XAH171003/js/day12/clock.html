@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>clock</title>
+	<style>
+	#container{
+		width: 400px;margin:0 auto;
+		position: relative;
+	}
+	#clockBg{
+		height: 380px;
+		border: 10px solid pink;
+		border-radius: 50%;
+		position: relative;
+		transition: 1s;
+	}
+	#clockBg div {
+		width: 20px;
+		position: absolute;
+		height: 380px;
+		/*background: skyblue;*/
+		left:180px;
+
+	}
+	#clockBg>div>span{
+		display: block;
+		width: 100%;
+		text-align: center;
+
+
+	}
+	#clockBg>div>span:nth-child(1){
+		position: absolute;
+		top: 0;
+	}
+	#clockBg>div>span:nth-child(2){
+		bottom: 0;
+		position: absolute;
+	}
+	#hourNeedle,#minNeedle,#secNeedle{
+		width: 8px;
+		transition: 1s linear;
+		height: 380px;
+		/*background: black;*/
+		position: absolute;
+		left: 195px;
+		top: 10px;
+		margin: 0 auto;
+	}
+	#hourNeedle>div{
+		height: 120px;
+		background-color: black;
+		margin-top: 80px;
+		
+	}
+	#minNeedle>div{
+		width: 5px;
+		height: 140px;
+		background: black;
+		margin: 0 auto;
+		margin-top: 60px;
+	}
+	#secNeedle>div{
+		width: 2px;
+		height: 160px;
+		background: red;
+		margin: 0 auto;
+		margin-top: 40px;
+
+	}
+
+	.pic{
+		background-image: url(10.jpeg);
+		width: 50px;
+		display: block;
+		height: 50px;
+		border: 5px outset rgba(80,50,50,0.5);
+		border-radius: 50%;
+		background-size: contain;
+		
+		position: absolute;
+		top: 170px;
+		left: 170px;
+		transform: scale(0.8);
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		
+		<!-- 表盘 -->
+		<div id="clockBg">
+			
+			<div>
+				<span>12</span><span>6</span>
+			</div>
+			<div>
+				<span>1</span><span>7</span>
+			</div>
+			<div>
+				<span>2</span><span>8</span>
+			</div>
+			<div>
+				<span>3</span><span>9</span>
+			</div>
+			<div>
+				<span>4</span><span>10</span>
+			</div>
+			<div>
+				<span>5</span><span>11</span>
+			</div>
+		</div>
+		<!-- 时针 -->
+		<div id="hourNeedle">
+			<div></div>
+		</div>
+		<!-- 分针 -->
+		<div id="minNeedle">
+			<div></div>
+		</div>
+		<!-- 秒针 -->
+		<div id="secNeedle">
+			<div></div>
+		</div>
+		<picture class="pic"></picture>
+	</div>
+</body>
+<script>
+	//先获取元素
+	var divs = document.querySelectorAll('#clockBg div');
+	var spans = document.querySelectorAll('#clockBg div>span');
+	console.log(spans);
+	//循环旋转每个元素
+	for(var i = 0;i<6;i++){
+		divs[i].style.transform = 'rotate('+i*30+'deg)';
+		spans[i*2].style.transform = 'rotate('+-i*30+'deg)';
+		spans[i*2+1].style.transform = 'rotate('+-i*30+'deg)';
+	}
+	//获取三针
+	var hourNeedle = document.getElementById('hourNeedle');
+	var minNeedle = document.getElementById('minNeedle');
+	var secNeedle = document.getElementById('secNeedle');
+
+	//获取时间,指针
+	function rotateNeedle(){
+		var dateTime = new Date();
+		var sec  = dateTime.getSeconds();
+		var min = dateTime.getMinutes();
+		var hour = dateTime.getHours();
+		console.log(sec,min,hour);
+
+		secNeedle.style.transform = "rotateZ("+sec*6+"deg)";
+		minNeedle.style.transform = "rotateZ("+(min*6 + sec * (6/60))+"deg)";
+		hourNeedle.style.transform = "rotateZ("+(hour*30+min*(30/60))+"deg)";
+
+	}
+	setInterval(function(){
+		rotateNeedle();
+	},1000);
+	
+</script>
+</html>

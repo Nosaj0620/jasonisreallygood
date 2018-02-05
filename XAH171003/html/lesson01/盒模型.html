@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>盒模型</title>
+	<style>
+	.box{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		padding: 40px;
+		border: 5px solid blue;
+	}
+	.box1{
+		width: 20px;
+		height: 20px;
+		background-color: yellow;
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1">
+			
+		</div>
+	</div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+
+<!-- 盒模型:
+	五大要素:width,height,padding,border,margin;
+	标准盒模型计算:
+		盒子渲染的宽width加padding-left&right加border-left&right
+		盒子渲染的高height加padding-top&bottom加border-top&bottom
+	从内到外:第一层内容层(content):
+		width,height设置显示的区域,在同一文本流下,盒子中出现的文字和标签均显示在盒子的宽高区域.
+	第二层内边距层(padding):
+		padding是在边框和content中间的区域.padding一定会改变盒子在浏览器中的渲染区域.padding不可以设置负值.
+		  场景:对于两个嵌套的盒子,让父级的宽和高与子级渲染到浏览器的宽和高相等,给父级
+		设置padding,这样能让子级在父级中居中.
+	第三层边框层(border):在padding外包围.给盒子添加一层明确的边界.
+	第四层外边距层(margin):在border外包围,表示该区域内不允许出现其他的元素.
+	!focus!:
+		1)对于两个嵌套的盒子来说,当父级没有明确的边界(padding和border)时,给子级设置margin-top,子级的margin-top会向上传递给父级,导致父级和子级一起向下移动.
+		应给父级设置明确的边界:padding-top或者border-top 
+		2)对于嵌套的盒子来说,自己设置的margin,基准点是父级的内容区域(content);
+		3)对于同级盒子来说,上边盒子设置了margin-bottom,下边盒子设置了margin-top,两个盒子之间的间距是取两个间距的最大值.
+	-->
+</html>

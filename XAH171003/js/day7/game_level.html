@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>开关灯游戏 2.0 Ver</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#wrap {
+				margin: 20px auto;
+				font-size: 0;
+				width: 600px;
+				height: 600px;
+				background-image: url(6.png);
+				position: relative;
+			}
+			
+			#wrap div {
+				transition: 0.3s;
+				/*border-radius: 25px;*/
+			}
+			
+			#wrap div:hover {
+				background: seagreen!important;
+			}
+			
+			button {
+				margin: 0 auto;
+				display: block;
+				height: 40px;
+				width: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap"></div>
+		<button id="btn1">初级</button>
+		<button id="btn2">高级</button>
+		<button id="btn3">超高级</button>
+	</body>
+	<script>
+		var arr = [];
+		var colNum = 10; //行数量
+		var rowNum = 10; //列数量
+		var itemWidth = 60; //单元格宽度
+		var itemHeight = 60; //单元格高度
+
+		//重新计算wrap的宽度
+		wrap.style.width = itemWidth * colNum + "px";
+		wrap.style.height = itemHeight * rowNum + "px";
+		wrap.style.backgroundSize = itemHeight * rowNum + "px" + " " + itemWidth * colNum + "px";
+		creatDiv();
+		//初级按钮
+		document.getElementById('btn1').onclick = function() {
+				colNum = 5;
+				rowNum = 5;
+				itemWidth = 120;
+				itemHeight = 120;
+				creatDiv();
+			}
+			//高级按钮
+		document.getElementById('btn2').onclick = function() {
+				colNum = 12;
+				rowNum = 12;
+				itemWidth = 50;
+				itemHeight = 50;
+				creatDiv();
+			}
+			//超高级按钮
+		document.getElementById('btn3').onclick = function() {
+			colNum = 20;
+			rowNum = 20;
+			itemWidth = 30;
+			itemHeight = 30;
+			creatDiv();
+		}
+
+		function creatDiv() {
+			//清空上局游戏
+			wrap.innerHTML = " ";
+			arr = [];
+			//重新计算wrap的宽高
+			wrap.style.width = itemWidth * colNum + "px";
+			wrap.style.height = itemHeight * rowNum + "px";
+			//背景美女图的大小适应
+			wrap.style.backgroundSize = itemHeight * rowNum + "px" + " " + itemWidth * colNum + "px";
+			for(i = 0; i < colNum * rowNum; i++) {
+				var newDiv = document.createElement("div"); //创建元素
+				arr.push(wrap.appendChild(newDiv)); //将newDiv插入到wrap当中去
+				newDiv.style.width = itemWidth + "px";
+				newDiv.style.height = itemHeight + "px";
+				newDiv.style.border = " 1px solid rgba(222,222,222,0.3)";
+				newDiv.style.display = " inline-block";
+				newDiv.style.background = " pink";
+				newDiv.style.boxShadow = "inset 0 0 20px rgba(44,32,32,0.3)";
+				newDiv.style.boxSizing = " border-box";
+				newDiv.onclick = function() {
+					//this变量是一个有指向的变量:指向当前函数的所有者.
+					divClick(this);
+				}
+			}
+		}
+		// var style = window.getComputedStyle(newDiv,null);
+		function divClick(x) {
+			var thisIndex = arr.indexOf(x);
+			// console.log(thisIndex);
+			judgeBg(x);
+			// 排除掉最上面一行元素,判断其他元素的上方元素
+			if(thisIndex > colNum - 1) {
+				judgeBg(arr[thisIndex - colNum]); 
+			}
+			if(thisIndex < rowNum * colNum - colNum) {
+				judgeBg(arr[thisIndex + colNum]); 
+			}
+			if(thisIndex % colNum != 0) {
+				judgeBg(arr[thisIndex - 1]); 
+			}
+			if((thisIndex + 1) % colNum != 0) {
+				judgeBg(arr[thisIndex + 1]); 
+			}
+
+		}
+
+		function judgeBg(a) {
+
+			if(a.style.background == "pink") {
+				a.style.background = 'transparent';
+				// a.style.border = 'none';
+
+			} else {
+				a.style.background = 'pink';
+				// a.style.border = '1px solid grey';
+			}
+		}
+	</script>
+
+</html>

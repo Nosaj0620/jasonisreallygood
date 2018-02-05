@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>huitailang</title>
+	<style>
+	#container{
+		width: 320px;
+		height: 480px; 
+		background-image: url(images/game_bg.jpg);
+		margin: 0 auto;
+		position: relative;
+
+	}
+	#start p:nth-child(1){
+		position: absolute;
+		left: 120px;
+		top: 30%;
+		font-size: 40px;
+		color:skyblue;
+		text-shadow:  0 0 8px yellow;
+		cursor: pointer;
+		user-select: none;
+	}
+	#start p:nth-child(2){
+		position: absolute;
+		left: 80px;
+		top: 46%;
+		font-size: 40px;
+		color: skyblue;
+		text-shadow:  0 0 8px yellow;
+		cursor: pointer;
+		user-select: none;
+	}
+	#score{
+		position: absolute;
+		color: white;
+		font-size: 20px;
+		left: 70px;
+		top: 8px;
+		margin: 0;
+		user-select: none;
+	}
+	#end{
+		font-size: 80px;
+		margin: 0;
+		position: absolute;
+		left: 0;
+		top:180px;
+		color: grey;
+		display: none;
+		cursor: default;
+		text-shadow: 0 0 4px white;
+		user-select: none;
+	}
+	#progress{
+		width: 180px;
+		height: 16px;
+		background-image: url(images/progress.png);
+		position: absolute;
+		left: 63px;
+		background-repeat: no-repeat;
+		top: 66px;
+	}
+	#wolves img{
+		position: absolute;
+	}
+	#reStart{
+		font-size: 80px;
+		user-select: none;
+		position: absolute;
+		top:270px;
+		color: rgba(125,187,245,1);
+		text-shadow:  0 0 10px rgba(125,17,245,0.7);
+		display: none;  
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="progress">
+			
+		</div>
+		<!-- 分数 -->
+		<div id="score">
+			0
+		</div>
+		<!-- 事件 -->
+		<div id="timing">
+			
+		</div>
+		<div id="reStart">
+			重新开始
+		</div>
+		<!-- 开始 -->
+		<div id="start">
+			<p>开始</p>
+			<p>操作说明</p>
+		</div>
+		<!-- 结束 -->
+		<div id="end">
+			游戏结束
+		</div>
+		<!-- 狼 -->
+		<div id="wolves">
+			
+		</div>
+	</div>
+</body>
+<script>
+	//获取元素
+	var progress = document.getElementById('progress');
+	var scoreDiv = document.getElementById('score');
+	var reStartDiv = document.getElementById('reStart');
+	var startDiv = document.querySelector('#start>p:nth-child(1)');
+	var controlDiv = document.querySelector('#start>p:nth-child(2)');
+	var endDiv = document.getElementById('end');//提示游戏结束
+	var wolves = document.getElementById('wolves');
+//	var f='1';//定义闪烁条件
+//	function flash(){//定义闪烁函数
+//		if(f=='1'){
+//			progress.style.filter = 'brightness(10)';
+//			f='0';
+//		}
+//		else if (f== '0'){
+//			progress.style.filter = 'brightness(1)';
+//			f='1';
+//		}
+//	}
+//	
+	
+	//狼的位置数组(二维数组:内层数组第0个值代表left,第一个值代表top)
+	var posArr = [['98px','115px'],['17px','160px'],['15px','220px'],['30px','293px'],
+	['122px','273px'],['207px','295px'],['200px','211px'],['187px','141px'],['100px','195px']]
+	var scoreText=0;
+	//两个数之间的随机数
+	function randomNum(x,y){
+		return Math.round(Math.random()*(y-x)+x);     
+	}
+	//生成狼
+	function createWolf(){
+		var wolf = new Image();//创建狼
+		wolf.style.userSelect = 'none';
+		wolf.type = randomNum(0,100)>80 ? 'x':'h';
+		wolf.index = 0;//初始图片下标
+		wolf.src = 'images/'+wolf.type+wolf.index+'.png';
+		//确定狼的位置
+		var indexNum;
+		bol=1;
+		while(bol){
+			//获取所有的狼
+			var allWolves = wolves.children;
+			var indexNum = randomNum(0,8);
+	                 	//判断新狼的位置是否和已存在的wolf的位置重复
+			for(var i = 0;i<allWolves.length ; i++){//获取每个狼的left和top
+				if(allWolves[i].style.left == posArr[indexNum][0]){
+				//indexNum不能使用,重新生成一个位置
+				break;
+			}
+		}
+
+		if(i==allWolves.length){
+			bol=0;
+		}
+	}
+	wolf.style.left = posArr[indexNum][0];
+	wolf.style.top = posArr[indexNum][1];
+	wolves.appendChild(wolf);
+	return wolf;
+}
+	var createWolfByTimer;
+	//封装函数
+	function createWolfByTime(){ 
+		createWolfByTimer = setInterval(function(){
+			wolfFn();
+		},450);
+	}
+	startDiv.onclick = function(){
+		timeing();
+		createWolfByTime();
+		startDiv.style.display = 'none';
+		controlDiv.style.display = 'none';
+	}
+	reStartDiv.onclick = function(){
+		timeing();
+		scoreDiv.innerText = 0;
+		createWolfByTime();
+		reStartDiv.style.display = 'none';
+		endDiv.style.display = 'none';
+	}
+	function wolfFn(){
+		var wolf = createWolf();//创建一个新的狼对象
+		
+		wolf.appearTimer = setInterval(function(){
+			wolf.index++;//下标递增让狼动起来
+			wolf.src = 'images/'+wolf.type+wolf.index+'.png';
+			if(wolf.index ==5){
+				clearInterval(wolf.appearTimer);
+				wolf.disappearTimer = setInterval(function(){
+					wolf.index--;
+					wolf.src = 'images/'+wolf.type+wolf.index+'.png';
+					if(wolf.index<=0){
+						clearInterval(wolf.disappearTimer);
+						wolf.remove();
+					}
+				},180);
+			}
+		},180);
+
+		
+		beatWolf(wolf);
+	}
+	function beatWolf(a){
+		//为狼绑定点击事件
+		a.onclick = function(){
+			//清除狼出现和消失的计时器
+			clearInterval(a.appearTimer);
+			clearInterval(a.disappearTimer);
+			a.onclick = null;
+			a.index = 5;//从当前状态到被打
+			a.afterClickTimer = setInterval(function(){
+				a.index++;
+				a.src  = 'images/'+a.type+a.index +'.png';
+				if(a.index ==9 ){
+					//清除上面计时器
+					clearInterval(a.afterClickTimer);
+					//移除这个元素
+					a.remove();
+				}
+			},100);
+			if(a.type == 'h'){
+				scoreText +=10;
+
+			}else {
+				scoreText -= 10;
+			}
+			scoreDiv.innerText = scoreText;
+		}
+		
+	}
+	function timeing(){//倒计时函数
+		var timeSec = 0;
+		progress.style.width = "180px";
+		var timer = setInterval(function(){
+			timeSec++;
+			progress.style.width = (180 - timeSec*0.3) +"px";
+			if(progress.style.width == '0px'){
+				clearInterval(timer);
+				clearInterval(createWolfByTimer);
+				endDiv.style.display = 'block';
+				reStartDiv.style.display = 'block';
+			}
+		},10);
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

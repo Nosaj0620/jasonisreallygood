@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>background-image</title>
+	<style>
+	*{
+		padding: 0;
+		margin:0;
+	}
+	.box{
+		margin: 0 auto;
+		width: 500px;
+		height: 500px;
+		background-image: url(img/psb111.png);
+		background-position: center center;
+		padding: 100px;
+		border: 40px solid transparent;
+		/*background-origin:改变背景图定位基准点:规定了背景图在哪个区域内进行定位;*/
+		/*background-clip:表示背景图将盒子的那个区域显示.
+		border-box:表示图片将出现在border以内的区域(包含border);
+		padding-box:表示图片将出现在padding以内的区域(包含padding);
+		content-box:表示图片将出现在width,height以内的区域;
+		*/
+		background-repeat: no-repeat;
+		background-origin: border-box;
+		background-clip: border-box;
+		background-size: contain;
+		font-size: 100px;
+		color: rgba(0,0,0,1);
+		/*-webkit-background-clip:text;*/
+		/*让背景图出现在文字上,目前只有webkit内核的浏览器支持.必须设置文字颜色透明度 */
+		-webkit-background-clip:text;
+		background:url(img/san.png) repeat center center;
+		font-weight:700;
+		/*background-size:设置背景图的大小;
+		cover:图片会按照原始的尺寸(缺点:图片不一定能够显示完整);
+		contain:图片会按照原始尺寸等高比进行缩放,图片将完整显示在盒子中.(缺点:图片有可能无法完全覆盖背景区域);*/
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		sdsdsds
+	</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+*{
+	/*外边距*/
+	margin: 0;
+	/*内边距*/
+	padding:0;
+}
+.wrap{
+	width:90%;
+	/*background-color:设置标签背景色*/
+	background-color: rgb(236,236,236);
+	/*让div类型标签水平居中（display:block）*/
+	margin: 0 auto;
+}
+/*标签选择器：标签名{样式}*/
+header{
+	/*内容居中*/
+    text-align: center;
+}
+/* 空格选择器，空格前面是父级，空格后面是子级*/
+/*header包含的所有的img显示以下样式*/
+header img{
+	vertical-align: middle;
+}
+/*header包含的所有的a显示以下样式*/
+header a{
+	vertical-align: middle;
+/*去掉下划线*/
+	text-decoration: none;
+/*设置字体大小*/
+	font-size: 13px;
+/*设置字体颜色*/
+	color:#666;
+	/*标签与标签之间的距离属于外边距*/
+	/*设置外边距*/
+	margin: 0 15px;
+}
+/*hover:设置鼠标悬停在标签上方时改变样式*/
+header a:hover{
+	color: white;
+
+}
+/*设置内容部分样式*/
+.content{
+	
+width:100%;
+}
+.section1{
+    background: url(../imgs/needles.jpeg)  0 0 ;
+}
+.section2{
+	background: url(../imgs/tools1.jpeg)  0 0 ;
+}
+.section3{
+	background: url(../imgs/shoe-design.jpeg)  0 0 ;
+}
+.section4{
+	background: url(../imgs/Heritage04.jpeg)  0 0 ;
+}
+.total{
+	height: 810px;
+	width: 100%；
+	background-repeat:no-repeat;
+	/*背景图尺寸*/
+    background-size:cover;
+    text-align: center;
+    /*background-attachment:背景是否随着内容一起滚动  背景不滚动内容滚动*/
+    background-attachment: fixed; 
+}
+.first{
+    text-align: center;
+	color: white; 
+}
+h4{
+   padding-top: 30px;
+   padding-bottom: 30px;
+}
+
+/*逗号选择器：逗号前面的选择器和逗号后面的选择器同时应用以下样式*/
+.leftSec,.rightSec{
+	/*更改标签属性用display  inline-block:将盒子的样式更改为内联-块级标签*/
+   display: inline-block;
+   width:240px;
+   color: white;
+   font-size: 13px;
+   /*以顶部对齐*/
+   vertical-align: top;
+   padding:0 10px;
+   margin-top:100px; 
+
+}
+.leftSec p ,.rightSec p{
+	text-align: left;
+	margin-bottom: 20px;
+}
+/*设置脚部样式*/
+footer{
+
+	background-color: rgb(32,32,28);
+	color: white;
+	/*padding: 上 左右 下*/
+	padding:100px 5px 10px;
+}
+/*盒子与盒子之间的间距用margin*/
+ul{
+	
+	/*设置列表样式为none*/
+	list-style: none;
+	display: inline-block;
+	/*以顶部为基准线对齐*/
+	vertical-align: top;
+}
+ul li{
+	font-size:13px;
+	line-height: 25px;
+}
+ul h4{
+	margin-bottom: 30px;
+}
+.ul1{
+	margin-left: 10%;
+}
+.ul2{
+	margin-left: 30px;
+	margin-right: 30%
+}
+.ul3{
+	margin-right: 30px;
+}
+.ul4{
+	margin-right: 10%;
+	margin-left: 30px;
+}
+.duct{
+	text-align: center;
+
+}
+.duct img{
+	width:71px;
+}
+.duct p{
+	font-size: 12px;
+}
+.leftp{
+	font-size: 12px;
+	text-align: left;
+	margin-top: 20px;
+}
+.rightp{
+
+	font-size: 12px;
+	text-align: right;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

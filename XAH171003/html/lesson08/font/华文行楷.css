@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "华文行楷";
+  src: url("华文行楷.woff2") format("woff2"),
+       url("华文行楷.woff") format("woff"),
+       url("华文行楷.ttf") format("truetype"),
+       url("华文行楷.eot") format("embedded-opentype"),
+       url("华文行楷.svg") format("svg"),
+       url("华文行楷.otf") format("opentype");
+  	font-weight: normal;
+  		font-style: normal;
+
+}

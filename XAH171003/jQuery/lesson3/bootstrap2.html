@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum - scale= 1,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<title>123</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<button type="button" class="btn btn-default" aria-label="Left Align">
+  				<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+			</button>
+			<span class="glyphicon glyphicon-plus "></span>
+			<i class="glyphicon glyphicon-eur" style="font-size: 4rem; color: red; "></i>
+			<i class="glyphicon glyphicon-play"></i>
+			<div class="btn-group btn-group-lg">
+				<button class="btn btn-default">1</button>
+				<button class="btn btn-default">2</button>
+				<button class="btn btn-default">3</button>
+				<button class="btn btn-default">4</button>
+				<button class="btn btn-default">5</button>
+				<button class="btn btn-default">6</button>
+				<button class="btn btn-default">7</button>
+			</div>
+			<ul class="nav nav-tabs">
+				<li role="presentation">
+					<a href="#">你真</a>
+				</li>
+				<li role="presentation" class="active">
+					<a href="#">是个</a>
+				</li>
+				<li role="presentation">
+					<a href="#">二愣子</a>
+				</li>
+			</ul>
+			<ul class="nav nav-pills ">
+				<li role="presentation" class="active">
+					<a href="#">Home</a>
+				</li>
+				<li role="presentation">
+					<a href="#">Profile</a>
+				</li>
+				<li role="presentation">
+					<a href="#">Messages</a>
+				</li>
+			</ul>
+		</div>
+		<span class="icon-bar"></span>
+	</body>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script>
+		$('.nav li').removeClass('active');
+		$('.nav li').click(function() {
+			$('.nav li').removeClass('active');
+			$(this).addClass('active');
+		})
+		$(window).resize(function() {
+			if($(window).width() <= 600) {
+				$('.nav').addClass('nav-stacked');
+			} else {
+				$('.nav').removeClass('nav-stacked');
+			}
+		});
+		setTimeout(function() {
+			history.go(-1);
+		}, 2000);
+	</script>
+
+</html>

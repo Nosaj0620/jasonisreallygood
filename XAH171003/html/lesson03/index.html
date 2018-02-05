@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动01</title>
+	<style>
+	.box{
+		border:1px solid red;
+			/*height: 200px;
+			width: 800px;*/
+		}
+		.box div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid blue;
+			/*display: inline-block;*/
+			/*float: right;*/
+		}
+		.d1{
+			background-color: red;
+			float: left;
+		}
+		.d2{
+			/*block:盒子被遮住,内容移出来*/
+			background-color: blue;
+			display: inline-block;
+		}
+		/**{
+			margin: 0;
+			padding:0;
+			}*/
+		.fa{
+			border: 1px solid red;
+			width: 200px;
+		}
+		.c1{
+			width: 100px;
+			height: 130px;
+			background-color: red;
+			float: left;
+		}
+		.c2{
+			width: 100px;
+			height: 110px;
+			background-color: yellow;
+			float: left;
+		}
+		.c3{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			float: left;
+		}
+		</style>
+	</head>
+	<body>
+		<!--  -->
+		<div class="box">
+			<!-- 参照物是block类型的盒子 -->
+			<div class="d1">div1</div>
+			<div class="d2">div2</div>
+			<hr>
+		</div>
+		<div class="fa">
+				<div class="c1"></div>
+				<div class="c2"></div>
+				<div class="c3"></div>
+			</div>
+	</body>
+		<!-- 浮动:
+		定义:浮动其实是一种布局方式,主要是为了设置盒子可以同行排布.
+			浮动的盒子只能向左或者向右移动,浮动块在水平方向上排列的顺序只与html中标签的排列顺序有关系.
+		浮动换行:当浮动的盒子比较多的的时候,一行不足以放置所有浮动盒子时,多余浮动的盒子会自动换行,然后按照浮动方向继续移动.所有的浮动的盒子只有遇到父级的边缘或者是浮动盒子的边缘才会停止浮动.(边缘包含margin)
+		!focus!:
+			1)当浮动的盒子相邻的元素是block类型的盒子,且该盒子float:none时,会占据浮动盒子原来的位置,里面的内容会被挤出来,当浮动的盒子相邻的元素是inline或者inline-block类型 且该盒子float:none时,会与浮动盒子同行排布,不被遮挡,并且盒子之间没有间隙.
+			2)当浮动盒子中有高度过高的盒子时,该盒子会阻挡后面浮动的盒子.所以在使用浮动属性布局时,一定要考虑盒子的高度.
+			3)display是inline block inline-block的盒子一旦设置了浮动float属性,则盒子的宽高需要重新设置.
+		-->
+
+
+		</html>

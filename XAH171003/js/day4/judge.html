@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>奇数还是偶数</title>
+</head>
+<body>
+	<input type="text" id="input">
+	<button id="btn">Judge</button>
+</body>
+<script>
+	var num =document. getElementById('input');
+	var btn = document.getElementById('btn');
+
+	btn.onclick= function(){
+		var numm = Math.round(num.value);
+		var result = numm %2 == 0 ? '偶数' : '奇数' ;
+		alert(result);
+	}
+</script>
+</html>

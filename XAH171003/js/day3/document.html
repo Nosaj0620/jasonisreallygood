@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document.write</title>
+	<style>
+	html{
+		text-align: center;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		background-color: lightgreen;
+		box-sizing: border-box;
+	}
+</style>
+</head>
+<body id="wrap">
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div id="ss" style="border:1px solid black;"></div>
+</body>
+<script>
+	// 当页面加载完成之后,页面的输出流会关闭,之后再使用document.write('')去向页面写入内容时,新写入的内容会覆盖页面原有的内容
+	// 如果在页面并没有加载完成之前使用document.write('')就不会覆盖,而是拼接在内容之后.
+	//document.write('');方法不能向页面里直接写入变量,如果使用该方法向页面里写入变量,该变量会被转化成非理想字符串写入页面.
+	//根据元素的class获取元素:获取到的是所有匹配到相应class名称的集合,不论有几个元素;
+	//
+	var s = document.getElementsByClassName('box');
+	var body = document.getElementById('wrap');
+	var boxs = body.innerHTML;
+	ss.onclick = function(){
+		 body.innerHTML=boxs;
+		 body.innerHTML+='<div style="width:400px;height:400px;background:skyblue;">额滴神啊</div>','萨达萨达所大所多','<br>','3254人物rerfewfr';
+
+	}
+
+</script>
+</html>

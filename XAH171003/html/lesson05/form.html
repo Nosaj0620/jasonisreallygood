@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+	<style>
+	.textC{
+		outline: none;
+	}
+	input,select,textarea{
+		margin-top: 20px;
+	}
+	textarea{
+		resize: none;
+	}
+</style>
+</head>
+<body>
+	<!-- action:规定表单里的数据提交的地址 -->
+	<form action="" method="get">
+		<!-- placeholder 占位符 : 提示作用,输入文字后placeholder消失 -->
+		用户名:
+		<input class="textC" type="text" name="userName" value="" placeholder="请输入" ><br>	
+		密码:
+		<input class="textC" type="password" name="password" value="321" disabled=""><br>
+		<!-- 语言选择:多选按钮 -->
+		<input type="checkbox" id="language1" name="language" value="English">
+		<label for="language1">English</label>
+		<input type="checkbox" id="language2" name="language" value="Japanese">
+		<label for="language2">Japanese</label>
+		<input type="checkbox" id="language3" name="language" value="Chinese">
+		<label for="language3">Chinese</label><br>
+		<!-- 性别选择:单选按钮 -->
+		性别:
+		<input id="female" type="radio" name="sex" value="female"><label for="female">女</label>
+		<input id="male" type="radio" name="sex" value="male"> <label for="male">男</label><br>
+		<!-- file 上传文件 -->
+		上传文件:
+		<input type="file" name="file" value=""><br>
+		<select name="city" id="">
+			<option value="xian">西安</option>
+			<option value="baoji">宝鸡</option>
+			<option value="yangling">杨凌</option>
+		</select><br>
+		<!-- 文字区  大文字输入框 -->
+		<textarea name="" id="" cols="40" rows="10"></textarea><br>
+		电子邮件: <input type="email" name="email" value="" placeholder="xxx@qq.com"><br>
+		电话: <input type="number" name="telephone" value=""><br>
+		<!-- 按钮  button 和 submit sumbit可以提交 -->
+		按钮: <input type="button" value="按钮">
+		<input type="submit" name="submit" value="提交"><br>
+		Reset: <input type="reset" name="reset" value="重置">
+	</form>
+</body>
+</html>
