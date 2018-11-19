@@ -21,7 +21,7 @@ Player.prototype.draw = function() {
 	ctx.strokeStyle = '#AA3A38';
 	ctx.moveTo(this.px, this.py);
 	ctx.lineWidth = 15;
-	ctx.lineTo(this.px, this.py + 200);
+	ctx.lineTo(this.px, this.py + 100);
 	//	ctx.fillRect(this.px, this.py, 15, 100);
 	ctx.stroke();
 	//	ctx.fill();
@@ -45,6 +45,6 @@ Aiplayer.prototype.draw = function() {
 	ctx.strokeStyle = '#2C7744';
 	ctx.moveTo(this.apx, this.apy);
 	ctx.lineWidth = -15;
-	ctx.lineTo(this.apx, this.apy + 200);
+	ctx.lineTo(this.apx, this.apy + 100);
 	ctx.stroke();
 }
